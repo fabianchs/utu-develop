@@ -8,17 +8,12 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rig o!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
+			<div className="row d-flex justify-content-center m-5">
+				<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-secondary">
+					<h1 className="text-light">¡Hola!</h1>
+					<h1 className="text-light">¿Qué es UTÚ?</h1>
+				</div>
+			</div>
 		</div>
 	);
 };
