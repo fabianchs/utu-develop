@@ -9,12 +9,12 @@ export const Home = () => {
 
 	return (
 		<div className="text-center m-5">
-			<div className="row d-flex justify-content-center m-2 mt-5">
-				<div className="row d-flex align-items-center justify-content-center">
+			<div className="row d-flex justify-content-center mt-5">
+				<div className="row mb-3 d-flex align-items-center justify-content-center">
 					<h1 id="letters" className="m-2">
-						¡UTÚ! De un estudiante para futuros estudiantes.
+						&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
 					</h1>
-					<Button color="success" className="m-2">
+					<Button color="success" className="m-2 rounded-pill">
 						Registrarme!
 					</Button>{" "}
 				</div>
