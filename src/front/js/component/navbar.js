@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-transparent mb-3 fixed-top bg-transparent">
+		<nav className="navbar navbar-warning mb-3 fixed-top bg-secondary">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<span className="navbar-brand mb-0 h1">UTÚ</span>
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">
