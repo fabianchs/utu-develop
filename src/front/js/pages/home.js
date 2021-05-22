@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { Button } from "reactstrap";
 import "../../styles/home.scss";
 
 export const Home = () => {
@@ -8,7 +9,15 @@ export const Home = () => {
 
 	return (
 		<div className="text-center m-5">
-			<div className="row d-flex justify-content-center m-2 mt-5 ">
+			<div className="row d-flex justify-content-center m-2 mt-5">
+				<div className="row d-flex align-items-center justify-content-center">
+					<h1 id="letters" className="m-2">
+						¡UTÚ! De un estudiante para futuros estudiantes.
+					</h1>
+					<Button color="success" className="m-2">
+						Registrarme!
+					</Button>{" "}
+				</div>
 				<div className="row d-flex justify-content-center">
 					<div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 						{" "}
