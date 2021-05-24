@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import "../../styles/home.scss";
 
@@ -14,9 +15,12 @@ export const Home = () => {
 					<h1 id="letters" className="m-2">
 						&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
 					</h1>
-					<Button color="success" className="m-2 rounded-pill">
-						Registrarme!
-					</Button>{" "}
+
+					<Link to="/register" className="text-light">
+						<Button color="success" className="m-2 rounded-pill">
+							¡Registrarme!
+						</Button>
+					</Link>
 				</div>
 				<div className="row d-flex justify-content-center">
 					<div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
