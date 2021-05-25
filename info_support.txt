@@ -85,3 +85,40 @@ var json = {
     ],
     completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
 };
+PROPOSAL FOR CHOISES
+
+data:{ 
+    id:"";
+    title:"título de la pregunta (si lo llevara)"
+    group1: "aquí iría texto", 
+    group2: "aquí iría imágenes", 
+    group3:"aquí iría listado",
+    group4:"esta se deja por si acaso", 
+    group5:"se deja por si acaso x2",
+    type:"esta trae el tipo de respuesta ya sea: texto/fórmula/imagenes"
+    option1:"primera opción",
+    option2:"primera opción",
+    option3:"primera opción",
+    option4:"primera opción",
+    option5:"primera opción",
+    correct: "comparación de respuesta"
+    }
+
+answers:{
+    id:"id de la pregunta",
+    id_user: "id del usuario",
+    answer: "true/false (para correcta incorrecta)",
+    time: "tiempo que duró en responderla",
+    date: "fecha que la resolvió"
+}
+
+profile:{
+    name: "nombre",
+    last_name: "apellido",
+    sec_last_name: "segundo apellido",
+    email: "correo electrónico",
+    password: "contraseña",
+    isProblematic: "true/false (usuario problemático no tiene acceso a la plataforma)",
+    
+
+}
