@@ -95,16 +95,19 @@ data:{
     group3:"aquí iría listado",
     group4:"esta se deja por si acaso", 
     group5:"se deja por si acaso x2",
-    type:"esta trae el tipo de respuesta ya sea: texto/fórmula/imagenes"
+    type:"esta trae el tipo de respuesta ya sea: T/F/I texto/fórmula/imagenes para darle formato desde Javascript"
     option1:"primera opción",
-    option2:"primera opción",
-    option3:"primera opción",
-    option4:"primera opción",
-    option5:"primera opción",
+    option2:"segunda opción",
+    option3:"tercera opción",
+    option4:"cuarta opción",
+    option5:"quinta opción",
     correct: "comparación de respuesta",
     explanation: "explicación",
-    source: "de dónde salió la pregunta/ créditos al autor"
-    }
+    source: "de dónde salió la pregunta/ créditos al autor",
+    isDifficult: "si es una pregunta que ha fallado el 70% de los usuarios",
+    area: "matemática/lógica/lectura",
+    institution: "TEC/UCR/ETC"
+}
 
 answers:{
     id:"id de la pregunta",
