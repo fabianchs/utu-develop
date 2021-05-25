@@ -101,13 +101,16 @@ data:{
     option3:"primera opción",
     option4:"primera opción",
     option5:"primera opción",
-    correct: "comparación de respuesta"
+    correct: "comparación de respuesta",
+    explanation: "explicación",
+    source: "de dónde salió la pregunta/ créditos al autor"
     }
 
 answers:{
     id:"id de la pregunta",
     id_user: "id del usuario",
     answer: "true/false (para correcta incorrecta)",
+    option: "respuesta enviada"
     time: "tiempo que duró en responderla",
     date: "fecha que la resolvió"
 }
@@ -119,6 +122,5 @@ profile:{
     email: "correo electrónico",
     password: "contraseña",
     isProblematic: "true/false (usuario problemático no tiene acceso a la plataforma)",
-    
-
+    score: "el corte"
 }
