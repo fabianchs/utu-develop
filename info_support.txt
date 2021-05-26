@@ -125,5 +125,30 @@ profile:{
     email: "correo electrónico",
     password: "contraseña",
     isProblematic: "true/false (usuario problemático no tiene acceso a la plataforma)",
-    score: "el corte"
+    highschool_score:"",
+    cutUCR:"",
+    cutTEC:"",
+    cutUNA:"",
+    cutGBL:"corte global",
+    isUCR:"",
+    isTEC:"",
+    isUNA:"",
+}
+
+career_options: {
+    user_id:"",
+    TEC1:"",
+    TEC2:"",
+    UCR1:"",
+    UCR2:"",
+    UNA1:"",
+    UNA2:"",
+    year:""
+}
+
+real_cuts_{
+    user_id:"",
+    UCR:"",
+    TEC:"",
+    UNA:"",
 }
