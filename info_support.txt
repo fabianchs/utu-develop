@@ -135,7 +135,7 @@ profile:{
     isUNA:"",
 }
 
-career_options: {
+major_options: {
     user_id:"",
     TEC1:"",
     TEC2:"",
