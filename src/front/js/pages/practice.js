@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import MathJax from "react-mathjax";
-
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser";
 export const Practice = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -14,8 +14,8 @@ export const Practice = () => {
 	const inlineFormula = `k_{n + 1} = n^2 + k_n^2 - k_{n - 1}`;
 	const blockFormula = `\\int_0^\\infty x^2 dx`;
 	const enunciado = `<p>
-        Hola esta es una de las pruebas <MathJax.Node formula="a^2" />{" "}
-    </p>`;
+			Hola esta es una de las pruebas <MathJax.Node formula="a^2" /> sigue{" "}
+		</p>`;
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="mx-auto pt-5 m-5">
@@ -29,7 +29,7 @@ export const Practice = () => {
 						<p>Block formula:</p>
 						<MathJax.Node formula={blockFormula} />
 					</div>
-					<div>{enunciado.toString()}</div>
+					<div>{ReactHtmlParser(enunciado)}</div>
 				</MathJax.Provider>
 			</div>
 		</div>
