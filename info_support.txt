@@ -2,6 +2,8 @@ MATH
 
 https://www.kindacode.com/article/displaying-math-symbols-in-react/
 
+CONVERTIR STRING A html
+
 https://reactscript.com/react-html-parser/
 
 BANCO DE PREGUNTAS
