@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
+
 import "../../styles/home.scss";
 
 export const Home = () => {
