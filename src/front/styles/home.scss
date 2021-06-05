@@ -1,7 +1,9 @@
 body{
     background: white;
 }
-
+.bg-warning{
+    background-color: #2ecc71 !important;
+}
 #letters{
     font-family: 'Times New Roman', monospace;
     font-weight: bold;
@@ -9,3 +11,10 @@ body{
 // #first-background{
 //     background-image: url("");
 // }
+#home_img{
+    background-image:   url("https://res.cloudinary.com/dubb4luoi/image/upload/v1622924717/Imagen1_nhbbbb.png");
+    
+}
+#home_text{
+    filter: brightness(100%);
+}

@@ -11,46 +11,50 @@ export const Home = () => {
 
 	return (
 		<div className="mt-5">
-			<div className="row mt-5 bg-dark rounded">
-				<div className="col-6 d-flex justify-content-center">
-					<div className="m-2 d-flex justify-content-center">
-						<div className="container-fluid">
-							<h1 id="letters2" className="m-2 text-light text-center">
-								&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
-							</h1>
+			<div className="row mt-5 d-flex justify-content-center" id="home_img">
+				<div className="col-xl-10 col-lg-10 col-md-11 col-sm-12">
+					<div className="row">
+						<div
+							className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center"
+							id="home_text">
+							<div className="m-2 d-flex justify-content-center">
+								<div className="container-fluid">
+									<h1 id="letters2" className="m-2 text-light text-center">
+										&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
+									</h1>
+									<h1 className="mt-4 text-light text-center">
+										&#9989; Una plataforma de práctica para los exámenes de admisión en las
+										universidades de Costa Rica.
+									</h1>
+								</div>
+							</div>
 						</div>
-						<div className="container-fluid">
-							<Link to="/register" className="text-light">
-								<Button color="success" className="m-2 rounded-pill">
-									¡Registrarme!
-								</Button>
-							</Link>
+						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-end justify-content-end">
+							<div className="m-2 align-bottom">
+								<div className="container-fluid d-flex justify-content-end align-bottom">
+									<Link to="/register" className="text-light">
+										<Button
+											color="success"
+											className="m-2 border border-light border-4 rounded-3 bg-warning">
+											<h1> ¡Registrarme!</h1>
+										</Button>
+									</Link>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div className="col-6">
-					<div className="m-2">
-						<h1 className="text-light"> Probando</h1>
 					</div>
 				</div>
 			</div>
-			{/* <div className="row d-flex justify-content-center mt-5">
-				<div className="row mb-3 d-flex align-items-center  ">
-					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
-						<h1 id="letters" className="m-2 text-light">
-							&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
-						</h1>
-						<Link to="/register" className="text-light">
-							<Button color="success" className="m-2 rounded-pill">
-								¡Registrarme!
-							</Button>
-						</Link>
-					</div>
-					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 " />
 
-                    </div>
+			<div className="row d-flex justify-content-center">
+				<div className="col-xl-6 col-lg-6 col-md-8 col-sm-12 m-5 mb-0">
+					<img
+						src="https://res.cloudinary.com/dubb4luoi/image/upload/v1622924082/UT%C3%9A-LOGO_1_jooisw.png"
+						className="img-fluid"
+						alt="Logo de la plataforma"
+					/>
 				</div>
-			</div> */}
+			</div>
 			<div className="row d-flex justify-content-center m-5">
 				<div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 					{" "}
