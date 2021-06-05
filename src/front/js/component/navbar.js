@@ -5,7 +5,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-warning mb-3 fixed-top bg-warning">
 			<Link to="/">
-				<h1 className="navbar-brand mb-0 h1">UTÚ</h1>
+				<img src="https://res.cloudinary.com/dubb4luoi/image/upload/v1622926480/android-icon-36x36_elru6i.png" />
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">

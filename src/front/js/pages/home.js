@@ -29,13 +29,13 @@ export const Home = () => {
 								</div>
 							</div>
 						</div>
-						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-end justify-content-end">
-							<div className="m-2 align-bottom">
-								<div className="container-fluid d-flex justify-content-end align-bottom">
+						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-end justify-content-xl-end justify-content-lg-end  justify-content-md-end justify-content-sm-center">
+							<div className="m-2">
+								<div className="container-fluid d-flex">
 									<Link to="/register" className="text-light">
 										<Button
 											color="success"
-											className="m-2 border border-light border-4 rounded-3 bg-warning">
+											className="m-2 border border-4  border-light rounded-3 bg-warning">
 											<h1> ¡Registrarme!</h1>
 										</Button>
 									</Link>
@@ -46,8 +46,8 @@ export const Home = () => {
 				</div>
 			</div>
 
-			<div className="row d-flex justify-content-center">
-				<div className="col-xl-6 col-lg-6 col-md-8 col-sm-12 m-5 mb-0">
+			<div className="row d-flex justify-content-center m-5">
+				<div className="col-xl-6 col-lg-6 col-md-8 col-sm-12">
 					<img
 						src="https://res.cloudinary.com/dubb4luoi/image/upload/v1622924082/UT%C3%9A-LOGO_1_jooisw.png"
 						className="img-fluid"
