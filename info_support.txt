@@ -6,6 +6,9 @@ https://en.wikibooks.org/wiki/LaTeX/Mathematics
 DIVISIONES USAR: \\ EJEMPLO: "\\dfrac{4}{3}"
 CONVERTIR STRING A html
 
+PROBLEMA CON RUTAS DE VERCEL
+https://stackoverflow.com/questions/64815012/why-does-react-router-not-works-at-vercel
+
 https://reactscript.com/react-html-parser/
 
 BANCO DE PREGUNTAS
