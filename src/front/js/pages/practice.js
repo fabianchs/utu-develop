@@ -10,28 +10,52 @@ export const Practice = () => {
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
+	const enunciado = [
+		"Hola!",
+		"(a^2+3)/56",
+		"prueba",
+		"https://i.pinimg.com/originals/d2/4b/be/d24bbe79387549086d159aa4462bf4c9.png",
+		"\\dfrac{4}{3}"
+	];
+	const types = ["t", "f", "t", "i", "f"];
 
 	const inlineFormula = `k_{n + 1} = n^2 + k_n^2 - k_{n - 1}`;
 	const blockFormula = `\\int_0^\\infty x^2 dx`;
-	const enunciado = `<p>
-			Hola esta es una de las pruebas <MathJax.Node formula="a^2" /> sigue{" "}
-		</p>`;
-	return (
-		// <div className="mx-auto pt-5">
-		<div className="mx-auto pt-5 m-5">
-			<div className="row mt-5">
+	let final = [];
+
+	types.map(function(element, index) {
+		let temporal = "";
+		if (element === "t") {
+			temporal = (
+				<p>
+					&nbsp;
+					{enunciado[index]}
+					&nbsp;
+				</p>
+			);
+			final.push(temporal);
+		} else if (element === "f") {
+			temporal = (
 				<MathJax.Provider>
 					<div>
 						<p>
-							Inline formula: <MathJax.Node inline formula={inlineFormula} />
+							<MathJax.Node inline formula={enunciado[index]} />
 						</p>
-						<hr />
-						<p>Block formula:</p>
-						<MathJax.Node formula={blockFormula} />
 					</div>
-					<div>{ReactHtmlParser(enunciado)}</div>
 				</MathJax.Provider>
-			</div>
+			);
+			final.push(temporal);
+		} else if (element === "i") {
+			temporal = <img src={enunciado[index]} />;
+			final.push(temporal);
+		}
+		console.log(enunciado[index]);
+	});
+
+	return (
+		// <div className="mx-auto pt-5">
+		<div className="mx-auto pt-5 m-5">
+			<div className="row mt-5">{final}</div>
 		</div>
 	);
 };
