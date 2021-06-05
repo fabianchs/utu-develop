@@ -94,11 +94,7 @@ PROPOSAL FOR CHOISES
 data:{ 
     id:"";
     title:"título de la pregunta (si lo llevara)"
-    group1: "aquí iría texto", 
-    group2: "aquí iría imágenes", 
-    group3:"aquí iría listado",
-    group4:"esta se deja por si acaso", 
-    group5:"se deja por si acaso x2",
+    statement:"[array dividido por statemets]"
     type:"esta trae el tipo de respuesta ya sea: T/F/I texto/fórmula/imagenes para darle formato desde Javascript"
     option1:"primera opción",
     option2:"segunda opción",
@@ -156,3 +152,11 @@ real_cuts_{
     TEC:"",
     UNA:"",
 }
+
+
+    Delete the entire migrations folder.
+    Delete de database mysql -u root -e "DROP DATABASE example";
+    Create de database again mysql -u root -e "CREATE DATABASE example";
+    Initiallize the migrations again: pipenv run init
+    Create the migration files again: pipenv run migrate
+    Apply the migration files into your database pipenv run upgrade
