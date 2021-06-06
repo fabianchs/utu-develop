@@ -14,12 +14,10 @@ export const Home = () => {
 			<div className="row mt-5 d-flex justify-content-center" id="home_img">
 				<div className="col-xl-10 col-lg-10 col-md-11 col-sm-12 ">
 					<div className="row">
-						<div
-							className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center"
-							id="home_text">
+						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center">
 							<div className="m-2 d-flex justify-content-center">
 								<div className="container-fluid">
-									<h1 id="letters2" className="text-light text-center">
+									<h1 className="text-light text-center">
 										&#128513; ¡UTÚ! De un estudiante para futuros estudiantes.
 									</h1>
 									<h1 className="mt-4 text-light text-center">
