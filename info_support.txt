@@ -114,6 +114,24 @@ data:{
     institution: "TEC/UCR/ETC"
 }
 
+# data:{ 
+#     id:"";
+#     title:"título de la pregunta (si lo llevara)"
+#     statement:"[array dividido por statemets]"
+#     type:"esta trae el tipo de respuesta ya sea: T/F/I texto/fórmula/imagenes para darle formato desde Javascript"
+#     option1:"primera opción",
+#     option2:"segunda opción",
+#     option3:"tercera opción",
+#     option4:"cuarta opción",
+#     option5:"quinta opción",
+#     correct: [f,f,f,t,f],
+#     explanation: "explicación",
+#     source: "de dónde salió la pregunta/ créditos al autor",
+#     isDifficult: "si es una pregunta que ha fallado el 70% de los usuarios",
+#     area: "matemática/lógica/lectura",
+#     institution: "TEC/UCR/ETC"
+# }
+
 answers:{
     id:"id de la pregunta",
     id_user: "id del usuario",
