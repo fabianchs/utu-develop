@@ -87,6 +87,8 @@ class Statement(db.Model):
     is_difficult=db.Column(db.Boolean())
     is_active=db.Column(db.Boolean())
     is_explained=db.Column(db.Boolean())
+    created_by= db.Column(db.String(120), nullable=False)
+    modified_by= db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
         return '<Statement %r>' % self.id
@@ -105,7 +107,9 @@ class Statement(db.Model):
             "is_difficult": self.is_difficult,
             "is_active":self.is_active,
             "area":self.area,
-            "institution":self.institution
+            "institution":self.institution,
+            "created_by": self.created_by,
+            "modified_by": self.modified_by
         }
 
 class Answers(db.Model):
@@ -115,6 +119,7 @@ class Answers(db.Model):
     option=db.Column(db.String(500))
     time= db.Column(db.Integer)
     date= db.Column(db.Integer)#resolver esto
+    
 
     def __repr__(self):
         return '<Answer %r>' % self.id
