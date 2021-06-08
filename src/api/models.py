@@ -104,7 +104,7 @@ class Statement(db.Model):
 
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer)
+    id_user = db.Column(db.Integer,db.ForeignKey('user.id'))
     is_correct=db.Column(db.Boolean())
     option=db.Column(db.String(500))
     seconds= db.Column(db.Integer)
