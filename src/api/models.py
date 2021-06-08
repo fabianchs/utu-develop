@@ -45,6 +45,36 @@ class User(db.Model):
             "update_date": self.update_date
         }
 
+class Admin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=False, nullable=False)
+    lastname = db.Column(db.String(120), unique=False, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    username = db.Column(db.String(120), unique=False, nullable=False)
+    security_code= db.Column(db.Integer, unique=False, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    is_admin_of_everything = db.Column(db.Boolean(), unique=False, nullable=False)
+    creation_date=db.Column(db.DateTime,nullable=False)
+
+    def __repr__(self):
+        return '<Admin %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "lastname":self.lastname,
+            "email": self.email,
+            "username": self.username,
+            "security_code": self.security_code,
+            "is_active": self.is_active,
+            "is_admin_of_everything": self.is_admin_of_everything,
+            "creation_date":self.creation_date
+        }
+
+
+
 class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text_array = db.Column(db.ARRAY(db.String(20000)))
