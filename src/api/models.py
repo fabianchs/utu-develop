@@ -3,23 +3,6 @@ from sqlalchemy.dialects.postgresql import ARRAY
 db = SQLAlchemy()
 
 
-# profile:{
-#     name: "nombre",
-#     last_name: "apellido",
-#     sec_last_name: "segundo apellido",
-#     email: "correo electrónico",
-#     password: "contraseña",
-#     isProblematic: "true/false (usuario problemático no tiene acceso a la plataforma)",
-#     highschool_score:"",
-#     cutUCR:"",
-#     cutTEC:"",
-#     cutUNA:"",
-#     cutGBL:"corte global",
-#     isUCR:"",
-#     isTEC:"",
-#     isUNA:"",
-# }
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
@@ -36,7 +19,8 @@ class User(db.Model):
     is_UNA = db.Column(db.Boolean(), unique=False, nullable=True)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     is_problematic = db.Column(db.Boolean(), unique=False, nullable=False)
-
+    creation_date=db.Column(db.DateTime,nullable=False)
+    update_date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -56,7 +40,9 @@ class User(db.Model):
             "is_TEC": self.is_TEC,
             "is_UNA": self.is_UNA,
             "is_active":self.is_active,
-            "is_problematic": self.is_problematic
+            "is_problematic": self.is_problematic,
+            "creation_date": self.creation_date,
+            "update_date": self.update_date
         }
 
 class Test(db.Model):
@@ -89,6 +75,8 @@ class Statement(db.Model):
     is_explained=db.Column(db.Boolean())
     created_by= db.Column(db.String(120), nullable=False)
     modified_by= db.Column(db.String(120), nullable=False)
+    creation_date=db.Column(db.DateTime,nullable=False)
+    update_date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return '<Statement %r>' % self.id
@@ -109,7 +97,9 @@ class Statement(db.Model):
             "area":self.area,
             "institution":self.institution,
             "created_by": self.created_by,
-            "modified_by": self.modified_by
+            "modified_by": self.modified_by,
+            "creation_date": self.creation_date,
+            "update_date": self.update_date
         }
 
 class Answers(db.Model):
@@ -117,9 +107,8 @@ class Answers(db.Model):
     id_user = db.Column(db.Integer)
     is_correct=db.Column(db.Boolean())
     option=db.Column(db.String(500))
-    time= db.Column(db.Integer)
-    date= db.Column(db.Integer)#resolver esto
-    
+    seconds= db.Column(db.Integer)
+    creation_date=db.Column(db.DateTime,nullable=False)
 
     def __repr__(self):
         return '<Answer %r>' % self.id
@@ -131,5 +120,6 @@ class Answers(db.Model):
             "is_correct": self.is_correct,
             "option": self.option,
             "time":self.time,
-            "date":self.date,
+            "seconds":self.seconds,
+            "creation_date": self.creation_date
         }
