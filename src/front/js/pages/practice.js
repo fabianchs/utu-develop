@@ -15,9 +15,10 @@ export const Practice = () => {
 		"(a^2+3)/56",
 		"prueba",
 		"https://i.pinimg.com/originals/d2/4b/be/d24bbe79387549086d159aa4462bf4c9.png",
-		"\\dfrac{4}{3}"
+		"\\dfrac{4}{3}",
+		"x^2-56"
 	];
-	const types = ["t", "f", "t", "i", "f"];
+	const types = ["t", "f", "t", "i", "f", "f"];
 
 	const inlineFormula = `k_{n + 1} = n^2 + k_n^2 - k_{n - 1}`;
 	const blockFormula = `\\int_0^\\infty x^2 dx`;

@@ -45,7 +45,7 @@ class User(db.Model):
             "update_date": self.update_date
         }
 
-class Admin(db.Model):
+class Administrator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
@@ -58,7 +58,7 @@ class Admin(db.Model):
     creation_date=db.Column(db.DateTime,nullable=False)
 
     def __repr__(self):
-        return '<Admin %r>' % self.name
+        return '<Administrator %r>' % self.name
 
     def serialize(self):
         return {
@@ -72,7 +72,6 @@ class Admin(db.Model):
             "is_admin_of_everything": self.is_admin_of_everything,
             "creation_date":self.creation_date
         }
-
 
 
 class Test(db.Model):
