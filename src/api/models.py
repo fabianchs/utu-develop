@@ -23,7 +23,7 @@ class User(db.Model):
     update_date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.name
 
     def serialize(self):
         return {
