@@ -69,15 +69,14 @@ export const Login = () => {
 			<div className="row d-flex justify-content-center p-1 m-1 ">
 				<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary m-1 border-5 rounded-pill shadow">
 					<div className="row m-1">
-						<p className="h5 col-12  d-flex justify-content-center">CORREO ELECTRÓNICO</p>
+						<p className="h5 col-12  d-flex justify-content-center">CONTRASEÑA</p>
 						<div className="col-12  d-flex justify-content-center float-end align-items-center mb-1">
 							<input
-								onChange={e => setEmail(e.target.value)}
-								type="email"
+								onChange={e => setPassword(e.target.value)}
+								type="password"
 								className="form-control rounded-pill"
-								id="exampleInputEmail1"
-								aria-describedby="emailHelp"
-								placeholder="ejemplo@correo.com"
+								id="exampleInputPassword1"
+								placeholder="Tu contraseña"
 							/>
 						</div>
 					</div>
