@@ -29,17 +29,17 @@ export const Navbar = () => {
 				<div className="collapse navbar-collapse" id="principal-menu">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<Link to="/practice" className="nav-link text-light h2">
+							<Link to="/practice" className="nav-link text-light h3">
 								Práctica
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link to="/login" className="nav-link text-light h2">
+							<Link to="/login" className="nav-link text-light h3">
 								Ingresar
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link to="/register" className="nav-link text-light h2">
+							<Link to="/register" className="nav-link text-light h3">
 								Registrarme
 							</Link>
 						</li>
