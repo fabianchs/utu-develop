@@ -10,12 +10,12 @@ export const Practice = () => {
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
-	const enunciado = [
+	const statement = [
 		"Hola!",
 		"(a^2+3)/56",
 		"prueba",
 		"https://i.pinimg.com/originals/d2/4b/be/d24bbe79387549086d159aa4462bf4c9.png",
-		"\\dfrac{4}{3}",
+		"\\dfrac{a^2+3}{56}",
 		"x^2-56"
 	];
 	const types = ["t", "f", "t", "i", "f", "f"];
@@ -30,7 +30,7 @@ export const Practice = () => {
 			temporal = (
 				<p>
 					&nbsp;
-					{enunciado[index]}
+					{statement[index]}
 					&nbsp;
 				</p>
 			);
@@ -40,17 +40,17 @@ export const Practice = () => {
 				<MathJax.Provider>
 					<div>
 						<p>
-							<MathJax.Node inline formula={enunciado[index]} />
+							<MathJax.Node inline formula={statement[index]} />
 						</p>
 					</div>
 				</MathJax.Provider>
 			);
 			final.push(temporal);
 		} else if (element === "i") {
-			temporal = <img src={enunciado[index]} />;
+			temporal = <img src={statement[index]} />;
 			final.push(temporal);
 		}
-		console.log(enunciado[index]);
+		console.log(statement[index]);
 	});
 
 	return (

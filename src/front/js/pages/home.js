@@ -11,7 +11,7 @@ export const Home = () => {
 
 	return (
 		<div className="mt-5">
-			<div className="row mt-5 d-flex justify-content-center" id="home_img">
+			<div className="row mt-5 d-flex justify-content-center mx-auto" id="home_img">
 				<div className="col-xl-10 col-lg-10 col-md-11 col-sm-12 ">
 					<div className="row">
 						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center">
