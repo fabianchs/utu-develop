@@ -3,17 +3,48 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-warning fixed-top bg-warning d-flex align-items-center">
-			<Link to="/">
-				<h3 className="text-light d-flex align-items-center">
-					<img src="https://res.cloudinary.com/dubb4luoi/image/upload/v1622926480/android-icon-36x36_elru6i.png" />
-					UTÚ
-				</h3>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
+		<nav className="navbar navbar-expand-lg navbar-light bg-warning ">
+			<div className="container">
+				<div className="navbar-brand">
+					<Link to="/">
+						<span className="h2 d-flex align-items-center text-light ">
+							<img
+								height="auto "
+								src="https://res.cloudinary.com/dubb4luoi/image/upload/v1622926480/android-icon-36x36_elru6i.png"
+							/>
+							UTÚ
+						</span>
+					</Link>
+				</div>
+				<button
+					type="button"
+					className="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#principal-menu"
+					aria-controls="principal-menu"
+					aria-expanded="false"
+					aria-label="Desplegar menú de navegación">
+					<span className="navbar-toggler-icon" />
+				</button>
+				<div className="collapse navbar-collapse" id="principal-menu">
+					<ul className="navbar-nav">
+						<li className="nav-item">
+							<Link to="/practice" className="nav-link text-light h2">
+								Práctica
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/login" className="nav-link text-light h2">
+								Ingresar
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/register" className="nav-link text-light h2">
+								Registrarme
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);
