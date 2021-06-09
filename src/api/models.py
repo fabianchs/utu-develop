@@ -91,17 +91,17 @@ class Test(db.Model):
 class Statement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=True)
-    statement = db.Column(db.ARRAY(db.String(20000)))
-    options = db.Column(db.ARRAY(db.String(2000)))
-    statement_types = db.Column(db.ARRAY(db.String(150)))
-    options_types=db.Column(db.ARRAY(db.String(150)))
-    answer= db.Column(db.ARRAY(db.String(150)))
-    source = db.Column(db.String(120), nullable=True)
+    statement = db.Column(db.ARRAY(db.String(20000)),nullable=False)
+    options = db.Column(db.ARRAY(db.String(2000)),nullable=False)
+    statement_types = db.Column(db.ARRAY(db.String(150)),nullable=False)
+    options_types=db.Column(db.ARRAY(db.String(150)),nullable=False)
+    answer= db.Column(db.ARRAY(db.String(150)),nullable=False)
+    source = db.Column(db.String(120), nullable=False)
     area=db.Column(db.String(120), nullable=True)
     institution=db.Column(db.String(120), nullable=True)
-    is_difficult=db.Column(db.Boolean())
-    is_active=db.Column(db.Boolean())
-    is_explained=db.Column(db.Boolean())
+    is_difficult=db.Column(db.Boolean(),nullable=False)
+    is_active=db.Column(db.Boolean(), nullable=False)
+    is_explained=db.Column(db.Boolean(),nullable=False)
     created_by= db.Column(db.String(120), nullable=False)
     modified_by= db.Column(db.String(120), nullable=False)
     creation_date=db.Column(db.DateTime,nullable=False)
@@ -133,9 +133,9 @@ class Statement(db.Model):
 
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer,db.ForeignKey('user.id'))
-    is_correct=db.Column(db.Boolean())
-    option=db.Column(db.String(500))
+    id_user = db.Column(db.Integer,nullable=False)
+    is_correct=db.Column(db.Boolean(),nullable=False)
+    option=db.Column(db.String(500),nullable=False)
     seconds= db.Column(db.Integer)
     creation_date=db.Column(db.DateTime,nullable=False)
 
@@ -150,5 +150,28 @@ class Answers(db.Model):
             "option": self.option,
             "time":self.time,
             "seconds":self.seconds,
+            "creation_date": self.creation_date
+        }
+
+class Report(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer,db.ForeignKey('user.id'))
+    id_statement = db.Column(db.Integer)
+    message= db.Column(db.String(500), nullable=False)
+    is_solved=db.Column(db.Boolean())
+    show_to_all_admins=db.Column(db.Boolean())
+    creation_date=db.Column(db.DateTime,nullable=False)
+
+    def _repr_(self):
+        return '<Answer %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "id_user": self.id_user,
+            "id_statement": self.id_statement,
+            "message":self.message,
+            "is_solved": self.is_solved,
+            "show_to_all_admins": self.show_to_all_admins,
             "creation_date": self.creation_date
         }
