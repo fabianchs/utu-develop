@@ -13,7 +13,7 @@ routes_user = flask.Blueprint('routes_user', __name__)
 
 
 @routes_user.route('/user/login', methods=['POST', 'GET'])
-def handle_login():
+def handle_login(): 
 
     email = request.json.get("email", None)
     password = request.json.get("password", None)
@@ -28,7 +28,7 @@ def handle_login():
     
     if user is None:
         # the user was not found on the database
-        return jsonify({"message": "El email o el password son inválidos."}), 401
+        return jsonify({"message": "Error. Correo electrónico o contraseña incorrectos."}), 401
     else:
         expiration_date = datetime.timedelta(days=1)
         access_token = create_access_token(identity=user.id,expires_delta=expiration_date)
@@ -38,11 +38,47 @@ def handle_login():
 @routes_user.route('/user/register', methods=['POST'])
 def handle_register():
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the routes_user"
-    }
+    data_request = request.get_json()
 
-    return jsonify(response_body), 200
+    user = User.query.filter_by(email=data_request["email"]).first()
+    
+    
+
+    # Se valida que el email no haya sido registrado.s
+    if user:
+        return jsonify({"message": "Lo sentimos, esta dirección de correo ya se encuentra registrada."}), 401
+
+    else:
+
+        name = request.json.get("name", None)
+        last_name = request.json.get("last_name", None)
+        email= request.json.get("email", None)
+        password= request.json.get("password", None)
+        creation_date = datetime.datetime.now()
+        update_date = datetime.datetime.now()
+
+        new_user = User()
+        new_user.name = name
+        new_user.lastname = last_name
+        new_user.email = email
+        new_user.password = password
+        new_user.is_active= True
+        new_user.is_problematic= False
+        new_user.creation_date= creation_date
+        new_user.update_date=update_date
+
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+
+            return jsonify(User.serialize(new_user)), 201
+    
+        except AssertionError as exception_message: 
+            return jsonify(msg='Error: {}. '.format(exception_message)), 400
+
+
+        return jsonify({"msg": "User created successfully"}), 200
+    
 
 
 

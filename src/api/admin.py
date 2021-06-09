@@ -10,9 +10,11 @@ from api.routes_user import routes_user
 def setup_admin(app):
     app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+    app.config["JWT_SECRET_KEY"] = "whatever"
     admin = Admin(app, name='UTÚ Admin', template_mode='bootstrap3')
+    jwt = JWTManager(app)
 
-    
+
     # Add your models here, for example this is how we add a the User model to the admin
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Test, db.session))
