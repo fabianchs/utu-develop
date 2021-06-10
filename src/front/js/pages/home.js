@@ -33,7 +33,7 @@ export const Home = () => {
 									<Link to="/register" className="text-light">
 										<Button
 											color="success"
-											className="m-2 border border-4  border-light rounded-3 bg-warning">
+											className="m-2 border border-4  border-light rounded-3 bg-success">
 											<h1> ¡Registrarme!</h1>
 										</Button>
 									</Link>

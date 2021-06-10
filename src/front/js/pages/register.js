@@ -103,7 +103,14 @@ export const Register = () => {
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="pt-5 m-5">
-			<div className="container-fluid">
+			<div className="container-fluid mt-3">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h1 m-0">REGISTRO</p>
+					</Badge>
+				</div>
+			</div>
+			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
 					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
 						<p className="h6 m-0">Nombre</p>
@@ -219,9 +226,9 @@ export const Register = () => {
 			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
 					<Button
-						color="secondary"
-						className="col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-secondary">
-						<p className="h3 text-dark">Registrarme</p>
+						color="success"
+						className="col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-success">
+						<p className="h3 text-light">Registrarme</p>
 					</Button>
 				</div>
 			</div>

@@ -28,7 +28,7 @@ export const Nav_bar = () => {
 	};
 
 	return (
-		<Navbar color="warning" light expand="md" className="fixed-top">
+		<Navbar color="success" light expand="md" className="fixed-top">
 			<NavbarBrand onClick={closeIfOpen}>
 				{" "}
 				<Link to="/">
@@ -62,7 +62,7 @@ export const Nav_bar = () => {
 			</Collapse>
 		</Navbar>
 
-		// <nav className="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+		// <nav className="navbar navbar-expand-lg navbar-light bg-success fixed-top">
 		// 	<div className="container">
 		// 		<div className="navbar-brand">
 		// <Link to="/">
