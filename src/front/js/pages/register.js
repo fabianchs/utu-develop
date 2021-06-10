@@ -98,7 +98,7 @@ export const Register = () => {
 
 	return (
 		// <div className="mx-auto pt-5">
-		<div className="pt-5 mt-5">
+		<div className="pt-5 m-5">
 			<div className="container-fluid">
 				<div className="row d-flex justify-content-center">
 					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
@@ -207,8 +207,24 @@ export const Register = () => {
 									className="form-control"
 									id="inputPassword2"
 								/>
-								<div className="invalid-feedback">La contraseña deben ser iguales</div>
 							</div>
+						</div>
+					</div>
+				</div>
+				<div className="container-fluid mt-3">
+					<div className="row d-flex justify-content-center">
+						<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow bg-secondary">
+							<small id="passwordHelpBlock" className="form-text text-muted">
+								<p>Condiciones para la contraseña</p>
+								<ul>
+									<li>Mínimo 8 caracteres</li>
+									<li>Máximo 15 caracteres</li>
+									<li>Al menos una letra mayúscula</li>
+									<li>Al menos una letra minúscula</li>
+									<li>Al menos un dígito</li>
+									<li>No espacios en blanco</li>
+								</ul>
+							</small>
 						</div>
 					</div>
 				</div>
