@@ -20,7 +20,6 @@ export const Register = () => {
 	}, []);
 
 	const showValidation = (tag, show) => {
-		console.log(show);
 		if (!show) {
 			tag.classList.remove("is-valid");
 			tag.classList.add("is-invalid");
@@ -73,7 +72,6 @@ export const Register = () => {
 		};
 
 		let inputs = e.target.getElementsByTagName("input");
-		console.log("estos inputs", inputs);
 		let formValid = false;
 
 		Array.prototype.filter.call(inputs, function(input) {
