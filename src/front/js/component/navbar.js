@@ -21,9 +21,15 @@ export const Nav_bar = () => {
 
 	const toggle = () => setIsOpen(!isOpen);
 
+	const closeIfOpen = () => {
+		if (isOpen) {
+			toggle();
+		}
+	};
+
 	return (
 		<Navbar color="warning" light expand="md" className="fixed-top">
-			<NavbarBrand>
+			<NavbarBrand onClick={closeIfOpen}>
 				{" "}
 				<Link to="/">
 					<span className="h2 d-flex align-items-center text-light ">
@@ -39,38 +45,17 @@ export const Nav_bar = () => {
 			<Collapse isOpen={isOpen} navbar>
 				<Nav className="mr-auto" navbar>
 					<NavItem>
-						<Link
-							to="/practice"
-							className="nav-link text-light h3"
-							onClick={() => {
-								if (isOpen) {
-									toggle();
-								}
-							}}>
+						<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
 							Práctica
 						</Link>
 					</NavItem>
-					<Link
-						to="/login"
-						className="nav-link text-light h3"
-						onClick={() => {
-							if (isOpen) {
-								toggle();
-							}
-						}}>
+					<Link to="/login" className="nav-link text-light h3" onClick={closeIfOpen}>
 						Ingresar
 					</Link>
 					<NavItem>
 						{" "}
-						<Link
-							to="/register"
-							className="nav-link text-light h3"
-							onClick={() => {
-								if (isOpen) {
-									toggle();
-								}
-							}}>
-							Registrarme
+						<Link to="/register" className="nav-link text-light h3" onClick={closeIfOpen}>
+							Registro
 						</Link>
 					</NavItem>
 				</Nav>

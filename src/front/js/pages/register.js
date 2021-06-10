@@ -1,6 +1,6 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-
+import { Badge } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ export const Register = () => {
 	const [confPassword, setConfPassword] = useState("");
 	const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
+
 	const showValidation = (tag, show) => {
 		if (!show) {
 			tag.classList.remove("is-valid");
@@ -97,9 +98,34 @@ export const Register = () => {
 
 	return (
 		// <div className="mx-auto pt-5">
-		<div>
-			<div className="row mt-5">
-				<div className="container my-5">
+		<div className="pt-5 mt-5">
+			<div className="container-fluid ">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h6 m-0">Correo electrónico</p>
+					</Badge>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary border-5  shadow">
+						<div className="row">
+							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
+								<input
+									onChange={e => setEmail(e.target.value)}
+									type="email"
+									className="form-control rounded m-1"
+									id="exampleInputEmail1"
+									aria-describedby="emailHelp"
+									placeholder="ejemplo@correo.com"
+									onBlur={validateEmailInput}
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* 
+				<div className="container">
 					<div className="row">
 						<div className="col-sm-12 col-md-6 offset-md-3">
 							<h1 className="m-0">Registrarse</h1>
@@ -202,9 +228,7 @@ export const Register = () => {
 							</form>
 						</div>
 					</div>
-				</div>
-				{auth ? <Redirect to="/login" /> : null}
-			</div>
+				</div> */}
 		</div>
 	);
 };
