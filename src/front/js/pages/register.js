@@ -8,8 +8,7 @@ import "../../styles/index.scss";
 
 export const Register = () => {
 	const [name, setName] = useState("");
-	const [first_surname, setFirst_surname] = useState("");
-	const [second_surname, setSecond_surname] = useState("");
+	const [last_name, setLast_name] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confPassword, setConfPassword] = useState("");
@@ -19,6 +18,7 @@ export const Register = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
 	const showValidation = (tag, show) => {
 		if (!show) {
 			tag.classList.remove("is-valid");
@@ -31,7 +31,7 @@ export const Register = () => {
 
 	const validateTextInput = e => {
 		//Expresion regular para la validacion
-		const nameregex = /^[a-zA-Z ]+$/; // Solo letras
+		const nameregex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g; // Solo letras
 
 		const tag = e.target;
 
@@ -65,14 +65,14 @@ export const Register = () => {
 		e.preventDefault();
 		const body = {
 			name: name,
-			first_surname: first_surname,
-			second_surname: second_surname,
+			last_name: last_name,
 			email: email,
 			password: password
 		};
 
 		let inputs = e.target.getElementsByTagName("input");
-		let formValid = false;
+		console.log("estos inputs", inputs);
+		let formValid = true;
 
 		Array.prototype.filter.call(inputs, function(input) {
 			formValid = input.classList.contains("is-valid") ? true : false;
@@ -82,7 +82,8 @@ export const Register = () => {
 		});
 		console.log(body);
 		if (formValid) {
-			let url = store.api_url + "/api/register";
+			let url = store.api_url + "/user/register";
+			console.log("valid");
 			fetch(url, {
 				method: "POST",
 				body: JSON.stringify(body),
@@ -90,10 +91,19 @@ export const Register = () => {
 					"Content-Type": "application/json"
 				}
 			})
-				.then(res => res.json())
+				.then(res => {
+					if (res.status === 201) {
+						alert("Cuenta registrada exitosamente");
+
+						// Se logró registrar correctamente, se llama inmediatamente a que se loguee de una vez
+
+						return res.json();
+					} else {
+						alert("Ha ocurrido un error");
+					}
+				})
 				.then(data => {
 					console.log(data);
-					alert("Registration Successful");
 					setAuth(true);
 				})
 				.catch(err => console.log(err));
@@ -144,11 +154,11 @@ export const Register = () => {
 						<div className="row">
 							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
 								<input
-									onChange={e => setName(e.target.value)}
-									onBlur={validateTextInput}
+									onChange={e => setLast_name(e.target.value)}
 									type="text"
 									className="form-control"
-									id="inputName"
+									id="inputLast_Name"
+									onBlur={validateTextInput}
 									placeholder="Tu apellido"
 								/>
 							</div>
@@ -214,7 +224,7 @@ export const Register = () => {
 							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
 								<input
 									type="password"
-									onChange={(e => setFirst_surname(e.target.value), samePassword)}
+									onChange={(e => setLast_name(e.target.value), samePassword)}
 									className="form-control"
 									id="inputPassword2"
 								/>
@@ -226,6 +236,7 @@ export const Register = () => {
 			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
 					<Button
+						onClick={handleSubmit}
 						color="success"
 						className="col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-success">
 						<p className="h3 text-light">Registrarme</p>
