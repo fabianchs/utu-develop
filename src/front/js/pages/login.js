@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/index.scss";
+import { Button } from "reactstrap";
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -82,44 +83,13 @@ export const Login = () => {
 					</div>
 				</div>
 			</div>
-
-			<h1>Login</h1>
-			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
-				<div className="mb-3">
-					<label htmlFor="exampleInputEmail1" className="form-label">
-						Dirección de correo electrónico
-					</label>
-					<input
-						onChange={e => setEmail(e.target.value)}
-						type="email"
-						className="form-control"
-						id="exampleInputEmail1"
-						aria-describedby="emailHelp"
-					/>
-					{/* <div id="emailHelp" className="form-text">
-						Nos tomamos en serio la privacidad y seguridad de los datos personales!
-					</div> */}
-				</div>
-				<div className="mb-3">
-					<label htmlFor="exampleInputPassword1" className="form-label">
-						Contraseña
-					</label>
-					<input
-						onChange={e => setPassword(e.target.value)}
-						type="password"
-						className="form-control"
-						id="exampleInputPassword1"
-					/>
-					<small>
-						<Link to="/restore">¿Olvidaste la contraseña?</Link>
-					</small>
-				</div>
-
-				<button type="submit" className="btn btn-primary">
-					Ingresar
-				</button>
-				{store.userLogged ? <Redirect to="/garden" /> : <Redirect to="/login" />}
-			</form>
+			<div className="row d-flex justify-content-center m-1">
+				<Button
+					color="secondary"
+					className="col-6 m-2 border border-5 border-dark rounded-pill bg-secondary shadow">
+					<p className="h3 text-dark">Ingresar</p>
+				</Button>
+			</div>
 		</div>
 	);
 };
