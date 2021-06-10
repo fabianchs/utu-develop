@@ -44,8 +44,7 @@ export const Login = () => {
 					<div className="row m-1">
 						<h1 className="h1 col-12  d-flex justify-content-center">INGRESO</h1>
 						<p className="col-12  d-flex justify-content-center float-end align-items-center">
-							¿No te has registrado?
-							<Link to="/register">&nbsp;Registrarme</Link>
+							<Link to="/register">&nbsp;¿Olvidaste la contraseña?</Link>
 						</p>
 					</div>
 				</div>
@@ -86,7 +85,7 @@ export const Login = () => {
 			<div className="row d-flex justify-content-center m-1">
 				<Button
 					color="secondary"
-					className="col-6 m-2 border border-5 border-dark rounded-pill bg-secondary shadow">
+					className="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-2 border border-5 border-dark rounded-pill bg-secondary shadow">
 					<p className="h3 text-dark">Ingresar</p>
 				</Button>
 			</div>
