@@ -42,6 +42,7 @@ def handle_register():
 
     user = User.query.filter_by(email=data_request["email"]).first()
     
+
     
 
     # Se valida que el email no haya sido registrado.s
@@ -56,6 +57,9 @@ def handle_register():
         password= request.json.get("password", None)
         creation_date = datetime.datetime.now()
         update_date = datetime.datetime.now()
+
+        if name=="" or last_name=="" or email=="" or password=="":
+            return jsonify({"message": "Lo sentimos, debe llenar correctamente todos los espacios."}), 401
 
         new_user = User()
         new_user.name = name
