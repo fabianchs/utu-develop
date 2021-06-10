@@ -39,16 +39,37 @@ export const Nav_bar = () => {
 			<Collapse isOpen={isOpen} navbar>
 				<Nav className="mr-auto" navbar>
 					<NavItem>
-						<Link to="/practice" className="nav-link text-light h3">
+						<Link
+							to="/practice"
+							className="nav-link text-light h3"
+							onClick={() => {
+								if (isOpen) {
+									toggle();
+								}
+							}}>
 							Práctica
 						</Link>
 					</NavItem>
-					<Link to="/login" className="nav-link text-light h3">
+					<Link
+						to="/login"
+						className="nav-link text-light h3"
+						onClick={() => {
+							if (isOpen) {
+								toggle();
+							}
+						}}>
 						Ingresar
 					</Link>
 					<NavItem>
 						{" "}
-						<Link to="/register" className="nav-link text-light h3">
+						<Link
+							to="/register"
+							className="nav-link text-light h3"
+							onClick={() => {
+								if (isOpen) {
+									toggle();
+								}
+							}}>
 							Registrarme
 						</Link>
 					</NavItem>
