@@ -20,6 +20,7 @@ export const Register = () => {
 	}, []);
 
 	const showValidation = (tag, show) => {
+		console.log(show);
 		if (!show) {
 			tag.classList.remove("is-valid");
 			tag.classList.add("is-invalid");
@@ -63,6 +64,7 @@ export const Register = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		console.log(e);
 		const body = {
 			name: name,
 			last_name: last_name,
@@ -72,15 +74,15 @@ export const Register = () => {
 
 		let inputs = e.target.getElementsByTagName("input");
 		console.log("estos inputs", inputs);
-		let formValid = true;
+		let formValid = false;
 
 		Array.prototype.filter.call(inputs, function(input) {
 			formValid = input.classList.contains("is-valid") ? true : false;
 			if (!formValid) {
 				showValidation(input, false);
 			}
+			console.log(formValid);
 		});
-		console.log(body);
 		if (formValid) {
 			let url = store.api_url + "/user/register";
 			console.log("valid");
@@ -157,7 +159,7 @@ export const Register = () => {
 									onChange={e => setLast_name(e.target.value)}
 									type="text"
 									className="form-control"
-									id="inputLast_Name"
+									id="inputLastName"
 									onBlur={validateTextInput}
 									placeholder="Tu apellido"
 								/>
@@ -224,7 +226,7 @@ export const Register = () => {
 							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
 								<input
 									type="password"
-									onChange={(e => setLast_name(e.target.value), samePassword)}
+									onChange={(e => setConfPassword(e.target.value), samePassword)}
 									className="form-control"
 									id="inputPassword2"
 								/>
@@ -235,12 +237,12 @@ export const Register = () => {
 			</div>
 			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
-					<Button
+					<button
+						type="submit"
 						onClick={handleSubmit}
-						color="success"
-						className="col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-success">
+						className="btn btn-block col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-success">
 						<p className="h3 text-light">Registrarme</p>
-					</Button>
+					</button>
 				</div>
 			</div>
 			<div className="container-fluid mt-3">
