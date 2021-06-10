@@ -43,7 +43,7 @@ export const Register = () => {
 		showValidation(tag, emailregex.test(tag.value));
 	};
 	const validatePassword = e => {
-		var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+		var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
 		const tag = e.target;
 		showValidation(tag, passRegex.test(tag.value));
 	};
@@ -207,15 +207,11 @@ export const Register = () => {
 									className="form-control"
 									id="inputPassword2"
 								/>
+								<div className="invalid-feedback">La contraseña deben ser iguales</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="container-fluid">
-				<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
-					<div className="invalid-feedback text-light">La contraseña deben ser iguales</div>
-				</Badge>
 			</div>
 
 			{/* 
