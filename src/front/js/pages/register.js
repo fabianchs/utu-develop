@@ -1,9 +1,10 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { Badge } from "reactstrap";
+import { Badge, Button } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import "../../styles/index.scss";
 
 export const Register = () => {
 	const [name, setName] = useState("");
@@ -217,7 +218,16 @@ export const Register = () => {
 			</div>
 			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
-					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow bg-secondary">
+					<Button
+						color="secondary"
+						className="col-xl-6 col-lg-8 col-md-10 col-sm-12  border border-5 shadow bg-secondary">
+						<p className="h3 text-dark">Registrarme</p>
+					</Button>
+				</div>
+			</div>
+			<div className="container-fluid mt-3">
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md-10 col-sm-12 rounded-top rounded-5 shadow bg-secondary">
 						<small id="passwordHelpBlock" className="form-text text-muted">
 							<p>Condiciones para la contraseña</p>
 							<ul>
