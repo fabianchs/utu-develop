@@ -99,7 +99,53 @@ export const Register = () => {
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="pt-5 mt-5">
-			<div className="container-fluid ">
+			<div className="container-fluid">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h6 m-0">Nombre</p>
+					</Badge>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary border-5  shadow">
+						<div className="row">
+							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
+								<input
+									onChange={e => setName(e.target.value)}
+									onBlur={validateTextInput}
+									type="text"
+									className="form-control"
+									id="inputName"
+									placeholder="Tu nombre"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="container-fluid mt-3">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h6 m-0">Apellido</p>
+					</Badge>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary border-5  shadow">
+						<div className="row">
+							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
+								<input
+									onChange={e => setName(e.target.value)}
+									onBlur={validateTextInput}
+									type="text"
+									className="form-control"
+									id="inputName"
+									placeholder="Tu apellido"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
 					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
 						<p className="h6 m-0">Correo electrónico</p>
@@ -122,6 +168,54 @@ export const Register = () => {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="container-fluid mt-3">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h6 m-0">Contraseña</p>
+					</Badge>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary border-5  shadow">
+						<div className="row">
+							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
+								<input
+									type="password"
+									onChange={e => setPassword(e.target.value)}
+									onBlur={validatePassword}
+									className="form-control"
+									id="inputPassword1"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="container-fluid mt-3">
+				<div className="row d-flex justify-content-center">
+					<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+						<p className="h6 m-0">Confirmar contraseña</p>
+					</Badge>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div className="col-xl-6 col-lg-8 col-md 10 col-sm-12 bg-secondary border-5  shadow">
+						<div className="row">
+							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
+								<input
+									type="password"
+									onChange={(e => setFirst_surname(e.target.value), samePassword)}
+									className="form-control"
+									id="inputPassword2"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="container-fluid">
+				<Badge className="col-xl-6 col-lg-8 col-md 10 col-sm-12 rounded-top rounded-5 shadow" color="dark">
+					<div className="invalid-feedback text-light">La contraseña deben ser iguales</div>
+				</Badge>
 			</div>
 
 			{/* 
