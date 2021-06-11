@@ -14,7 +14,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			api_url: process.env.BACKEND_URL
+			api_url: process.env.BACKEND_URL,
+			token: null,
+			isUser: false, //Al iniciar sesión se definen los permisos, ya sea Usuario, Administrador, o dueño
+			isAdmin: false,
+			isBoss: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -28,6 +32,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+			//ACCCIONES RELACIONADAS CON INICIAR/CERRAR SESIÓN
+			setToken: (token, type) => {
+				// fetching data from the backend
+				const store = getStore();
+				if (type === "user") {
+					setStore({ isUser: true, isAdmin: false, isBoss: false, token: token });
+				} else if (type === "admin") {
+					setStore({ isUser: false, isAdmin: true, isBoss: false, token: token });
+				} else if (type === "boss") {
+					setStore({ isUser: false, isAdmin: false, isBoss: true, token: token });
+				}
 			},
 			changeColor: (index, color) => {
 				//get the store

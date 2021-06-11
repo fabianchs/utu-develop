@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 import {
 	Collapse,
@@ -17,8 +18,10 @@ import {
 } from "reactstrap";
 
 export const Nav_bar = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const { store, actions } = useContext(Context);
 
+	const [isOpen, setIsOpen] = useState(false);
+	const [navItems, setNavItems] = useState("");
 	const toggle = () => setIsOpen(!isOpen);
 
 	const closeIfOpen = () => {
@@ -26,6 +29,102 @@ export const Nav_bar = () => {
 			toggle();
 		}
 	};
+	function conditionalNavItems() {
+		if (!store.token) {
+			return (
+				<Nav className="mr-auto" navbar>
+					<NavItem>
+						<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+							Práctica
+						</Link>
+					</NavItem>
+					<Link to="/login" className="nav-link text-light h3" onClick={closeIfOpen}>
+						Ingresar
+					</Link>
+					<NavItem>
+						{" "}
+						<Link to="/register" className="nav-link text-light h3" onClick={closeIfOpen}>
+							Registro
+						</Link>
+					</NavItem>
+				</Nav>
+			);
+		} else if (store.token) {
+			if (store.isUser) {
+				return (
+					<Nav className="mr-auto" navbar>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Práctica
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Perfil
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Cerrar Sesión
+							</Link>
+						</NavItem>
+					</Nav>
+				);
+			} else if (store.isAdmin) {
+				return (
+					<Nav className="mr-auto" navbar>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Crear
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Revisar
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Cerrar Sesión
+							</Link>
+						</NavItem>
+					</Nav>
+				);
+			} else if (store.isBoss) {
+				return (
+					<Nav className="mr-auto" navbar>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Crear
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Gestionar
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Revisar
+							</Link>
+						</NavItem>
+						<NavItem>
+							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Cerrar Sesión
+							</Link>
+						</NavItem>
+					</Nav>
+				);
+			}
+		}
+	}
+
+	useEffect(
+		() => {
+			setNavItems(conditionalNavItems());
+		},
+		[store.token, store.isUser, store.isAdmin, store.isBoss]
+	);
 
 	return (
 		<Navbar color="success" light expand="md" className="fixed-top">
@@ -43,22 +142,7 @@ export const Nav_bar = () => {
 			</NavbarBrand>
 			<NavbarToggler onClick={toggle} />
 			<Collapse isOpen={isOpen} navbar>
-				<Nav className="mr-auto" navbar>
-					<NavItem>
-						<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
-							Práctica
-						</Link>
-					</NavItem>
-					<Link to="/login" className="nav-link text-light h3" onClick={closeIfOpen}>
-						Ingresar
-					</Link>
-					<NavItem>
-						{" "}
-						<Link to="/register" className="nav-link text-light h3" onClick={closeIfOpen}>
-							Registro
-						</Link>
-					</NavItem>
-				</Nav>
+				{conditionalNavItems()}
 			</Collapse>
 		</Navbar>
 

@@ -40,6 +40,7 @@ export const Login = () => {
 			})
 			.then(data => {
 				console.log(data);
+				actions.setToken(data.token, "user");
 				actions.savingToken(data.token, data.user_id);
 			})
 			.catch(err => console.log(err));
