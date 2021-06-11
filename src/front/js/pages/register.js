@@ -3,39 +3,55 @@ import { Redirect } from "react-router-dom";
 import { Badge, Button } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 
 export const Register = () => {
+	const { store, actions } = useContext(Context);
+	const History = useHistory();
+
 	const [name, setName] = useState("");
 	const [last_name, setLast_name] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confPassword, setConfPassword] = useState("");
+	const [conditions, setConditions] = useState([false, false, false, false, false]);
 	const [auth, setAuth] = useState(false);
-	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-
-	const showValidation = (tag, show) => {
+	const showValidation = (tag, show, index) => {
 		if (!show) {
 			tag.classList.remove("is-valid");
 			tag.classList.add("is-invalid");
+			let temporal = conditions;
+			temporal[index] = false;
+			setConditions(temporal);
 		} else {
 			tag.classList.remove("is-invalid");
 			tag.classList.add("is-valid");
+			let temporal = conditions;
+			temporal[index] = true;
+			setConditions(temporal);
 		}
 	};
 
-	const validateTextInput = e => {
+	const validateNameInput = e => {
 		//Expresion regular para la validacion
 		const nameregex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g; // Solo letras
 
 		const tag = e.target;
 
-		showValidation(tag, nameregex.test(tag.value));
+		showValidation(tag, nameregex.test(tag.value), 0);
+	};
+	const validateLastNameInput = e => {
+		//Expresion regular para la validacion
+		const nameregex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g; // Solo letras
+
+		const tag = e.target;
+
+		showValidation(tag, nameregex.test(tag.value), 1);
 	};
 
 	const validateEmailInput = e => {
@@ -44,26 +60,25 @@ export const Register = () => {
 
 		const tag = e.target;
 
-		showValidation(tag, emailregex.test(tag.value));
+		showValidation(tag, emailregex.test(tag.value), 2);
 	};
 	const validatePassword = e => {
 		var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
 		const tag = e.target;
-		showValidation(tag, passRegex.test(tag.value));
+		showValidation(tag, passRegex.test(tag.value), 3);
 	};
 
 	const samePassword = e => {
 		const tag = e.target;
 		if (password != tag.value) {
-			showValidation(tag, false);
+			showValidation(tag, false, 4);
 		} else {
-			showValidation(tag, true);
+			showValidation(tag, true, 4);
 		}
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log(e);
 		const body = {
 			name: name,
 			last_name: last_name,
@@ -74,16 +89,15 @@ export const Register = () => {
 		let inputs = e.target.getElementsByTagName("input");
 		let formValid = false;
 
-		Array.prototype.filter.call(inputs, function(input) {
-			formValid = input.classList.contains("is-valid") ? true : false;
-			if (!formValid) {
-				showValidation(input, false);
-			}
-			console.log(formValid);
-		});
+		if (conditions[0] && conditions[1] && conditions[2] && conditions[3] && conditions[4]) {
+			formValid = true;
+		} else {
+			alert("Lo sentimos, debe llenar correctamente los espacios");
+		}
+
 		if (formValid) {
 			let url = store.api_url + "/user/register";
-			console.log("valid");
+
 			fetch(url, {
 				method: "POST",
 				body: JSON.stringify(body),
@@ -96,7 +110,7 @@ export const Register = () => {
 						alert("Cuenta registrada exitosamente");
 
 						// Se logró registrar correctamente, se llama inmediatamente a que se loguee de una vez
-
+						History.push("/login");
 						return res.json();
 					} else {
 						alert("Ha ocurrido un error");
@@ -111,7 +125,6 @@ export const Register = () => {
 	};
 
 	return (
-		// <div className="mx-auto pt-5">
 		<div className="pt-5 m-5">
 			<div className="container-fluid mt-3">
 				<div className="row d-flex justify-content-center">
@@ -132,7 +145,7 @@ export const Register = () => {
 							<div className="col-12  d-flex justify-content-center float-end align-items-center m-1">
 								<input
 									onChange={e => setName(e.target.value)}
-									onBlur={validateTextInput}
+									onBlur={validateNameInput}
 									type="text"
 									className="form-control"
 									id="inputName"
@@ -158,7 +171,7 @@ export const Register = () => {
 									type="text"
 									className="form-control"
 									id="inputLastName"
-									onBlur={validateTextInput}
+									onBlur={validateLastNameInput}
 									placeholder="Tu apellido"
 								/>
 							</div>
@@ -227,6 +240,7 @@ export const Register = () => {
 									onChange={(e => setConfPassword(e.target.value), samePassword)}
 									className="form-control"
 									id="inputPassword2"
+									onBlur={samePassword}
 								/>
 							</div>
 						</div>
