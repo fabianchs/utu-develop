@@ -2,7 +2,7 @@ import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button } from "reactstrap";
 export const Login = () => {
@@ -10,6 +10,7 @@ export const Login = () => {
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
+	const History = useHistory();
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -18,7 +19,7 @@ export const Login = () => {
 			email: email,
 			password: password
 		};
-		let url = store.api_url + "/api/login";
+		let url = store.api_url + "/user/login";
 		fetch(url, {
 			method: "POST",
 			body: JSON.stringify(body),
@@ -26,12 +27,20 @@ export const Login = () => {
 				"Content-Type": "application/json"
 			}
 		})
-			.then(res => res.json())
+			.then(res => {
+				if (res.status === 200) {
+					alert("Ha iniciado sesión exitosamente");
+
+					// Se logró registrar correctamente, se llama inmediatamente a que se loguee de una vez
+					History.push("/");
+					return res.json();
+				} else {
+					alert("Ha ocurrido un error");
+				}
+			})
 			.then(data => {
 				console.log(data);
 				actions.savingToken(data.token, data.user_id);
-				//sessionStorage.setItem("my_token", data.token);
-				//setAuth(true);
 			})
 			.catch(err => console.log(err));
 	};
@@ -84,6 +93,7 @@ export const Login = () => {
 			</div>
 			<div className="row d-flex justify-content-center m-1">
 				<Button
+					onClick={handleSubmit}
 					color="secondary"
 					className="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-2 border border-5 border-dark rounded-pill bg-secondary shadow">
 					<p className="h3 text-dark">Ingresar</p>
