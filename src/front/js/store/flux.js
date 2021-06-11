@@ -35,7 +35,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//ACCCIONES RELACIONADAS CON INICIAR/CERRAR SESIÓN
 			setToken: (token, type) => {
-				// fetching data from the backend
 				const store = getStore();
 				if (type === "user") {
 					setStore({ isUser: true, isAdmin: false, isBoss: false, token: token });
@@ -44,6 +43,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else if (type === "boss") {
 					setStore({ isUser: false, isAdmin: false, isBoss: true, token: token });
 				}
+			},
+			signOff: () => {
+				setStore({ isUser: false, isAdmin: false, isBoss: false, token: null });
 			},
 			changeColor: (index, color) => {
 				//get the store

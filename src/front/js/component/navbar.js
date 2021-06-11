@@ -42,7 +42,6 @@ export const Nav_bar = () => {
 						Ingresar
 					</Link>
 					<NavItem>
-						{" "}
 						<Link to="/register" className="nav-link text-light h3" onClick={closeIfOpen}>
 							Registro
 						</Link>
@@ -64,7 +63,13 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+							<Link
+								to="/"
+								className="nav-link text-light h3"
+								onClick={() => {
+									closeIfOpen();
+									actions.signOff();
+								}}>
 								Cerrar Sesión
 							</Link>
 						</NavItem>
@@ -84,7 +89,13 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+							<Link
+								to="/"
+								className="nav-link text-light h3"
+								onClick={() => {
+									closeIfOpen();
+									actions.signOff();
+								}}>
 								Cerrar Sesión
 							</Link>
 						</NavItem>
@@ -109,7 +120,13 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+							<Link
+								to="/"
+								className="nav-link text-light h3"
+								onClick={() => {
+									closeIfOpen();
+									actions.signOff();
+								}}>
 								Cerrar Sesión
 							</Link>
 						</NavItem>
