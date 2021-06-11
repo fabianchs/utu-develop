@@ -6,6 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 from api.routes_user import routes_user
+from api.routes_administrator import routes_administrator
 
 def setup_admin(app):
     app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')
@@ -24,5 +25,6 @@ def setup_admin(app):
     admin.add_view(ModelView(Report, db.session))
 
     app.register_blueprint(routes_user)
+    app.register_blueprint(routes_administrator)
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))

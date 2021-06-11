@@ -12,7 +12,7 @@ from api.utils import generate_sitemap, APIException
 routes_user = flask.Blueprint('routes_user', __name__)
 
 
-@routes_user.route('/user/login', methods=['POST', 'GET'])
+@routes_user.route('/user/login', methods=['POST'])
 def handle_login(): 
 
     email = request.json.get("email", None)
@@ -30,8 +30,8 @@ def handle_login():
         # the user was not found on the database
         return jsonify({"message": "Error. Correo electrónico o contraseña incorrectos."}), 401
     else:
-        expiration_date = datetime.timedelta(days=1)
-        access_token = create_access_token(identity=user.id,expires_delta=expiration_date)
+        expiration_time = datetime.timedelta(days=1)
+        access_token = create_access_token(identity=user.id,expires_delta=expiration_time)
         return jsonify({ "token": access_token, "user_id": user.id }), 200
 
 
