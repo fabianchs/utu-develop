@@ -54,7 +54,7 @@ export const Login = () => {
 					<div className="row m-1">
 						<h1 className="h1 col-12  d-flex justify-content-center">INGRESO</h1>
 						<p className="col-12  d-flex justify-content-center float-end align-items-center">
-							<Link to="/register">&nbsp;¿Olvidaste la contraseña?</Link>
+							<Link to="/recover">¿Olvidaste la contraseña?</Link>
 						</p>
 					</div>
 				</div>

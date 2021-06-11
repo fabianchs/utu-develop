@@ -8,6 +8,7 @@ import { Register } from "./pages/register";
 import { Practice } from "./pages/practice";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Recover } from "./pages/recover";
 import injectContext from "./store/appContext";
 
 import { Nav_bar } from "./component/navbar";
@@ -36,6 +37,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/register">
 							<Register />
+						</Route>
+						<Route exact path="/recover">
+							<Recover />
 						</Route>
 						<Route exact path="/practice">
 							<Practice />
