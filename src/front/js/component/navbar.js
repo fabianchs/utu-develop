@@ -58,7 +58,7 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
+							<Link to="/profile" className="nav-link text-light h3" onClick={closeIfOpen}>
 								Perfil
 							</Link>
 						</NavItem>
@@ -144,7 +144,7 @@ export const Nav_bar = () => {
 	// );
 
 	return (
-		<Navbar color="success" light expand="md" className="fixed-top">
+		<Navbar color="success" light expand="md" className="py-1 fixed-top">
 			<NavbarBrand onClick={closeIfOpen}>
 				{" "}
 				<Link to="/">

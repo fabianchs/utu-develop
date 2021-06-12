@@ -32,7 +32,7 @@ export const Login = () => {
 					alert("Ha iniciado sesión exitosamente");
 
 					// Se logró registrar correctamente, se llama inmediatamente a que se loguee de una vez
-					History.push("/");
+					History.push("/profile");
 					return res.json();
 				} else {
 					alert("Ha ocurrido un error");
