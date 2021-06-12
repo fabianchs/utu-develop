@@ -30,13 +30,23 @@ export const Home = () => {
 						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-end justify-content-xl-end justify-content-lg-end  justify-content-md-end justify-content-sm-center">
 							<div className="m-2">
 								<div className="container-fluid d-flex">
-									<Link to="/register" className="text-light">
-										<Button
-											color="success"
-											className="m-2 border border-4  border-light rounded-3 bg-success">
-											<h1> ¡Registrarme!</h1>
-										</Button>
-									</Link>
+									{!store.token ? (
+										<Link to="/register" className="text-light">
+											<Button
+												color="success"
+												className="m-2 border border-4  border-light rounded-3 bg-success">
+												<h1> ¡Registrarme!</h1>
+											</Button>
+										</Link>
+									) : (
+										<Link to="/practice" className="text-light">
+											<Button
+												color="success"
+												className="m-2 border border-4  border-light rounded-3 bg-success">
+												<h1> Practicar</h1>
+											</Button>
+										</Link>
+									)}
 								</div>
 							</div>
 						</div>
