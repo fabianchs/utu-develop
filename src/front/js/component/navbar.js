@@ -70,7 +70,7 @@ export const Nav_bar = () => {
 									closeIfOpen();
 									actions.signOff();
 								}}>
-								Cerrar Sesión
+								Salir
 							</Link>
 						</NavItem>
 					</Nav>
@@ -96,7 +96,7 @@ export const Nav_bar = () => {
 									closeIfOpen();
 									actions.signOff();
 								}}>
-								Cerrar Sesión
+								Salir
 							</Link>
 						</NavItem>
 					</Nav>
@@ -127,7 +127,7 @@ export const Nav_bar = () => {
 									closeIfOpen();
 									actions.signOff();
 								}}>
-								Cerrar Sesión
+								Salir
 							</Link>
 						</NavItem>
 					</Nav>
