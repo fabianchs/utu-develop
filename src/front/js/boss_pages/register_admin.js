@@ -146,7 +146,7 @@ export const RegisterAdmin = () => {
 						alert("Cuenta registrada exitosamente");
 
 						// Se logró registrar correctamente, se llama inmediatamente a que se loguee de una vez
-						History.push("/login");
+						History.push("/admin");
 						return res.json();
 					} else {
 						alert("Ha ocurrido un error");
