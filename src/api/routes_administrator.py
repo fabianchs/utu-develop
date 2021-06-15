@@ -28,4 +28,4 @@ def handle_login():
     else:
         expiration_time = datetime.timedelta(days=1)
         access_token = create_access_token(identity=user.id,expires_delta=expiration_time)
-        return jsonify({ "token": access_token, "user_id": user.id }), 200
+        return jsonify({ "token": access_token, "user_id": user.id ,"is_admin_of_everything":user.is_admin_of_everything}), 200

@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button } from "reactstrap";
 export const AdminLogin = () => {
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
@@ -16,10 +16,10 @@ export const AdminLogin = () => {
 		e.preventDefault();
 
 		const body = {
-			email: email,
+			username: username,
 			password: password
 		};
-		let url = store.api_url + "/user/login";
+		let url = store.api_url + "/administrator/login";
 		fetch(url, {
 			method: "POST",
 			body: JSON.stringify(body),
@@ -40,8 +40,11 @@ export const AdminLogin = () => {
 			})
 			.then(data => {
 				console.log(data);
-				actions.setToken(data.token, "user");
-				actions.savingToken(data.token, data.user_id);
+				if (data.is_admin_of_everything) {
+					actions.setToken(data.token, "boss");
+				} else {
+					actions.setToken(data.token, "admin");
+				}
 			})
 			.catch(err => console.log(err));
 	};
@@ -65,7 +68,7 @@ export const AdminLogin = () => {
 						<p className="h5 col-12  d-flex justify-content-center">USUARIO</p>
 						<div className="col-12  d-flex justify-content-center float-end align-items-center mb-1">
 							<input
-								onChange={e => setEmail(e.target.value)}
+								onChange={e => setUsername(e.target.value)}
 								type="email"
 								className="form-control rounded-pill"
 								id="exampleInputEmail1"
