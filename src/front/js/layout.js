@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
+//[START] IMPORTS THAT HAVE RELATION WITH USER
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
@@ -11,9 +11,14 @@ import { Single } from "./pages/single";
 import { Recover } from "./pages/recover";
 import { Profile } from "./pages/profile";
 import injectContext from "./store/appContext";
+//[END]IMPORTS THAT HAVE RELATION WITH USER
 
+//[START] IMPORTS THAT HAVE RELATION WITH ADMIN
+import { AdminLogin } from "./admin_pages/admin_login";
+//[START] GLOBAL IMPORTS
 import { Nav_bar } from "./component/navbar";
 import { Footer } from "./component/footer";
+//[END] GLOBAL IMPORTS
 
 //create your first component
 const Layout = () => {
@@ -47,6 +52,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile">
 							<Profile />
+						</Route>
+						<Route exact path="/admin/login">
+							<AdminLogin />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
