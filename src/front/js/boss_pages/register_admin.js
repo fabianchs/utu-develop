@@ -104,25 +104,35 @@ export const RegisterAdmin = () => {
 	};
 
 	const handleSubmit = e => {
+		let isBoss = false;
+
+		if (adminType === "Admin") {
+			isBoss = false;
+		} else if (adminType === "Admin+") {
+			isBoss = true;
+		}
 		e.preventDefault();
 		const body = {
 			name: name,
 			last_name: last_name,
 			email: email,
+			username: username,
+			security_code: code,
+			is_admin_of_everything: isBoss,
 			password: password
 		};
 
-		let inputs = e.target.getElementsByTagName("input");
 		let formValid = false;
 
-		if (conditions[0] && conditions[1] && conditions[2] && conditions[3] && conditions[4]) {
+		if (conditions.every(element => element === true)) {
+			//If all inputs are correct then continue with register
 			formValid = true;
 		} else {
 			alert("Lo sentimos, debe llenar correctamente los espacios");
 		}
 
 		if (formValid) {
-			let url = store.api_url + "/user/register";
+			let url = store.api_url + "/administrator/register";
 
 			fetch(url, {
 				method: "POST",
