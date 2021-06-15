@@ -15,6 +15,10 @@ import injectContext from "./store/appContext";
 
 //[START] IMPORTS THAT HAVE RELATION WITH ADMIN
 import { AdminLogin } from "./admin_pages/admin_login";
+
+//[START] IMPORTS THAT HAVE RELATION WITH THE BOSS
+import { RegisterAdmin } from "./boss_pages/register_admin";
+
 //[START] GLOBAL IMPORTS
 import { Nav_bar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -55,6 +59,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/admin">
 							<AdminLogin />
+						</Route>
+						<Route exact path="/admin/register">
+							<RegisterAdmin />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
