@@ -23,7 +23,7 @@ export const AdminCreate = () => {
 				<div className="col-6">
 					<div className="row p-1 pt-0 border rounded-1 shadow">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
-							<div>
+							<div className="m-0 p-0">
 								<Badge color="secondary">Actual: Texto</Badge>
 								<Badge color="dark">Texto</Badge>
 								<Badge color="dark">Fórmula</Badge>
