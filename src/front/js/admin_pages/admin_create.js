@@ -21,12 +21,14 @@ export const AdminCreate = () => {
 		<div className="container-fluid mt-5 pt-5">
 			<div className="row m-2">
 				<div className="col-6">
-					<div className="row p-1 border rounded-1 shadow">
+					<div className="row p-1 pt-0 border rounded-1 shadow">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div>
-								<Badge color="primary">Texto</Badge>
+								<Badge color="secondary">Actual: Texto</Badge>
+								<Badge color="dark">Texto</Badge>
 								<Badge color="dark">Fórmula</Badge>
 								<Badge color="dark">Imagen</Badge>
+								<Badge color="dark">Separador</Badge>
 							</div>
 							<div className="float-end">
 								<Badge color="danger">X</Badge>
