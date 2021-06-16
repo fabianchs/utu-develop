@@ -18,16 +18,20 @@ export const AdminCreate = () => {
 
 	return (
 		// <div className="mx-auto pt-5">
-		<div className="pt-5 mt-5">
-			<p>Hola</p>
-			<div className="row">
+		<div className="container-fluid mt-5 pt-5">
+			<div className="row m-2">
 				<div className="col-6">
-					<div className="row m-2">
-						<div className="row m-0">
-							<Badge color="dark">Texto</Badge>
-							<Badge color="danger">X</Badge>
+					<div className="row p-1 border rounded-1 shadow">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div>
+								<Badge color="primary">Texto</Badge>
+								<Badge color="dark">Fórmula</Badge>
+								<Badge color="dark">Imagen</Badge>
+							</div>
+							<div className="float-end">
+								<Badge color="danger">X</Badge>
+							</div>
 						</div>
-
 						<Input type="textarea" name="text" id="exampleText" />
 					</div>
 				</div>
