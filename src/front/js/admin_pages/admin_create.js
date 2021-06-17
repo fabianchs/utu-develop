@@ -29,6 +29,7 @@ export const AdminCreate = () => {
 								<Badge color="dark">Fórmula</Badge>
 								<Badge color="dark">Imagen</Badge>
 								<Badge color="dark">Separador</Badge>
+								<Badge color="dark">Lista</Badge>
 							</div>
 							<div className="float-end">
 								<Badge color="danger">X</Badge>
