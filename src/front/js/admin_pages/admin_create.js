@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button, Input, Badge } from "reactstrap";
+
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
