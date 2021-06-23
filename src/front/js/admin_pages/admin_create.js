@@ -9,7 +9,7 @@ import { Button, Input, Badge } from "reactstrap";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
-	//t=>texto f=>formula s=>separación i=>imagen
+	//t=>texto f=>formula s=>separación i=>imagen l=>lista m=>matriz
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
@@ -123,12 +123,12 @@ export const AdminCreate = () => {
 							&nbsp;
 							<Button size="sm">
 								<i className="fas fa-ruler-horizontal" />
-								&nbsp;Separador
+								&nbsp; Separador
 							</Button>
 							&nbsp;
 							<Button size="sm">
 								<i className="fas fa-list" />
-								&nbsp;Lista
+								&nbsp; Lista
 							</Button>
 							&nbsp;
 						</div>
