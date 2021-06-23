@@ -104,7 +104,7 @@ export const AdminCreate = () => {
 		// <div className="mx-auto pt-5">
 		<div className="container-fluid mt-5 pt-5">
 			<div className="container-fluid fixed-top mt-5 bg-light">
-				<div className="mt-4 p-2 d-flex justify-content-start bg-light">
+				<div className="p-2 d-flex justify-content-start bg-light">
 					<Button size="sm">
 						<i className="far fa-file-alt" />
 						&nbsp; Texto
