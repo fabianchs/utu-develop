@@ -22,11 +22,6 @@ export const AdminCreate = () => {
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
 					<Badge color="secondary">Actual: Texto</Badge>
-					<Badge color="dark">Texto</Badge>
-					<Badge color="dark">Fórmula</Badge>
-					<Badge color="dark">Imagen</Badge>
-					<Badge color="dark">Separador</Badge>
-					<Badge color="dark">Lista</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -40,11 +35,6 @@ export const AdminCreate = () => {
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
 					<Badge color="secondary">Actual: Lista</Badge>
-					<Badge color="dark">Texto</Badge>
-					<Badge color="dark">Fórmula</Badge>
-					<Badge color="dark">Imagen</Badge>
-					<Badge color="dark">Separador</Badge>
-					<Badge color="dark">Lista</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -78,11 +68,6 @@ export const AdminCreate = () => {
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
 					<Badge color="secondary">Actual: Fórmula</Badge>
-					<Badge color="dark">Texto</Badge>
-					<Badge color="dark">Fórmula</Badge>
-					<Badge color="dark">Imagen</Badge>
-					<Badge color="dark">Separador</Badge>
-					<Badge color="dark">Lista</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -97,11 +82,6 @@ export const AdminCreate = () => {
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
 					<Badge color="secondary">Actual: Imagen</Badge>
-					<Badge color="dark">Texto</Badge>
-					<Badge color="dark">Fórmula</Badge>
-					<Badge color="dark">Imagen</Badge>
-					<Badge color="dark">Separador</Badge>
-					<Badge color="dark">Lista</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -123,7 +103,35 @@ export const AdminCreate = () => {
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="container-fluid mt-5 pt-5">
-			<div className="row m-2">
+			<div className="container-fluid fixed-top mt-5 bg-light">
+				<div className="mt-4 p-2 d-flex justify-content-start bg-light">
+					<Button size="sm">
+						<i className="far fa-file-alt" />
+						&nbsp; Texto
+					</Button>
+					&nbsp;
+					<Button size="sm">
+						<i className="fas fa-calculator" />
+						&nbsp; Fórmula
+					</Button>
+					&nbsp;
+					<Button size="sm">
+						<i className="far fa-images" /> &nbsp; Imagen
+					</Button>
+					&nbsp;
+					<Button size="sm">
+						<i className="fas fa-ruler-horizontal" />
+						&nbsp;Separador
+					</Button>
+					&nbsp;
+					<Button size="sm">
+						<i className="fas fa-list" />
+						&nbsp;Lista
+					</Button>
+					&nbsp;
+				</div>
+			</div>
+			<div className="row m-2 mt-4 ">
 				<div className="col-6">
 					{text}
 					{list}
@@ -131,7 +139,6 @@ export const AdminCreate = () => {
 					{formula}
 					{image}
 				</div>
-
 				<div className="col-6">sadf</div>
 			</div>
 		</div>
