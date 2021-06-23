@@ -103,7 +103,7 @@ export const AdminCreate = () => {
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="container-fluid mt-5 pt-5">
-			<div className="container-fluid fixed-top mt-5 bg-light">
+			<div className="container-fluid fixed-top  bg-light" style={{ "margin-top": "59.7px" }}>
 				<div className="p-2 d-flex justify-content-start bg-light">
 					<Button size="sm">
 						<i className="far fa-file-alt" />
