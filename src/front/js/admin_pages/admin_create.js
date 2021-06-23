@@ -131,6 +131,11 @@ export const AdminCreate = () => {
 								&nbsp; Lista
 							</Button>
 							&nbsp;
+							<Button size="sm">
+								<i className="fas fa-th" />
+								&nbsp; Matriz
+							</Button>
+							&nbsp;
 						</div>
 					</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
