@@ -139,7 +139,7 @@ export const AdminCreate = () => {
 						</div>
 					</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-						<div className="d-flex justify-content-between bg-light">
+						<div className="d-flex justify-content-between bg-light ms-1">
 							<Button size="sm">
 								<i className="fas fa-sync" />
 								&nbsp; Actualizar
@@ -160,14 +160,14 @@ export const AdminCreate = () => {
 				</div>
 			</div>
 			<div className="row m-2 mt-4 ">
-				<div className="col-6">
+				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 					{text}
 					{list}
 					{space}
 					{formula}
 					{image}
 				</div>
-				<div className="col-6 container-fluid">
+				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sagittis urna. Ut dolor
