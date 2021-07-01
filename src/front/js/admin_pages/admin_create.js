@@ -100,6 +100,39 @@ export const AdminCreate = () => {
 		</div>
 	);
 
+	let matrix = (
+		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+			<div className="col-12 m-0 p-0 d-flex justify-content-between">
+				<div className="m-0 p-0">
+					<Badge color="secondary">Actual: Matriz</Badge>
+				</div>
+				<div className="float-end">
+					<Badge color="danger">X</Badge>
+				</div>
+			</div>
+			<Input type="text" name="text" id="exampleText" className="mb-1" />
+			<Input type="text" name="text" id="exampleText" className="mb-1" />
+			<Input type="text" name="text" id="exampleText" className="mb-1" />
+			<div className="col-12 d-flex justify-content-end">
+				<Button color="secondary" size="sm" className="p-0">
+					<p className="m-0 p-0">
+						&nbsp;
+						<i className="fas fa-plus" />
+						&nbsp;
+					</p>
+				</Button>
+				&nbsp;
+				<Button color="secondary" size="sm" className="p-0">
+					<p className="m-0 p-0">
+						&nbsp;
+						<i className="fas fa-minus" />
+						&nbsp;
+					</p>
+				</Button>
+			</div>
+		</div>
+	);
+
 	return (
 		// <div className="mx-auto pt-5">
 		<div className="container-fluid mt-5 pt-5">
