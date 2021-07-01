@@ -110,9 +110,48 @@ export const AdminCreate = () => {
 					<Badge color="danger">X</Badge>
 				</div>
 			</div>
-			<Input type="text" name="text" id="exampleText" className="mb-1" />
-			<Input type="text" name="text" id="exampleText" className="mb-1" />
-			<Input type="text" name="text" id="exampleText" className="mb-1" />
+			<div className="row m-1 mt-0">
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+				</div>
+			</div>
+			<div className="row m-1 mt-0">
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+			</div>
+			<div className="row m-1 mt-0">
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+				<div className="col-3">
+					<Input type="text" name="text" id="exampleText" className="m-1" />
+				</div>
+			</div>
 			<div className="col-12 d-flex justify-content-end">
 				<Button color="secondary" size="sm" className="p-0">
 					<p className="m-0 p-0">
@@ -199,6 +238,7 @@ export const AdminCreate = () => {
 					{space}
 					{formula}
 					{image}
+					{matrix}
 				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
