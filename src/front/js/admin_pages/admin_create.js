@@ -9,7 +9,7 @@ import { Button, Input, Badge } from "reactstrap";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
-	//t=>texto f=>formula s=>separación i=>imagen l=>lista m=>matriz
+	//t=>texto f=>formula s=>separación i=>imagen l=>lista m2=>matriz 2 col m3=>matriz 3 col m4=>matriz 4 col
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
@@ -104,7 +104,10 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Matriz</Badge>
+					<Badge color="secondary">Actual: Tabla</Badge>
+					<small className="text-muted">
+						&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
+					</small>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -112,16 +115,40 @@ export const AdminCreate = () => {
 			</div>
 			<div className="row m-1 mt-0">
 				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+					<Input
+						type="text"
+						name="text"
+						id="exampleText"
+						placeholder="Título de la columna"
+						className="m-1 border-dark"
+					/>
 				</div>
 				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+					<Input
+						type="text"
+						name="text"
+						id="exampleText"
+						placeholder="Título de la columna"
+						className="m-1 border-dark"
+					/>
 				</div>
 				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+					<Input
+						type="text"
+						name="text"
+						id="exampleText"
+						placeholder="Título de la columna"
+						className="m-1 border-dark"
+					/>
 				</div>
 				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1 border-dark" />
+					<Input
+						type="text"
+						name="text"
+						id="exampleText"
+						placeholder="Título de la columna"
+						className="m-1 border-dark"
+					/>
 				</div>
 			</div>
 			<div className="row m-1 mt-0">
@@ -205,7 +232,7 @@ export const AdminCreate = () => {
 							&nbsp;
 							<Button size="sm">
 								<i className="fas fa-th" />
-								&nbsp; Matriz
+								&nbsp; Tabla
 							</Button>
 							&nbsp;
 						</div>
