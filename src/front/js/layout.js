@@ -68,9 +68,6 @@ const Layout = () => {
 						<Route exact path="/admin/create">
 							<AdminCreate />
 						</Route>
-						<Route exact path="/modal">
-							<ModalExample buttonLabel="hello" className="" />
-						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>

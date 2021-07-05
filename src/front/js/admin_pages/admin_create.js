@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button, Input, Badge } from "reactstrap";
+import { ModalExample } from "./modal.js";
 
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
@@ -225,15 +226,14 @@ export const AdminCreate = () => {
 								&nbsp; Separador
 							</Button>
 							&nbsp;
-							<Button size="sm">
+							<Button size="sm" style={{ height: "31px" }}>
 								<i className="fas fa-list" />
 								&nbsp; Lista
 							</Button>
 							&nbsp;
-							<Button size="sm">
-								<i className="fas fa-th" />
-								&nbsp; Tabla
-							</Button>
+							<div style={{ height: "31px" }}>
+								<ModalExample />
+							</div>
 							&nbsp;
 						</div>
 					</div>

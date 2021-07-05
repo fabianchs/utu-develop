@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			api_url: process.env.BACKEND_URL,
-			rows: 2, //This is for the modal used to create tables
+			columns: 2, //This is for the modal used to create tables
 			token: null,
 			isUser: false, //While signing up permissions like User, Admin, or boss are defined
 			isAdmin: false,
@@ -49,6 +49,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ isUser: false, isAdmin: false, isBoss: false, token: null });
 			},
 			//ACTIONS RELATED WITH THE CREATION PAGE
+			defineTableColumns: number => {
+				setStore({ columns: number });
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

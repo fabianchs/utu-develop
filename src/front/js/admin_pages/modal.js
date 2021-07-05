@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge } from "reactstrap";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 import "../../styles/index.scss";
-export function ModalExample(props) {
-	const { buttonLabel } = props;
-
+export function ModalExample() {
 	const [modal, setModal] = useState(false);
 	const [counter, setCounter] = useState(2);
+	const { store, actions } = useContext(Context);
 	const toggle = () => setModal(!modal);
 
 	return (
 		<div className="mt-5">
-			<Button color="secondary" onClick={toggle}>
-				{buttonLabel}
+			<Button color="secondary" onClick={toggle} size="sm" className="m-0">
+				<i className="fas fa-th" />
+				&nbsp; Tabla
 			</Button>
 			<Modal isOpen={modal} toggle={toggle}>
 				<ModalHeader toggle={toggle}>¿De cuántas columnas será la tabla?</ModalHeader>
@@ -60,7 +61,13 @@ export function ModalExample(props) {
 					</Button>
 				</ModalBody>
 				<ModalFooter>
-					<Button color="success" className="bg-success border-success" onClick={toggle}>
+					<Button
+						color="success"
+						className="bg-success border-success"
+						onClick={() => {
+							actions.defineTableColumns(counter);
+							toggle();
+						}}>
 						Agregar
 					</Button>{" "}
 					<Button color="danger" onClick={toggle}>
@@ -71,7 +78,3 @@ export function ModalExample(props) {
 		</div>
 	);
 }
-
-ModalExample.propTypes = {
-	buttonLabel: PropTypes.string
-};
