@@ -15,8 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			api_url: process.env.BACKEND_URL,
+			rows: 2, //This is for the modal used to create tables
 			token: null,
-			isUser: false, //Al iniciar sesión se definen los permisos, ya sea Usuario, Administrador, o dueño
+			isUser: false, //While signing up permissions like User, Admin, or boss are defined
 			isAdmin: false,
 			isBoss: false
 		},
@@ -33,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
-			//ACCCIONES RELACIONADAS CON INICIAR/CERRAR SESIÓN
+			//ACTIONS RELATED TO LOGIN/LOGOFF
 			setToken: (token, type) => {
 				const store = getStore();
 				if (type === "user") {
@@ -47,6 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			signOff: () => {
 				setStore({ isUser: false, isAdmin: false, isBoss: false, token: null });
 			},
+			//ACTIONS RELATED WITH THE CREATION PAGE
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
