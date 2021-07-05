@@ -10,7 +10,7 @@ export function ModalExample() {
 	const toggle = () => setModal(!modal);
 
 	return (
-		<div className="mt-5">
+		<div>
 			<Button color="secondary" onClick={toggle} size="sm" className="m-0">
 				<i className="fas fa-th" />
 				&nbsp; Tabla
