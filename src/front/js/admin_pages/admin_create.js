@@ -10,7 +10,7 @@ import { ModalExample } from "./modal.js";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
-	//t=>texto f=>formula s=>separación i=>imagen l=>lista m2=>matriz 2 col m3=>matriz 3 col m4=>matriz 4 col
+	//t=>texto f=>formula s=>space i=>image l=>list m2=>table 2 col m3=>table 3 col m4=>table 4 col
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
@@ -226,14 +226,12 @@ export const AdminCreate = () => {
 								&nbsp; Separador
 							</Button>
 							&nbsp;
-							<Button size="sm" style={{ height: "31px" }}>
+							<Button size="sm">
 								<i className="fas fa-list" />
 								&nbsp; Lista
 							</Button>
 							&nbsp;
-							<div style={{ height: "31px" }}>
-								<ModalExample />
-							</div>
+							<ModalExample />
 							&nbsp;
 						</div>
 					</div>
@@ -265,6 +263,7 @@ export const AdminCreate = () => {
 					{space}
 					{formula}
 					{image}
+					{matrix}
 					{matrix}
 				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
