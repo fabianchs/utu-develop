@@ -17,6 +17,7 @@ export const AdminCreate = () => {
 
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
+	//The next function adds responsive elements to the creator of statements
 	function addToStatement(type) {
 		let aux_statement = statement;
 		let aux_statement_types = statementTypes;
@@ -32,9 +33,7 @@ export const AdminCreate = () => {
 		} else if (type === "m4") {
 			aux_statement.push([["", "", "", ""], ["", "", "", ""]]);
 		}
-
 		aux_types.push(type);
-
 		setStatement(aux_statement);
 		setStatementTypes(aux_statement_types);
 	}
@@ -222,7 +221,6 @@ export const AdminCreate = () => {
 	);
 
 	return (
-		// <div className="mx-auto pt-5">
 		<div className="container-fluid mt-5 pt-5">
 			<div className="container-fluid fixed-top  bg-light" style={{ "margin-top": "59.7px" }}>
 				<div className="row pt-1">
@@ -233,21 +231,21 @@ export const AdminCreate = () => {
 								&nbsp; Texto
 							</Button>
 							&nbsp;
-							<Button size="sm">
+							<Button size="sm" onClick={() => addToStatement("f")}>
 								<i className="fas fa-calculator" />
 								&nbsp; Fórmula
 							</Button>
 							&nbsp;
-							<Button size="sm">
+							<Button size="sm" onClick={() => addToStatement("i")}>
 								<i className="far fa-images" /> &nbsp; Imagen
 							</Button>
 							&nbsp;
-							<Button size="sm">
+							<Button size="sm" onClick={() => addToStatement("s")}>
 								<i className="fas fa-ruler-horizontal" />
 								&nbsp; Separador
 							</Button>
 							&nbsp;
-							<Button size="sm">
+							<Button size="sm" onClick={() => addToStatement("l")}>
 								<i className="fas fa-list" />
 								&nbsp; Lista
 							</Button>
