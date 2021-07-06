@@ -37,7 +37,8 @@ export const AdminCreate = () => {
 		setStatement(aux_statement);
 		setStatementTypes(aux_statement_types);
 	}
-
+	//Then is necessary to create a statement editor, example => statement[0][5]="value from the input"
+	//Statement.map => analyze type and call a HTML object related with the statement type
 	let text = (
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-1">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
