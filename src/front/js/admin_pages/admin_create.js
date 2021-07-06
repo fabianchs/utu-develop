@@ -21,18 +21,6 @@ export const AdminCreate = () => {
 		let aux_statement = statement;
 		let aux_statement_types = statementTypes;
 
-		// switch (type) {
-		// 	case "t":
-		// 		console.log("It passes on case t");
-		// 		aux_statement.push("");
-		// 		aux_types.push(type);
-		// 		break;
-		// 	case "f":
-		// 		console.log("It passes on case f");
-		// 		aux_statement.push("");
-		// 		aux_types.push(type);
-		// 		break;
-		// }
 		if (type === "t" || type === "f" || type === "s" || type === "i") {
 			aux_statement.push("");
 		} else if (type === "l") {
@@ -41,11 +29,12 @@ export const AdminCreate = () => {
 			aux_statement.push([["", ""], ["", ""]]);
 		} else if (type === "m3") {
 			aux_statement.push([["", "", ""], ["", "", ""]]);
-		} else if (type === "m3") {
+		} else if (type === "m4") {
 			aux_statement.push([["", "", "", ""], ["", "", "", ""]]);
 		}
 
 		aux_types.push(type);
+
 		setStatement(aux_statement);
 		setStatementTypes(aux_statement_types);
 	}
