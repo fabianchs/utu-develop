@@ -1,6 +1,6 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
@@ -17,6 +17,38 @@ export const AdminCreate = () => {
 
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
+	function addToStatement(type) {
+		let aux_statement = statement;
+		let aux_statement_types = statementTypes;
+
+		// switch (type) {
+		// 	case "t":
+		// 		console.log("It passes on case t");
+		// 		aux_statement.push("");
+		// 		aux_types.push(type);
+		// 		break;
+		// 	case "f":
+		// 		console.log("It passes on case f");
+		// 		aux_statement.push("");
+		// 		aux_types.push(type);
+		// 		break;
+		// }
+		if (type === "t" || type === "f" || type === "s" || type === "i") {
+			aux_statement.push("");
+		} else if (type === "l") {
+			aux_statement.push([""]);
+		} else if (type === "m2") {
+			aux_statement.push([["", ""], ["", ""]]);
+		} else if (type === "m3") {
+			aux_statement.push([["", "", ""], ["", "", ""]]);
+		} else if (type === "m3") {
+			aux_statement.push([["", "", "", ""], ["", "", "", ""]]);
+		}
+
+		aux_types.push(type);
+		setStatement(aux_statement);
+		setStatementTypes(aux_statement_types);
+	}
 
 	let text = (
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-1">
@@ -207,7 +239,7 @@ export const AdminCreate = () => {
 				<div className="row pt-1">
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div className="d-flex justify-content-start bg-light">
-							<Button size="sm">
+							<Button size="sm" onClick={() => addToStatement("t")}>
 								<i className="far fa-file-alt" />
 								&nbsp; Texto
 							</Button>
