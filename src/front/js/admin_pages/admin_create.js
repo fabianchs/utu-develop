@@ -14,7 +14,7 @@ export const AdminCreate = () => {
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
-	const [finalRenderedCreator, setFinalRenderedCreator] = useState([]);
+	const [renderedCreator, setRenderedCreator] = useState([]);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 	//The next function adds responsive elements to the creator of statements
@@ -22,7 +22,7 @@ export const AdminCreate = () => {
 	//<--------------------------[CREATOR SECTION]------------------------->
 
 	function refreshCreator() {
-		let renderedCreator = [];
+		let auxCreator = [];
 		statementTypes.map(function(element, index) {
 			let aux = "";
 			if (element === "t") {
@@ -42,10 +42,17 @@ export const AdminCreate = () => {
 								</Badge>
 							</div>
 						</div>
-						<Input type="textarea" name="text" id="exampleText" />
+						<Input
+							type="textarea"
+							name="text"
+							id="exampleText"
+							onBlur={() => {
+								editCreatorElement(event, index);
+							}}
+						/>
 					</div>
 				);
-				renderedCreator.push(aux);
+				auxCreator.push(aux);
 			} else if (element === "f") {
 				aux = (
 					<MathJax.Provider key={index}>
@@ -56,13 +63,13 @@ export const AdminCreate = () => {
 						</div>
 					</MathJax.Provider>
 				);
-				renderedCreator.push(aux);
+				auxCreator.push(aux);
 			} else if (element === "i") {
 				aux = <img key={index} src={statement[index]} />;
-				renderedCreator.push(aux);
+				auxCreator.push(aux);
 			}
 		});
-		setFinalRenderedCreator(renderedCreator);
+		setRenderedCreator(auxCreator);
 	}
 
 	function addToStatement(type) {
@@ -103,8 +110,8 @@ export const AdminCreate = () => {
 		refreshCreator();
 	}
 
-	function editCreatorElement(event, index) {
-		console.log(event.target.value);
+	function editCreatorElement(e, index) {
+		console.log(e.target.value);
 
 		let aux_statement = statement;
 
@@ -358,7 +365,7 @@ export const AdminCreate = () => {
 					{image}
 					{matrix}
 					{matrix}
-					{finalRenderedCreator}
+					{renderedCreator}
 				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">

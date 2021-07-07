@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import MathJax from "react-mathjax";
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser";
 export const Practice = () => {
 	const [finished, setFinished] = useState(true);
 	const { store, actions } = useContext(Context);
