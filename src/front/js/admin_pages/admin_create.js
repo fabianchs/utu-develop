@@ -413,7 +413,7 @@ export const AdminCreate = () => {
 			</div>
 			<div className="row m-2 mt-4 ">
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-					{formula}
+					{list}
 					{matrix}
 					{renderedCreator}
 				</div>
