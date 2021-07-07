@@ -255,7 +255,7 @@ export const AdminCreate = () => {
 				});
 
 				aux = (
-					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
 								<Badge color="secondary"> Tabla</Badge>
@@ -398,7 +398,7 @@ export const AdminCreate = () => {
 				});
 
 				aux = (
-					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
 								<Badge color="secondary"> Tabla</Badge>
@@ -564,7 +564,7 @@ export const AdminCreate = () => {
 				});
 
 				aux = (
-					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
 								<Badge color="secondary"> Tabla</Badge>
