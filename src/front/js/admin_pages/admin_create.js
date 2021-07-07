@@ -4,7 +4,7 @@ import PropTypes, { func } from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
-import { Button, Input, Badge } from "reactstrap";
+import { Button, Input, Badge, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { ModalExample } from "./modal.js";
 import MathJax from "react-mathjax";
 export const AdminCreate = () => {
@@ -15,6 +15,8 @@ export const AdminCreate = () => {
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
 	const [renderedCreator, setRenderedCreator] = useState([]);
+	const [dropdownOpen, setDropdownOpen] = useState(false);
+
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 
@@ -186,6 +188,83 @@ export const AdminCreate = () => {
 				);
 
 				auxCreator.push(aux);
+			} else if (element === "m2") {
+				aux = (
+					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Tabla</Badge>
+								<small className="text-muted">
+									&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
+								</small>
+							</div>
+							<div className="float-end">
+								<Badge
+									color="danger"
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}>
+									X
+								</Badge>
+							</div>
+						</div>
+
+						<div className="row m-1 mt-0">
+							<div className="col-6">
+								<Input
+									type="text"
+									name="text"
+									id="exampleText"
+									placeholder="Título de la columna"
+									className="m-1 border-dark"
+								/>
+							</div>
+							<div className="col-6">
+								<Input
+									type="text"
+									name="text"
+									id="exampleText"
+									placeholder="Título de la columna"
+									className="m-1 border-dark"
+								/>
+							</div>
+						</div>
+						<div className="row m-1 mt-0">
+							<div className="col-6">
+								<Input type="text" name="text" id="exampleText" className="m-1" />
+							</div>
+							<div className="col-6">
+								<Input type="text" name="text" id="exampleText" className="m-1" />
+							</div>
+						</div>
+						<div className="row m-1 mt-0">
+							<div className="col-6">
+								<Input type="text" name="text" id="exampleText" className="m-1" />
+							</div>
+							<div className="col-6">
+								<Input type="text" name="text" id="exampleText" className="m-1" />
+							</div>
+						</div>
+						<div className="col-12 d-flex justify-content-end">
+							<Button color="secondary" size="sm" className="p-0">
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-plus" />
+									&nbsp;
+								</p>
+							</Button>
+							&nbsp;
+							<Button color="secondary" size="sm" className="p-0">
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-minus" />
+									&nbsp;
+								</p>
+							</Button>
+						</div>
+					</div>
+				);
+				auxCreator.push(aux);
 			}
 		});
 		setRenderedCreator(auxCreator);
@@ -248,6 +327,11 @@ export const AdminCreate = () => {
 	}
 	//<--------------------------[=> FINISH LIST EDITOR FUNCTIONS]---------------------->
 
+	//<--------------------------[=> START TABLE EDITOR FUNCTIONS]---------------------->
+
+	const toggle = () => setDropdownOpen(prevState => !prevState);
+
+	//<--------------------------[=> FINISH TABLE EDITOR FUNCTIONS]---------------------->
 	//<--------------------------[CREATOR EDITOR FUNCTIONS]---------------------->
 
 	function deleteCreatorElement(index) {
@@ -483,8 +567,18 @@ export const AdminCreate = () => {
 								&nbsp; Lista
 							</Button>
 							&nbsp;
-							<ModalExample />
-							&nbsp;
+							<Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
+								<DropdownToggle caret>
+									{" "}
+									<i className="fas fa-th" />
+									&nbsp; Tabla
+								</DropdownToggle>
+								<DropdownMenu>
+									<DropdownItem onClick={() => addToStatement("m2")}>2 Columnas</DropdownItem>
+									<DropdownItem onClick={() => addToStatement("m3")}>3 Columnas</DropdownItem>
+									<DropdownItem onClick={() => addToStatement("m4")}>4 Columnas</DropdownItem>
+								</DropdownMenu>
+							</Dropdown>
 						</div>
 					</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
