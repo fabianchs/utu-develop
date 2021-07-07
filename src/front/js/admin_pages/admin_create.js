@@ -30,7 +30,7 @@ export const AdminCreate = () => {
 					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-1">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary">Actual: Texto</Badge>
+								<Badge color="secondary"> Texto</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -58,7 +58,7 @@ export const AdminCreate = () => {
 					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary">Actual: Fórmula</Badge>
+								<Badge color="secondary"> Fórmula</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -106,7 +106,7 @@ export const AdminCreate = () => {
 					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary">Actual: Imagen</Badge>
+								<Badge color="secondary"> Imagen</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -119,6 +119,70 @@ export const AdminCreate = () => {
 							</div>
 						</div>
 						<Input type="file" name="file" id="exampleFile" accept=".jpg,.png,.jpeg,.gif" />
+					</div>
+				);
+
+				auxCreator.push(aux);
+			} else if (element === "l") {
+				const list_inputs = statement[index].map((list_element, list_index) => (
+					<Input
+						key={list_index}
+						type="text"
+						name="text"
+						id="exampleText"
+						className="mb-1"
+						onBlur={() => {
+							editListElement(event, index, list_index);
+						}}
+					/>
+				));
+
+				aux = (
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Lista</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									color="danger"
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}>
+									X
+								</Badge>
+							</div>
+						</div>
+						{list_inputs}
+						<div className="col-12 d-flex justify-content-end">
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteListInput(index, true);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-plus" />
+									&nbsp;
+								</p>
+							</Button>
+							&nbsp;
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteListInput(index, false);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-minus" />
+									&nbsp;
+								</p>
+							</Button>
+						</div>
 					</div>
 				);
 
@@ -150,6 +214,30 @@ export const AdminCreate = () => {
 
 		refreshCreator();
 	}
+
+	function editListElement(e, statement_index, list_index) {
+		let aux_statement = statement;
+
+		aux_statement[statement_index][list_index] = e.target.value;
+
+		setStatement(aux_statement);
+
+		refreshCreator();
+	}
+
+	function addOrDeleteListInput(statement_index, addInput) {
+		let aux_statement = statement;
+
+		if (addInput) {
+			aux_statement[statement_index].push("");
+		} else {
+			aux_statement[statement_index].pop();
+		}
+
+		setStatement(aux_statement);
+
+		refreshCreator();
+	}
 	//Then is necessary to create a statement editor, example => statement[0][5]="value from the input"
 	//Statement.map => analyze type and call a HTML object related with the statement type
 	//<--------------------------[FUNCTIONS FOR CREATOR ELEMENTS]---------------------->
@@ -178,7 +266,7 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-1">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Texto</Badge>
+					<Badge color="secondary"> Texto</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -191,7 +279,7 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Lista</Badge>
+					<Badge color="secondary"> Lista</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -224,7 +312,7 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Fórmula</Badge>
+					<Badge color="secondary"> Fórmula</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -238,7 +326,7 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Imagen</Badge>
+					<Badge color="secondary"> Imagen</Badge>
 				</div>
 				<div className="float-end">
 					<Badge color="danger">X</Badge>
@@ -261,7 +349,7 @@ export const AdminCreate = () => {
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
 				<div className="m-0 p-0">
-					<Badge color="secondary">Actual: Tabla</Badge>
+					<Badge color="secondary"> Tabla</Badge>
 					<small className="text-muted">
 						&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
 					</small>
