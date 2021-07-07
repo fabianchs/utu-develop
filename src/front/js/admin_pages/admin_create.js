@@ -209,7 +209,7 @@ export const AdminCreate = () => {
 							</div>
 						</div>
 
-						<div className="row m-1 mt-0">
+						<div className="row container-fluid m-1 mt-0 d-flex justify-content-center">
 							<div className="col-6">
 								<Input
 									type="text"
@@ -229,7 +229,7 @@ export const AdminCreate = () => {
 								/>
 							</div>
 						</div>
-						<div className="row m-1 mt-0">
+						<div className="row container-fluid m-1 mt-0 d-flex justify-content-center">
 							<div className="col-6">
 								<Input type="text" name="text" id="exampleText" className="m-1" />
 							</div>
@@ -237,14 +237,7 @@ export const AdminCreate = () => {
 								<Input type="text" name="text" id="exampleText" className="m-1" />
 							</div>
 						</div>
-						<div className="row m-1 mt-0">
-							<div className="col-6">
-								<Input type="text" name="text" id="exampleText" className="m-1" />
-							</div>
-							<div className="col-6">
-								<Input type="text" name="text" id="exampleText" className="m-1" />
-							</div>
-						</div>
+
 						<div className="col-12 d-flex justify-content-end">
 							<Button color="secondary" size="sm" className="p-0">
 								<p className="m-0 p-0">
