@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button, Input, Badge } from "reactstrap";
 import { ModalExample } from "./modal.js";
-
+import MathJax from "react-mathjax";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
@@ -14,10 +14,57 @@ export const AdminCreate = () => {
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
-
+	const [finalRenderedCreator, setFinalRenderedCreator] = useState([]);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 	//The next function adds responsive elements to the creator of statements
+
+	//<--------------------------[CREATOR SECTION]------------------------->
+
+	function refreshCreator() {
+		let renderedCreator = [];
+		statementTypes.map(function(element, index) {
+			let aux = "";
+			if (element === "t") {
+				aux = (
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-1">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary">Actual: Texto</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
+						</div>
+						<Input type="textarea" name="text" id="exampleText" />
+					</div>
+				);
+				renderedCreator.push(aux);
+			} else if (element === "f") {
+				aux = (
+					<MathJax.Provider key={index}>
+						<div>
+							<p>
+								<MathJax.Node inline formula={statement[index]} />
+							</p>
+						</div>
+					</MathJax.Provider>
+				);
+				renderedCreator.push(aux);
+			} else if (element === "i") {
+				aux = <img key={index} src={statement[index]} />;
+				renderedCreator.push(aux);
+			}
+		});
+		setFinalRenderedCreator(renderedCreator);
+	}
+
 	function addToStatement(type) {
 		let aux_statement = statement;
 		let aux_statement_types = statementTypes;
@@ -33,12 +80,38 @@ export const AdminCreate = () => {
 		} else if (type === "m4") {
 			aux_statement.push([["", "", "", ""], ["", "", "", ""]]);
 		}
-		aux_types.push(type);
+		aux_statement_types.push(type);
+
 		setStatement(aux_statement);
 		setStatementTypes(aux_statement_types);
+
+		refreshCreator();
 	}
 	//Then is necessary to create a statement editor, example => statement[0][5]="value from the input"
 	//Statement.map => analyze type and call a HTML object related with the statement type
+	//<--------------------------[FUNCTIONS FOR CREATOR ELEMENTS]---------------------->
+	function deleteCreatorElement(index) {
+		let aux_statement = statement;
+		let aux_statement_types = statementTypes;
+
+		aux_statement.splice(index, 1);
+		aux_statement_types.splice(index, 1);
+
+		setStatement(aux_statement);
+		setStatementTypes(aux_statement_types);
+
+		refreshCreator();
+	}
+
+	function editCreatorElement(event, index) {
+		console.log(event.target.value);
+
+		let aux_statement = statement;
+
+		setStatement(aux_statement);
+	}
+
+	//<----------------------------->
 	let text = (
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-1">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
@@ -285,6 +358,7 @@ export const AdminCreate = () => {
 					{image}
 					{matrix}
 					{matrix}
+					{finalRenderedCreator}
 				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
