@@ -55,17 +55,55 @@ export const AdminCreate = () => {
 				auxCreator.push(aux);
 			} else if (element === "f") {
 				aux = (
-					<MathJax.Provider key={index}>
-						<div>
-							<p>
-								<MathJax.Node inline formula={statement[index]} />
-							</p>
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary">Actual: Fórmula</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
 						</div>
-					</MathJax.Provider>
+						<Input
+							type="text"
+							name="text"
+							id="exampleText"
+							className="mb-1"
+							onBlur={() => {
+								editCreatorElement(event, index);
+							}}
+						/>
+					</div>
 				);
+				auxCreator.push(aux);
+			} else if (element === "s") {
+				aux = (
+					<div className="row p-1 pt-0 border rounded-1 shadow mt-3 bg-secondary">
+						<Badge
+							color="secondary"
+							className="col-12 d-flex justify-content-between bg-secondary text-dark">
+							SEPARADOR
+							<Badge
+								onClick={() => {
+									deleteCreatorElement(index);
+								}}
+								color="danger">
+								X
+							</Badge>
+						</Badge>
+					</div>
+				);
+
 				auxCreator.push(aux);
 			} else if (element === "i") {
 				aux = <img key={index} src={statement[index]} />;
+
 				auxCreator.push(aux);
 			}
 		});
@@ -111,9 +149,8 @@ export const AdminCreate = () => {
 	}
 
 	function editCreatorElement(e, index) {
-		console.log(e.target.value);
-
 		let aux_statement = statement;
+		aux_statement[index] = e.target.value;
 
 		setStatement(aux_statement);
 	}
