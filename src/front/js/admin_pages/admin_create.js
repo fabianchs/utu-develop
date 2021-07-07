@@ -84,7 +84,7 @@ export const AdminCreate = () => {
 				auxCreator.push(aux);
 			} else if (element === "s") {
 				aux = (
-					<div className="row p-1 pt-0 border rounded-1 shadow mt-3 bg-secondary">
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3 bg-secondary">
 						<Badge
 							color="secondary"
 							className="col-12 d-flex justify-content-between bg-secondary text-dark">
@@ -102,7 +102,25 @@ export const AdminCreate = () => {
 
 				auxCreator.push(aux);
 			} else if (element === "i") {
-				aux = <img key={index} src={statement[index]} />;
+				aux = (
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary">Actual: Imagen</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
+						</div>
+						<Input type="file" name="file" id="exampleFile" accept=".jpg,.png,.jpeg,.gif" />
+					</div>
+				);
 
 				auxCreator.push(aux);
 			}
@@ -395,12 +413,7 @@ export const AdminCreate = () => {
 			</div>
 			<div className="row m-2 mt-4 ">
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-					{text}
-					{list}
-					{space}
 					{formula}
-					{image}
-					{matrix}
 					{matrix}
 					{renderedCreator}
 				</div>
