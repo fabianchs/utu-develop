@@ -17,9 +17,8 @@ export const AdminCreate = () => {
 	const [renderedCreator, setRenderedCreator] = useState([]);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
-	//The next function adds responsive elements to the creator of statements
 
-	//<--------------------------[CREATOR SECTION]------------------------->
+	//<--------------------------[START - FUNCTION THAT CREATE THE EDITOR LABELS]------------------------->
 
 	function refreshCreator() {
 		let auxCreator = [];
@@ -191,6 +190,9 @@ export const AdminCreate = () => {
 		});
 		setRenderedCreator(auxCreator);
 	}
+	//<--------------------------[FINISH - FUNCTION THAT CREATES THE EDITOR LABELS]------------------------->
+
+	//<--------------------------[START - FUNCTIONS FOR CREATOR ELEMENTS]---------------------->
 
 	function addToStatement(type) {
 		let aux_statement = statement;
@@ -215,6 +217,8 @@ export const AdminCreate = () => {
 		refreshCreator();
 	}
 
+	//<--------------------------[=> START LIST EDITOR FUNCTIONS]---------------------->
+
 	function editListElement(e, statement_index, list_index) {
 		let aux_statement = statement;
 
@@ -227,8 +231,8 @@ export const AdminCreate = () => {
 
 	function addOrDeleteListInput(statement_index, addInput) {
 		let aux_statement = statement;
+
 		let min_list_input_validation = aux_statement[statement_index].length;
-		console.log(min_list_input_validation);
 
 		if (addInput) {
 			aux_statement[statement_index].push("");
@@ -242,9 +246,10 @@ export const AdminCreate = () => {
 
 		refreshCreator();
 	}
-	//Then is necessary to create a statement editor, example => statement[0][5]="value from the input"
-	//Statement.map => analyze type and call a HTML object related with the statement type
-	//<--------------------------[FUNCTIONS FOR CREATOR ELEMENTS]---------------------->
+	//<--------------------------[=> FINISH LIST EDITOR FUNCTIONS]---------------------->
+
+	//<--------------------------[CREATOR EDITOR FUNCTIONS]---------------------->
+
 	function deleteCreatorElement(index) {
 		let aux_statement = statement;
 		let aux_statement_types = statementTypes;
@@ -265,7 +270,7 @@ export const AdminCreate = () => {
 		setStatement(aux_statement);
 	}
 
-	//<----------------------------->
+	//<----------------------------------[FINISH - FUNCTION FOR CREATOR ELEMENTS]---------------------------------->
 	let text = (
 		<div className="row p-1 pt-0 border rounded-1 shadow mt-1">
 			<div className="col-12 m-0 p-0 d-flex justify-content-between">
@@ -505,7 +510,6 @@ export const AdminCreate = () => {
 			</div>
 			<div className="row m-2 mt-4 ">
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-					{list}
 					{matrix}
 					{renderedCreator}
 				</div>
