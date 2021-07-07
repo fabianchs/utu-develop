@@ -189,6 +189,71 @@ export const AdminCreate = () => {
 
 				auxCreator.push(aux);
 			} else if (element === "m2") {
+				let aux_inputs = [];
+
+				statement[index].map(function(table_element, row_index) {
+					let table_aux = "";
+					if (row_index === 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-6">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-6">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					} else if (row_index > 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-6">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-6">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					}
+
+					aux_inputs.push(table_aux);
+				});
+
 				aux = (
 					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
@@ -209,37 +274,16 @@ export const AdminCreate = () => {
 							</div>
 						</div>
 
-						<div className="row container-fluid m-1 mt-0 d-flex justify-content-center">
-							<div className="col-6">
-								<Input
-									type="text"
-									name="text"
-									id="exampleText"
-									placeholder="Título de la columna"
-									className="m-1 border-dark"
-								/>
-							</div>
-							<div className="col-6">
-								<Input
-									type="text"
-									name="text"
-									id="exampleText"
-									placeholder="Título de la columna"
-									className="m-1 border-dark"
-								/>
-							</div>
-						</div>
-						<div className="row container-fluid m-1 mt-0 d-flex justify-content-center">
-							<div className="col-6">
-								<Input type="text" name="text" id="exampleText" className="m-1" />
-							</div>
-							<div className="col-6">
-								<Input type="text" name="text" id="exampleText" className="m-1" />
-							</div>
-						</div>
+						{aux_inputs}
 
 						<div className="col-12 d-flex justify-content-end">
-							<Button color="secondary" size="sm" className="p-0">
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, true);
+								}}>
 								<p className="m-0 p-0">
 									&nbsp;
 									<i className="fas fa-plus" />
@@ -247,7 +291,322 @@ export const AdminCreate = () => {
 								</p>
 							</Button>
 							&nbsp;
-							<Button color="secondary" size="sm" className="p-0">
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, false);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-minus" />
+									&nbsp;
+								</p>
+							</Button>
+						</div>
+					</div>
+				);
+				auxCreator.push(aux);
+			} else if (element === "m3") {
+				let aux_inputs = [];
+
+				statement[index].map(function(table_element, row_index) {
+					let table_aux = "";
+					if (row_index === 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 2);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					} else if (row_index > 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+								<div className="col-4">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 2);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					}
+
+					aux_inputs.push(table_aux);
+				});
+
+				aux = (
+					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Tabla</Badge>
+								<small className="text-muted">
+									&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
+								</small>
+							</div>
+							<div className="float-end">
+								<Badge
+									color="danger"
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}>
+									X
+								</Badge>
+							</div>
+						</div>
+
+						{aux_inputs}
+
+						<div className="col-12 d-flex justify-content-end">
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, true);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-plus" />
+									&nbsp;
+								</p>
+							</Button>
+							&nbsp;
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, false);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-minus" />
+									&nbsp;
+								</p>
+							</Button>
+						</div>
+					</div>
+				);
+				auxCreator.push(aux);
+			} else if (element === "m4") {
+				let aux_inputs = [];
+
+				statement[index].map(function(table_element, row_index) {
+					let table_aux = "";
+					if (row_index === 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 2);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										placeholder="Título de la columna"
+										className="m-1 border-dark"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 3);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					} else if (row_index > 0) {
+						table_aux = (
+							<div key={row_index} className="row container-fluid m-1 mt-0 d-flex justify-content-center">
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 0);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 1);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 2);
+										}}
+									/>
+								</div>
+								<div className="col-3">
+									<Input
+										type="text"
+										name="text"
+										id="exampleText"
+										className="m-1"
+										onBlur={() => {
+											editTableElement(event, index, row_index, 3);
+										}}
+									/>
+								</div>
+							</div>
+						);
+					}
+
+					aux_inputs.push(table_aux);
+				});
+
+				aux = (
+					<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Tabla</Badge>
+								<small className="text-muted">
+									&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
+								</small>
+							</div>
+							<div className="float-end">
+								<Badge
+									color="danger"
+									onClick={() => {
+										deleteCreatorElement(index);
+									}}>
+									X
+								</Badge>
+							</div>
+						</div>
+
+						{aux_inputs}
+
+						<div className="col-12 d-flex justify-content-end">
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, true);
+								}}>
+								<p className="m-0 p-0">
+									&nbsp;
+									<i className="fas fa-plus" />
+									&nbsp;
+								</p>
+							</Button>
+							&nbsp;
+							<Button
+								color="secondary"
+								size="sm"
+								className="p-0"
+								onClick={() => {
+									addOrDeleteTableInput(index, element, false);
+								}}>
 								<p className="m-0 p-0">
 									&nbsp;
 									<i className="fas fa-minus" />
@@ -323,6 +682,44 @@ export const AdminCreate = () => {
 	//<--------------------------[=> START TABLE EDITOR FUNCTIONS]---------------------->
 
 	const toggle = () => setDropdownOpen(prevState => !prevState);
+
+	function addOrDeleteTableInput(statement_index, input_type, addInput) {
+		let aux_statement = statement;
+
+		let min_list_input_validation = aux_statement[statement_index].length;
+
+		let push_item = ["", ""];
+
+		if (input_type === "m3") {
+			push_item = ["", "", ""];
+		} else if (input_type === "m4") {
+			push_item = ["", "", "", ""];
+		}
+
+		if (addInput) {
+			aux_statement[statement_index].push(push_item);
+		} else {
+			if (min_list_input_validation > 2) {
+				aux_statement[statement_index].pop();
+			}
+		}
+
+		setStatement(aux_statement);
+
+		refreshCreator();
+	}
+
+	function editTableElement(e, statement_index, row_index, input_index) {
+		let aux_statement = statement;
+
+		aux_statement[statement_index][row_index][input_index] = e.target.value;
+
+		console.log(statement_index, row_index, input_index, e.target.value);
+
+		setStatement(aux_statement);
+
+		refreshCreator();
+	}
 
 	//<--------------------------[=> FINISH TABLE EDITOR FUNCTIONS]---------------------->
 	//<--------------------------[CREATOR EDITOR FUNCTIONS]---------------------->
@@ -596,10 +993,7 @@ export const AdminCreate = () => {
 				</div>
 			</div>
 			<div className="row m-2 mt-4 ">
-				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-					{matrix}
-					{renderedCreator}
-				</div>
+				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">{renderedCreator}</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
 						<p>
