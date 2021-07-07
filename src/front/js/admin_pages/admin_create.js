@@ -227,11 +227,15 @@ export const AdminCreate = () => {
 
 	function addOrDeleteListInput(statement_index, addInput) {
 		let aux_statement = statement;
+		let min_list_input_validation = aux_statement[statement_index].length;
+		console.log(min_list_input_validation);
 
 		if (addInput) {
 			aux_statement[statement_index].push("");
 		} else {
-			aux_statement[statement_index].pop();
+			if (min_list_input_validation > 1) {
+				aux_statement[statement_index].pop();
+			}
 		}
 
 		setStatement(aux_statement);
