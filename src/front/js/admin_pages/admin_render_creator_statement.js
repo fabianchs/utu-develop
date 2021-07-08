@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge } from "react
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import "../../styles/index.scss";
-export function RenderCreatorStatement() {
+export function RenderCreatorStatement(props) {
 	const [modal, setModal] = useState(false);
 	const [counter, setCounter] = useState(2);
 	const { store, actions } = useContext(Context);
