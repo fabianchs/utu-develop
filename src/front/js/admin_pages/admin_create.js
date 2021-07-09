@@ -1006,8 +1006,9 @@ export const AdminCreate = () => {
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">{renderedCreator}</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
+						<div key={statement}>{final_statement}</div>
+
 						<p>
-							{final_statement}
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sagittis urna. Ut dolor
 							nibh, molestie non vestibulum a, volutpat non mi. Praesent eget elit est. Morbi ultrices et
 							nibh nec consectetur. Ut viverra elementum eros eu volutpat. Aliquam at elit sodales sapien

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Button, Input, Badge } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import MathJax from "react-mathjax";
 import "../../styles/index.scss";
 export function RenderCreatorStatement(props) {
 	const { statementToRender, statementTypesToRender } = props;
@@ -14,57 +15,24 @@ export function RenderCreatorStatement(props) {
 			let aux = "";
 			if (element === "t") {
 				aux = (
-					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-1">
+					<span className="m-0 p-0" key={index}>
 						{statementToRender[index]}
-					</div>
+						&nbsp;
+					</span>
 				);
 				auxCreator.push(aux);
 			} else if (element === "f") {
 				aux = (
-					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
-						<div className="col-12 m-0 p-0 d-flex justify-content-between">
-							<div className="m-0 p-0">
-								<Badge color="secondary"> Fórmula</Badge>
-							</div>
-							<div className="float-end">
-								<Badge
-									onClick={() => {
-										deleteCreatorElement(index);
-									}}
-									color="danger">
-									X
-								</Badge>
-							</div>
-						</div>
-						<Input
-							type="text"
-							name="text"
-							id="exampleText"
-							className="mb-1"
-							onBlur={() => {
-								editCreatorElement(event, index);
-							}}
-						/>
-					</div>
+					<MathJax.Provider key={index}>
+						<span>
+							<MathJax.Node inline formula={statementToRender[index]} />
+						</span>
+						<span>&nbsp;</span>
+					</MathJax.Provider>
 				);
 				auxCreator.push(aux);
 			} else if (element === "s") {
-				aux = (
-					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3 bg-secondary">
-						<Badge
-							color="secondary"
-							className="col-12 d-flex justify-content-between bg-secondary text-dark">
-							SEPARADOR
-							<Badge
-								onClick={() => {
-									deleteCreatorElement(index);
-								}}
-								color="danger">
-								X
-							</Badge>
-						</Badge>
-					</div>
-				);
+				aux = <br />;
 
 				auxCreator.push(aux);
 			} else if (element === "i") {
