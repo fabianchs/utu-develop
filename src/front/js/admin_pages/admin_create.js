@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import { Button, Input, Badge, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
-import { ModalExample } from "./modal.js";
+import { RenderCreatorStatement } from "./admin_render_creator_statement.js";
 import MathJax from "react-mathjax";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
@@ -16,11 +16,21 @@ export const AdminCreate = () => {
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
 	const [renderedCreator, setRenderedCreator] = useState([]);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
-
+	const [final_statement, setFinalStatement] = useState("");
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 
-	//<--------------------------[START - FUNCTION THAT CREATE THE EDITOR LABELS]------------------------->
+	//<--------------------------[START - FUNCTION TO CALL STATEMENT CREATOR // RIGT SIDE OF THE SCREEN]------------------------->
+	//This calls a component declared on the file admin_render_creator_statement.js
+	function setPreview() {
+		setFinalStatement(
+			<RenderCreatorStatement statementToRender={statement} statementTypesToRender={statementTypes} />
+		);
+	}
+
+	//<--------------------------[END - FUNCTION TO CALL STATEMENT CREATOR // RIGT SIDE OF THE SCREEN]--------------------------->
+
+	//<--------------------------[START - FUNCTION THAT CREATE THE EDITOR LABELS]------------------------------------------------>
 
 	function refreshCreator() {
 		let auxCreator = [];
@@ -973,7 +983,7 @@ export const AdminCreate = () => {
 					</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div className="d-flex justify-content-between bg-light ms-1">
-							<Button size="sm">
+							<Button size="sm" onClick={() => setPreview()}>
 								<i className="fas fa-sync" />
 								&nbsp; Actualizar
 							</Button>
@@ -997,6 +1007,7 @@ export const AdminCreate = () => {
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
 						<p>
+							{final_statement}
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sagittis urna. Ut dolor
 							nibh, molestie non vestibulum a, volutpat non mi. Praesent eget elit est. Morbi ultrices et
 							nibh nec consectetur. Ut viverra elementum eros eu volutpat. Aliquam at elit sodales sapien
