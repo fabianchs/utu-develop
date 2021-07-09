@@ -10,13 +10,13 @@ import MathJax from "react-mathjax";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
-	//t=>texto f=>formula s=>space i=>image l=>list m2=>table 2 col m3=>table 3 col m4=>table 4 col
+	//t=>texto f=>formula fb=> block formula s=>space i=>image l=>list m2=>table 2 col m3=>table 3 col m4=>table 4 col
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
 	const [renderedCreator, setRenderedCreator] = useState([]);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const [final_statement, setFinalStatement] = useState("");
+	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 
@@ -1007,42 +1007,6 @@ export const AdminCreate = () => {
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-secondary container-fluid rounded shadow">
 						<div key={statement}>{final_statement}</div>
-
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sagittis urna. Ut dolor
-							nibh, molestie non vestibulum a, volutpat non mi. Praesent eget elit est. Morbi ultrices et
-							nibh nec consectetur. Ut viverra elementum eros eu volutpat. Aliquam at elit sodales sapien
-							tincidunt commodo et a velit. In hac habitasse platea dictumst. Sed sit amet tincidunt
-							metus, blandit commodo risus. Integer in mattis nibh. Curabitur efficitur, eros vel pulvinar
-							cursus, neque felis porta libero, ac imperdiet tellus mauris sed eros. Vivamus tincidunt
-							condimentum mattis. Nam ultricies lectus nibh, id iaculis nibh faucibus in. Suspendisse sit
-							amet mauris varius, egestas nisl vitae, congue velit. Pellentesque scelerisque, lectus vel
-							egestas vulputate, tellus velit posuere est, et vehicula neque lacus in ante. Curabitur
-							vestibulum vel neque vel laoreet. Vestibulum commodo leo est, non fermentum libero congue
-							quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac bibendum metus,
-							sodales iaculis felis. Pellentesque et diam at libero aliquam dictum at vitae quam. Donec
-							dictum facilisis metus, a laoreet ex rhoncus eu. Vivamus vehicula velit facilisis nunc
-							luctus pellentesque. Proin volutpat interdum libero id efficitur. Phasellus lacus est,
-							facilisis sed placerat ut, congue sit amet nisl. Duis dui dui, finibus non iaculis sit amet,
-							sodales id ex. Donec lectus ante, cursus id mattis a, tincidunt sit amet turpis. Suspendisse
-							sit amet dolor nulla. Sed non lectus nisl. Maecenas efficitur congue felis id finibus.
-							Integer pellentesque metus ut massa porta fermentum. Integer consectetur ullamcorper
-							scelerisque. Vestibulum et urna maximus, lacinia massa id, convallis urna. Aliquam ac luctus
-							erat. Integer malesuada accumsan lacus sed facilisis. Curabitur imperdiet felis ac congue
-							efficitur. Nam ultricies accumsan ante quis sodales. Vivamus neque lectus, tincidunt vitae
-							massa varius, auctor fermentum ex. Class aptent taciti sociosqu ad litora torquent per
-							conubia nostra, per inceptos himenaeos. Mauris eget lobortis odio. Aliquam tempus ligula sit
-							amet elit malesuada, ut gravida ex cursus. Quisque vestibulum cursus erat nec eleifend. Sed
-							laoreet fermentum sapien nec ornare. Mauris molestie ipsum iaculis diam vehicula vestibulum.
-							Nullam pellentesque maximus leo, quis aliquam tellus gravida et. Nam quis enim ultricies,
-							interdum leo eget, suscipit metus. Sed ut tellus diam. Integer non est risus. Sed elit
-							lacus, eleifend eu mi sit amet, consectetur ornare est. Cras bibendum efficitur metus vitae
-							vulputate. Nulla interdum viverra sapien. Phasellus et vehicula dolor, at commodo arcu.
-							Aliquam vitae sodales risus. Donec tincidunt tellus ut lobortis rhoncus. Proin rhoncus
-							libero nec augue scelerisque ultrices. Vivamus tempor, libero at dapibus sollicitudin, metus
-							nunc euismod elit, quis porta lacus enim consequat erat. Integer erat velit, tempus at
-							finibus tempor, faucibus id sem.{" "}
-						</p>
 					</div>
 				</div>
 			</div>
