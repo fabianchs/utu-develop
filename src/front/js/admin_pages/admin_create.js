@@ -56,7 +56,7 @@ export const AdminCreate = () => {
 						<Input
 							type="textarea"
 							name="text"
-							id="exampleText"
+							id={index.toString() + element}
 							onBlur={() => {
 								editCreatorElement(event, index);
 							}}
@@ -84,7 +84,7 @@ export const AdminCreate = () => {
 						<Input
 							type="text"
 							name="text"
-							id="exampleText"
+							id={index.toString() + element}
 							className="mb-1"
 							onBlur={() => {
 								editCreatorElement(event, index);
@@ -129,7 +129,7 @@ export const AdminCreate = () => {
 								</Badge>
 							</div>
 						</div>
-						<Input type="file" name="file" id="exampleFile" accept=".jpg,.png,.jpeg,.gif" />
+						<Input type="file" name="file" id={index.toString() + element} accept=".jpg,.png,.jpeg,.gif" />
 					</div>
 				);
 
@@ -140,7 +140,7 @@ export const AdminCreate = () => {
 						key={list_index}
 						type="text"
 						name="text"
-						id="exampleText"
+						id={index.toString() + list_index.toString() + element}
 						className="mb-1"
 						onBlur={() => {
 							editListElement(event, index, list_index);
@@ -210,7 +210,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -222,7 +222,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -239,7 +239,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 0);
@@ -250,7 +250,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 1);
@@ -330,7 +330,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -342,7 +342,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -354,7 +354,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "2"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -371,7 +371,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 0);
@@ -382,7 +382,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 1);
@@ -393,7 +393,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "2"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 2);
@@ -473,7 +473,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -485,7 +485,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -497,7 +497,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "2"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -509,7 +509,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "3"}
 										placeholder="Título de la columna"
 										className="m-1 border-dark"
 										onBlur={() => {
@@ -526,7 +526,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "0"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 0);
@@ -537,7 +537,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "1"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 1);
@@ -548,7 +548,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "2"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 2);
@@ -559,7 +559,7 @@ export const AdminCreate = () => {
 									<Input
 										type="text"
 										name="text"
-										id="exampleText"
+										id={index.toString() + row_index.toString() + "3"}
 										className="m-1"
 										onBlur={() => {
 											editTableElement(event, index, row_index, 3);

@@ -91,7 +91,11 @@ export function RenderCreatorStatement(props) {
 					aux_inputs.push(table_aux);
 				});
 
-				aux = <Table key={index}>{aux_inputs}</Table>;
+				aux = (
+					<Table responsive bordered key={index} size="sm" className="text-center">
+						{aux_inputs}
+					</Table>
+				);
 				auxCreator.push(aux);
 			} else if (element === "m3") {
 				let aux_inputs = [];
