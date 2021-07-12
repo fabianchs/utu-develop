@@ -94,17 +94,17 @@ export const AdminCreate = () => {
 		} else if (activeTab === "2") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
-					<Button size="sm" onClick={() => addToStatement("t")}>
+					<Button size="sm" onClick={() => addToOptions("t")}>
 						<i className="far fa-file-alt" />
 						&nbsp; Texto
 					</Button>
 					&nbsp;
-					<Button size="sm" onClick={() => addToStatement("f")}>
+					<Button size="sm" onClick={() => addToOptions("f")}>
 						<i className="fas fa-calculator" />
 						&nbsp; Fórmula
 					</Button>
 					&nbsp;
-					<Button size="sm" onClick={() => addToStatement("i")}>
+					<Button size="sm" onClick={() => addToOptions("i")}>
 						<i className="far fa-images" /> &nbsp; Imagen
 					</Button>
 					&nbsp;
@@ -113,13 +113,30 @@ export const AdminCreate = () => {
 		} else if (activeTab === "3") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
-					<small>Hola! Gracias por ser parte de UTÚ.</small>
+					<span>La información permite categorizar los enunciados.</span>
 				</div>
 			);
 		}
 	}
 
 	//<--------------------------[END - FUNCTION TO EDIT BUTTON LABELS AND ACTIONS]---------------------------------------------->
+
+	//<--------------------------[START - FUNCTION ADD TYPES/OPTIONS ARRAYS]----------------------------------------------------->
+
+	function addToOptions(type) {
+		let aux_options = options;
+		let aux_options_types = optionsTypes;
+
+		aux_options.push("");
+		aux_options_types.push(type);
+
+		setOptions(aux_options);
+		setOptionsTypes(aux_options_types);
+
+		//refreshCreator();
+	}
+
+	//<--------------------------[END - FUNCTION ADD TYPES/OPTIONS ARRAYS]------           -------------------------------------->
 
 	//<--------------------------[START - FUNCTION TO CALL STATEMENT CREATOR // RIGHT SIDE OF THE SCREEN]------------------------>
 	//This calls a component declared on the file admin_render_creator_statement.js
@@ -953,7 +970,7 @@ export const AdminCreate = () => {
 							</NavItem>
 							<NavItem>
 								<NavLink
-									className={classnames({ active: activeTab === "2" })}
+									className={classnames({ active: activeTab === "3" })}
 									onClick={() => {
 										toggle_tab("3");
 									}}>
