@@ -923,7 +923,7 @@ export const AdminCreate = () => {
 	return (
 		<div className="container-fluid mt-5 pt-5">
 			<div className="container-fluid fixed-top  bg-light" style={{ "margin-top": "59.7px" }}>
-				<div className="row pt-2">
+				<div className="row pt-1">
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">{responsiveButtons()}</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div className="d-flex justify-content-between bg-light ms-1">
