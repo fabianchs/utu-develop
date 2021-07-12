@@ -9,19 +9,19 @@ export function RenderCreatorStatement(props) {
 	const [convertedComponent, setConvertedComponent] = useState("");
 	console.log(statementToRender, statementTypesToRender);
 
-	let array_aux = statementToRender;
-	statementTypesToRender.map(function(element, index) {
-		if (element === "l") {
-			let element_aux = array_aux[index];
-			//array_aux[index] = element_aux.join(" ");
-			console.log(array_aux);
-		} else if (element === "m2") {
-			let element_aux = array_aux[index];
-			//let internal_array = element_aux[0].concat(element_aux[1]);
-			//array_aux[index] = internal_array.join(" ");
-		}
-	});
-	console.log(array_aux);
+	// let array_aux = statementToRender;
+	// statementTypesToRender.map(function(element, index) {
+	// 	if (element === "l") {
+	// 		let element_aux = array_aux[index];
+	// 		//array_aux[index] = element_aux.join(" ");
+	// 		console.log(array_aux);
+	// 	} else if (element === "m2") {
+	// 		let element_aux = array_aux[index];
+	// 		//let internal_array = element_aux[0].concat(element_aux[1]);
+	// 		//array_aux[index] = internal_array.join(" ");
+	// 	}
+	// });
+	// console.log(array_aux);
 
 	function refreshCreator() {
 		let auxCreator = [];
