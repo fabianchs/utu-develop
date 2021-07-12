@@ -32,6 +32,8 @@ export const AdminCreate = () => {
 	const [renderedCreator, setRenderedCreator] = useState([]);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
+	const [buttons, setButtons] = useState(false);
+
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 
@@ -45,8 +47,83 @@ export const AdminCreate = () => {
 
 	//<--------------------------[END - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]----------------------------->
 
-	//<--------------------------[START - FUNCTION TO CALL STATEMENT CREATOR // RIGT SIDE OF THE SCREEN]------------------------->
+	//<--------------------------[START - FUNCTION TO EDIT BUTTON LABELS AND ACTIONS]-------------------------------------------->
+
+	function responsiveButtons() {
+		if (activeTab === "1") {
+			return (
+				<div className="d-flex justify-content-start bg-light">
+					<Button size="sm" onClick={() => addToStatement("t")}>
+						<i className="far fa-file-alt" />
+						&nbsp; Texto
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("f")}>
+						<i className="fas fa-calculator" />
+						&nbsp; Fórmula
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("i")}>
+						<i className="far fa-images" /> &nbsp; Imagen
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("s")}>
+						<i className="fas fa-ruler-horizontal" />
+						&nbsp; Separador
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("l")}>
+						<i className="fas fa-list" />
+						&nbsp; Lista
+					</Button>
+					&nbsp;
+					<Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
+						<DropdownToggle caret>
+							{" "}
+							<i className="fas fa-th" />
+							&nbsp; Tabla
+						</DropdownToggle>
+						<DropdownMenu>
+							<DropdownItem onClick={() => addToStatement("m2")}>2 Columnas</DropdownItem>
+							<DropdownItem onClick={() => addToStatement("m3")}>3 Columnas</DropdownItem>
+							<DropdownItem onClick={() => addToStatement("m4")}>4 Columnas</DropdownItem>
+						</DropdownMenu>
+					</Dropdown>
+				</div>
+			);
+		} else if (activeTab === "2") {
+			return (
+				<div className="d-flex justify-content-start bg-light">
+					<Button size="sm" onClick={() => addToStatement("t")}>
+						<i className="far fa-file-alt" />
+						&nbsp; Texto
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("f")}>
+						<i className="fas fa-calculator" />
+						&nbsp; Fórmula
+					</Button>
+					&nbsp;
+					<Button size="sm" onClick={() => addToStatement("i")}>
+						<i className="far fa-images" /> &nbsp; Imagen
+					</Button>
+					&nbsp;
+				</div>
+			);
+		} else if (activeTab === "3") {
+			return (
+				<div className="d-flex justify-content-start bg-light">
+					<small>Hola! Gracias por ser parte de UTÚ.</small>
+				</div>
+			);
+		}
+	}
+
+	//<--------------------------[END - FUNCTION TO EDIT BUTTON LABELS AND ACTIONS]---------------------------------------------->
+
+	//<--------------------------[START - FUNCTION TO CALL STATEMENT CREATOR // RIGHT SIDE OF THE SCREEN]------------------------>
 	//This calls a component declared on the file admin_render_creator_statement.js
+
 	function setPreview() {
 		setFinalStatement(
 			<RenderCreatorStatement statementToRender={statement} statementTypesToRender={statementTypes} />
@@ -830,46 +907,7 @@ export const AdminCreate = () => {
 		<div className="container-fluid mt-5 pt-5">
 			<div className="container-fluid fixed-top  bg-light" style={{ "margin-top": "59.7px" }}>
 				<div className="row pt-1">
-					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-						<div className="d-flex justify-content-start bg-light">
-							<Button size="sm" onClick={() => addToStatement("t")}>
-								<i className="far fa-file-alt" />
-								&nbsp; Texto
-							</Button>
-							&nbsp;
-							<Button size="sm" onClick={() => addToStatement("f")}>
-								<i className="fas fa-calculator" />
-								&nbsp; Fórmula
-							</Button>
-							&nbsp;
-							<Button size="sm" onClick={() => addToStatement("i")}>
-								<i className="far fa-images" /> &nbsp; Imagen
-							</Button>
-							&nbsp;
-							<Button size="sm" onClick={() => addToStatement("s")}>
-								<i className="fas fa-ruler-horizontal" />
-								&nbsp; Separador
-							</Button>
-							&nbsp;
-							<Button size="sm" onClick={() => addToStatement("l")}>
-								<i className="fas fa-list" />
-								&nbsp; Lista
-							</Button>
-							&nbsp;
-							<Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
-								<DropdownToggle caret>
-									{" "}
-									<i className="fas fa-th" />
-									&nbsp; Tabla
-								</DropdownToggle>
-								<DropdownMenu>
-									<DropdownItem onClick={() => addToStatement("m2")}>2 Columnas</DropdownItem>
-									<DropdownItem onClick={() => addToStatement("m3")}>3 Columnas</DropdownItem>
-									<DropdownItem onClick={() => addToStatement("m4")}>4 Columnas</DropdownItem>
-								</DropdownMenu>
-							</Dropdown>
-						</div>
-					</div>
+					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">{responsiveButtons()}</div>
 					<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div className="d-flex justify-content-between bg-light ms-1">
 							<Button size="sm" onClick={() => setPreview()}>
