@@ -4,13 +4,32 @@ import PropTypes, { func } from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
-import { Button, Input, Badge, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import classnames from "classnames";
+import {
+	Button,
+	Input,
+	Badge,
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
+	TabContent,
+	TabPane,
+	Nav,
+	NavItem,
+	NavLink,
+	Card,
+	CardTitle,
+	CardText,
+	Row,
+	Col
+} from "reactstrap";
 import { RenderCreatorStatement } from "./admin_render_creator_statement.js";
 import MathJax from "react-mathjax";
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
-	//t=>texto f=>formula fb=> block formula s=>space i=>image l=>list m2=>table 2 col m3=>table 3 col m4=>table 4 col
+	//t=>text f=>formula fb=> block formula s=>space i=>image l=>list m2=>table 2 col m3=>table 3 col m4=>table 4 col
 	const [options, setOptions] = useState([]);
 	const [optionsTypes, setOptionsTypes] = useState([]);
 	const [answers, setAnswers] = useState([]); //"t","f","f","f"
@@ -19,6 +38,16 @@ export const AdminCreate = () => {
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
+
+	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]--------------------------->
+
+	const [activeTab, setActiveTab] = useState("1");
+
+	const toggle_tab = tab => {
+		if (activeTab !== tab) setActiveTab(tab);
+	};
+
+	//<--------------------------[END - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]----------------------------->
 
 	//<--------------------------[START - FUNCTION TO CALL STATEMENT CREATOR // RIGT SIDE OF THE SCREEN]------------------------->
 	//This calls a component declared on the file admin_render_creator_statement.js
@@ -1003,7 +1032,56 @@ export const AdminCreate = () => {
 				</div>
 			</div>
 			<div className="row m-2 mt-4 ">
-				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">{renderedCreator}</div>
+				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+					<div>
+						<Nav tabs className="m-0 p-0">
+							<NavItem>
+								<NavLink
+									className={classnames({ active: activeTab === "1" })}
+									onClick={() => {
+										toggle_tab("1");
+									}}>
+									Enunciado
+								</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink
+									className={classnames({ active: activeTab === "2" })}
+									onClick={() => {
+										toggle_tab("2");
+									}}>
+									Opciones
+								</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink
+									className={classnames({ active: activeTab === "2" })}
+									onClick={() => {
+										toggle_tab("3");
+									}}>
+									Información
+								</NavLink>
+							</NavItem>
+						</Nav>
+						<TabContent activeTab={activeTab}>
+							<TabPane tabId="1">
+								<Row>
+									<Col sm="12">{renderedCreator}</Col>
+								</Row>
+							</TabPane>
+							<TabPane tabId="2">
+								<Row>
+									<h1>Editor de las opciones</h1>
+								</Row>
+							</TabPane>
+							<TabPane tabId="3">
+								<Row>
+									<h1>Información general del enunciado</h1>
+								</Row>
+							</TabPane>
+						</TabContent>
+					</div>
+				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-light border border-info rounded rounded-4 shadow shadow-sm p-1">
 						<div className="m-1" key={statement}>
