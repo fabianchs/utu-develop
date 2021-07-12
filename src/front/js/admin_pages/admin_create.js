@@ -1,6 +1,5 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import PropTypes, { func } from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
@@ -18,14 +17,11 @@ import {
 	Nav,
 	NavItem,
 	NavLink,
-	Card,
-	CardTitle,
-	CardText,
 	Row,
 	Col
 } from "reactstrap";
 import { RenderCreatorStatement } from "./admin_render_creator_statement.js";
-import MathJax from "react-mathjax";
+
 export const AdminCreate = () => {
 	const [statement, setStatement] = useState([]);
 	const [statementTypes, setStatementTypes] = useState([]);
@@ -39,7 +35,7 @@ export const AdminCreate = () => {
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
 
-	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]--------------------------->
+	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
 	const [activeTab, setActiveTab] = useState("1");
 
@@ -810,142 +806,6 @@ export const AdminCreate = () => {
 			<Input type="text" name="text" id="exampleText" className="mb-1" />
 			<Input type="text" name="text" id="exampleText" className="mb-1" />
 			<Input type="text" name="text" id="exampleText" className="mb-1" />
-			<div className="col-12 d-flex justify-content-end">
-				<Button color="secondary" size="sm" className="p-0">
-					<p className="m-0 p-0">
-						&nbsp;
-						<i className="fas fa-plus" />
-						&nbsp;
-					</p>
-				</Button>
-				&nbsp;
-				<Button color="secondary" size="sm" className="p-0">
-					<p className="m-0 p-0">
-						&nbsp;
-						<i className="fas fa-minus" />
-						&nbsp;
-					</p>
-				</Button>
-			</div>
-		</div>
-	);
-
-	let formula = (
-		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
-			<div className="col-12 m-0 p-0 d-flex justify-content-between">
-				<div className="m-0 p-0">
-					<Badge color="secondary"> Fórmula</Badge>
-				</div>
-				<div className="float-end">
-					<Badge color="danger">X</Badge>
-				</div>
-			</div>
-			<Input type="text" name="text" id="exampleText" className="mb-1" />
-		</div>
-	);
-
-	let image = (
-		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
-			<div className="col-12 m-0 p-0 d-flex justify-content-between">
-				<div className="m-0 p-0">
-					<Badge color="secondary"> Imagen</Badge>
-				</div>
-				<div className="float-end">
-					<Badge color="danger">X</Badge>
-				</div>
-			</div>
-			<Input type="file" name="file" id="exampleFile" accept=".jpg,.png,.jpeg,.gif" />
-		</div>
-	);
-
-	let space = (
-		<div className="row p-1 pt-0 border rounded-1 shadow mt-3 bg-secondary">
-			<Badge color="secondary" className="col-12 d-flex justify-content-between bg-secondary text-dark">
-				SEPARADOR
-				<Badge color="danger">X</Badge>
-			</Badge>
-		</div>
-	);
-
-	let matrix = (
-		<div className="row p-1 pt-0 border rounded-1 shadow mt-3">
-			<div className="col-12 m-0 p-0 d-flex justify-content-between">
-				<div className="m-0 p-0">
-					<Badge color="secondary"> Tabla</Badge>
-					<small className="text-muted">
-						&nbsp; En las tablas solo es posible agregar texto, no expresiones matemáticas.
-					</small>
-				</div>
-				<div className="float-end">
-					<Badge color="danger">X</Badge>
-				</div>
-			</div>
-			<div className="row m-1 mt-0">
-				<div className="col-3">
-					<Input
-						type="text"
-						name="text"
-						id="exampleText"
-						placeholder="Título de la columna"
-						className="m-1 border-dark"
-					/>
-				</div>
-				<div className="col-3">
-					<Input
-						type="text"
-						name="text"
-						id="exampleText"
-						placeholder="Título de la columna"
-						className="m-1 border-dark"
-					/>
-				</div>
-				<div className="col-3">
-					<Input
-						type="text"
-						name="text"
-						id="exampleText"
-						placeholder="Título de la columna"
-						className="m-1 border-dark"
-					/>
-				</div>
-				<div className="col-3">
-					<Input
-						type="text"
-						name="text"
-						id="exampleText"
-						placeholder="Título de la columna"
-						className="m-1 border-dark"
-					/>
-				</div>
-			</div>
-			<div className="row m-1 mt-0">
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-			</div>
-			<div className="row m-1 mt-0">
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-				<div className="col-3">
-					<Input type="text" name="text" id="exampleText" className="m-1" />
-				</div>
-			</div>
 			<div className="col-12 d-flex justify-content-end">
 				<Button color="secondary" size="sm" className="p-0">
 					<p className="m-0 p-0">
