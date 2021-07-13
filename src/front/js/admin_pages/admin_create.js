@@ -32,7 +32,7 @@ export const AdminCreate = () => {
 	const [renderedCreator, setRenderedCreator] = useState([]);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
-	const [buttons, setButtons] = useState(false);
+	const [final_options, setFinalOptions] = useState("");
 
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 	//const types = ["t", "f", "t", "f", "f"];
@@ -133,7 +133,29 @@ export const AdminCreate = () => {
 		setOptions(aux_options);
 		setOptionsTypes(aux_options_types);
 
-		//refreshCreator();
+		refreshOptionsCreator();
+	}
+
+	//<--------------------------[CREATOR EDITOR FUNCTIONS]---------------------->
+
+	function deleteOptionsElement(index) {
+		let aux_options = options;
+		let aux_options_types = optionsTypes;
+		console.log("elemento a borrar", index, aux_options);
+		aux_options.splice(index, 1);
+		aux_options_types.splice(index, 1);
+
+		setOptionsTypes(aux_options_types);
+		setOptions(aux_options);
+
+		refreshOptionsCreator();
+	}
+	function editOptionsCreatorElement(e, index) {
+		let aux_options = options;
+		aux_options[index] = e.target.value;
+
+		setOptions(aux_options);
+		refreshOptionsCreator();
 	}
 
 	//<--------------------------[END - FUNCTION ADD TYPES/OPTIONS ARRAYS]------           -------------------------------------->
@@ -149,6 +171,117 @@ export const AdminCreate = () => {
 
 	//<--------------------------[END - FUNCTION TO CALL STATEMENT CREATOR // RIGT SIDE OF THE SCREEN]--------------------------->
 
+	//<--------------------------[START - FUNCTION THAT CREATE THE EDITOR LABELS FOR OPTIONS]------------------------------------>
+
+	function saveOptionsValues(e, index) {
+		let aux_options = options;
+
+		aux_options[index] = e.target.value;
+
+		setOptions(aux_options);
+	}
+
+	function refreshOptionsCreator() {
+		let aux_options_creator = [];
+		optionsTypes.map(function(element, index) {
+			let aux = "";
+			if (element === "t") {
+				aux = (
+					<div
+						key={index.toString() + options[index].toString() + "opt"}
+						className="row p-1 pt-0 border rounded-1 shadow mt-1">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Texto</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteOptionsElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
+						</div>
+						<Input
+							type="textarea"
+							name="text"
+							id={index.toString() + element + "opt"}
+							onBlur={() => {
+								editOptionsCreatorElement(event, index);
+							}}
+							onChange={() => {
+								saveOptionsValues(event, index);
+							}}
+							defaultValue={options[index]}
+						/>
+					</div>
+				);
+				aux_options_creator.push(aux);
+			} else if (element === "f") {
+				aux = (
+					<div
+						key={index.toString() + options[index].toString() + "opt"}
+						className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Fórmula</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteOptionsElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
+						</div>
+						<Input
+							type="text"
+							name="text"
+							id={index.toString() + element + "opt"}
+							className="mb-1"
+							onBlur={() => {
+								editOptionsCreatorElement(event, index);
+							}}
+							onChange={() => {
+								saveOptionsValues(event, index);
+							}}
+							defaultValue={options[index]}
+						/>
+					</div>
+				);
+				aux_options_creator.push(aux);
+			} else if (element === "i") {
+				aux = (
+					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
+						<div className="col-12 m-0 p-0 d-flex justify-content-between">
+							<div className="m-0 p-0">
+								<Badge color="secondary"> Imagen</Badge>
+							</div>
+							<div className="float-end">
+								<Badge
+									onClick={() => {
+										deleteOptionsElement(index);
+									}}
+									color="danger">
+									X
+								</Badge>
+							</div>
+						</div>
+						<Input type="file" name="file" id={index.toString() + element} accept=".jpg,.png,.jpeg,.gif" />
+					</div>
+				);
+
+				aux_options_creator.push(aux);
+			}
+		});
+		setFinalOptions(aux_options_creator);
+	}
+
+	//<--------------------------[END - FUNCTION THAT CREATE THE EDITOR LABELS FOR OPTIONS]------------------------------------>
 	//<--------------------------[START - FUNCTION THAT CREATE THE EDITOR LABELS]------------------------------------------------>
 
 	function refreshCreator() {
@@ -986,7 +1119,7 @@ export const AdminCreate = () => {
 							</TabPane>
 							<TabPane tabId="2">
 								<Row>
-									<h1>Editor de las opciones</h1>
+									<Col sm="12">{final_options}</Col>
 								</Row>
 							</TabPane>
 							<TabPane tabId="3">
