@@ -121,35 +121,56 @@ export const AdminCreate = () => {
 
 	//<--------------------------[END - FUNCTION TO EDIT BUTTON LABELS AND ACTIONS]---------------------------------------------->
 
+	//<--------------------------[START - FUNCTION TO SET CORRECT ANSWER]-------------------------------------------------------->
+
+	function updateCorrectAnswer(index) {
+		let aux_answer = answers;
+
+		aux_answer.fill(false);
+		aux_answer[index] = true;
+
+		setAnswers(aux_answer);
+		refreshOptionsCreator();
+	}
+
+	//<--------------------------[END - FUNCTION TO SET CORRECT ANSWER]---------------------------------------------------------->
+
 	//<--------------------------[START - FUNCTION ADD TYPES/OPTIONS ARRAYS]----------------------------------------------------->
 
 	function addToOptions(type) {
 		let aux_options = options;
 		let aux_options_types = optionsTypes;
+		let aux_answers = answers;
 
 		aux_options.push("");
 		aux_options_types.push(type);
+		aux_answers.push(false);
 
 		setOptions(aux_options);
 		setOptionsTypes(aux_options_types);
+		setAnswers(aux_answers);
 
 		refreshOptionsCreator();
 	}
 
-	//<--------------------------[CREATOR EDITOR FUNCTIONS]---------------------->
+	//<--------------------------[CREATOR EDITOR FUNCTIONS]--------------------------------------------------------------------->
 
 	function deleteOptionsElement(index) {
 		let aux_options = options;
 		let aux_options_types = optionsTypes;
-		console.log("elemento a borrar", index, aux_options);
+		let aux_answers = answers;
+
 		aux_options.splice(index, 1);
 		aux_options_types.splice(index, 1);
+		aux_answers.splice(index, 1);
 
 		setOptionsTypes(aux_options_types);
 		setOptions(aux_options);
+		setAnswers(aux_answers);
 
 		refreshOptionsCreator();
 	}
+
 	function editOptionsCreatorElement(e, index) {
 		let aux_options = options;
 		aux_options[index] = e.target.value;
@@ -185,6 +206,15 @@ export const AdminCreate = () => {
 		let aux_options_creator = [];
 		optionsTypes.map(function(element, index) {
 			let aux = "";
+
+			let badge_color = "danger";
+			let badge_label = "Incorrecta";
+
+			if (answers[index] === true) {
+				badge_color = "success";
+				badge_label = "Correcta";
+			}
+
 			if (element === "t") {
 				aux = (
 					<div
@@ -192,7 +222,10 @@ export const AdminCreate = () => {
 						className="row p-1 pt-0 border rounded-1 shadow mt-1">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary"> Texto</Badge>
+								<Badge color="info"> Texto</Badge>
+								<Badge color={badge_color} onClick={() => updateCorrectAnswer(index)}>
+									{badge_label}
+								</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -226,7 +259,10 @@ export const AdminCreate = () => {
 						className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary"> Fórmula</Badge>
+								<Badge color="info"> Fórmula</Badge>
+								<Badge color={badge_color} onClick={() => updateCorrectAnswer(index)}>
+									{badge_label}
+								</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -259,7 +295,13 @@ export const AdminCreate = () => {
 					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="secondary"> Imagen</Badge>
+								<Badge color="info"> Imagen</Badge>
+								<Badge
+									key={element + badge_label}
+									color={badge_color}
+									onClick={() => updateCorrectAnswer(index)}>
+									{badge_label}
+								</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -297,6 +339,7 @@ export const AdminCreate = () => {
 							</div>
 							<div className="float-end">
 								<Badge
+									key={element + badge_label}
 									onClick={() => {
 										deleteCreatorElement(index);
 									}}
@@ -325,6 +368,7 @@ export const AdminCreate = () => {
 							</div>
 							<div className="float-end">
 								<Badge
+									key={element + badge_label}
 									onClick={() => {
 										deleteCreatorElement(index);
 									}}
