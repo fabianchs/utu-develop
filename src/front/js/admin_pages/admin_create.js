@@ -51,6 +51,8 @@ export const AdminCreate = () => {
 
 	function responsiveButtons() {
 		if (activeTab === "1") {
+			return <p>Aquí estarán los botones al modificar el enunciado u opciones.</p>;
+		} else if (activeTab === "2") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
 					<Button size="sm" onClick={() => addToStatement("t")}>
@@ -91,7 +93,7 @@ export const AdminCreate = () => {
 					</Dropdown>
 				</div>
 			);
-		} else if (activeTab === "2") {
+		} else if (activeTab === "3") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
 					<Button size="sm" onClick={() => addToOptions("t")}>
@@ -110,7 +112,7 @@ export const AdminCreate = () => {
 					&nbsp;
 				</div>
 			);
-		} else if (activeTab === "3") {
+		} else if (activeTab === "4") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
 					<span>La información permite categorizar los enunciados.</span>
@@ -221,11 +223,11 @@ export const AdminCreate = () => {
 						key={index.toString() + options[index].toString() + "opt"}
 						className="row p-1 pt-0 border rounded-1 shadow mt-1">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
-							<div className="m-0 p-0">
-								<Badge color="info"> Texto</Badge>
+							<div className="m-0 p-0 ">
 								<Badge color={badge_color} onClick={() => updateCorrectAnswer(index)}>
 									{badge_label}
 								</Badge>
+								<Badge color="info"> Texto</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -259,10 +261,10 @@ export const AdminCreate = () => {
 						className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="info"> Fórmula</Badge>
 								<Badge color={badge_color} onClick={() => updateCorrectAnswer(index)}>
 									{badge_label}
 								</Badge>
+								<Badge color="info"> Fórmula</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -295,13 +297,13 @@ export const AdminCreate = () => {
 					<div key={index} className="row p-1 pt-0 border rounded-1 shadow mt-3">
 						<div className="col-12 m-0 p-0 d-flex justify-content-between">
 							<div className="m-0 p-0">
-								<Badge color="info"> Imagen</Badge>
 								<Badge
 									key={element + badge_label}
 									color={badge_color}
 									onClick={() => updateCorrectAnswer(index)}>
 									{badge_label}
 								</Badge>
+								<Badge color="info"> Imagen</Badge>
 							</div>
 							<div className="float-end">
 								<Badge
@@ -339,7 +341,6 @@ export const AdminCreate = () => {
 							</div>
 							<div className="float-end">
 								<Badge
-									key={element + badge_label}
 									onClick={() => {
 										deleteCreatorElement(index);
 									}}
@@ -368,7 +369,6 @@ export const AdminCreate = () => {
 							</div>
 							<div className="float-end">
 								<Badge
-									key={element + badge_label}
 									onClick={() => {
 										deleteCreatorElement(index);
 									}}
@@ -1133,7 +1133,7 @@ export const AdminCreate = () => {
 									onClick={() => {
 										toggle_tab("1");
 									}}>
-									Enunciado
+									Inicio
 								</NavLink>
 							</NavItem>
 							<NavItem>
@@ -1142,7 +1142,7 @@ export const AdminCreate = () => {
 									onClick={() => {
 										toggle_tab("2");
 									}}>
-									Opciones
+									Enunciado
 								</NavLink>
 							</NavItem>
 							<NavItem>
@@ -1151,6 +1151,15 @@ export const AdminCreate = () => {
 									onClick={() => {
 										toggle_tab("3");
 									}}>
+									Opciones
+								</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink
+									className={classnames({ active: activeTab === "4" })}
+									onClick={() => {
+										toggle_tab("4");
+									}}>
 									Información
 								</NavLink>
 							</NavItem>
@@ -1158,15 +1167,22 @@ export const AdminCreate = () => {
 						<TabContent activeTab={activeTab}>
 							<TabPane tabId="1">
 								<Row>
-									<Col sm="12">{renderedCreator}</Col>
+									<Col sm="12">
+										<p>Por aquí las instrucciones de cómo utilizar el creador de enunciados.</p>
+									</Col>
 								</Row>
 							</TabPane>
 							<TabPane tabId="2">
 								<Row>
-									<Col sm="12">{final_options}</Col>
+									<Col sm="12">{renderedCreator}</Col>
 								</Row>
 							</TabPane>
 							<TabPane tabId="3">
+								<Row>
+									<Col sm="12">{final_options}</Col>
+								</Row>
+							</TabPane>
+							<TabPane tabId="4">
 								<Row>
 									<h1>Información general del enunciado</h1>
 								</Row>
