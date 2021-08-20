@@ -35,7 +35,6 @@ export const AdminCreate = () => {
 	const [final_options, setFinalOptions] = useState("");
 
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
-	//const types = ["t", "f", "t", "f", "f"];
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
