@@ -187,7 +187,12 @@ export const AdminCreate = () => {
 
 	function setPreview() {
 		setFinalStatement(
-			<RenderCreatorStatement statementToRender={statement} statementTypesToRender={statementTypes} />
+			<RenderCreatorStatement
+				statementToRender={statement}
+				statementTypesToRender={statementTypes}
+				optionsToRender={options}
+				optionsTypesToRender={optionsTypes}
+			/>
 		);
 	}
 

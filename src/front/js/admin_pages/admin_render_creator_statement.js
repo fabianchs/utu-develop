@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import MathJax from "react-mathjax";
 import "../../styles/index.scss";
 export function RenderCreatorStatement(props) {
-	const { statementToRender, statementTypesToRender } = props;
+	const { statementToRender, statementTypesToRender, optionsToRender, optionsTypesToRender } = props;
 	const [convertedComponent, setConvertedComponent] = useState("");
 	console.log(statementToRender, statementTypesToRender);
 
@@ -194,5 +194,7 @@ export function RenderCreatorStatement(props) {
 
 RenderCreatorStatement.propTypes = {
 	statementToRender: PropTypes.array,
-	statementTypesToRender: PropTypes.array
+	statementTypesToRender: PropTypes.array,
+	optionsToRender: PropTypes.array,
+	optionsTypesToRender: PropTypes.array
 };
