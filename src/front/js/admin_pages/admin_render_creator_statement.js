@@ -225,7 +225,7 @@ export function RenderCreatorStatement(props) {
 		refreshCreator();
 	}, []);
 
-	return <div key={optionsToRender}>{convertedComponent}</div>;
+	return <div>{convertedComponent}</div>;
 }
 
 RenderCreatorStatement.propTypes = {
