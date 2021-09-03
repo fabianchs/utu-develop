@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 96f387490b2c
+Revision ID: 8b83e75a5760
 Revises: 
-Create Date: 2021-06-16 14:35:56.531126
+Create Date: 2021-09-03 01:53:04.453905
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '96f387490b2c'
+revision = '8b83e75a5760'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,6 +61,26 @@ def upgrade():
     sa.Column('update_date', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('statement_creation',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=120), nullable=True),
+    sa.Column('statement', sa.ARRAY(sa.String(length=20000)), nullable=True),
+    sa.Column('options', sa.ARRAY(sa.String(length=2000)), nullable=True),
+    sa.Column('statement_types', sa.ARRAY(sa.String(length=150)), nullable=True),
+    sa.Column('options_types', sa.ARRAY(sa.String(length=150)), nullable=True),
+    sa.Column('answer', sa.ARRAY(sa.String(length=150)), nullable=True),
+    sa.Column('source', sa.String(length=120), nullable=True),
+    sa.Column('area', sa.String(length=120), nullable=True),
+    sa.Column('institution', sa.String(length=120), nullable=True),
+    sa.Column('is_difficult', sa.Boolean(), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('is_explained', sa.Boolean(), nullable=True),
+    sa.Column('created_by', sa.String(length=120), nullable=True),
+    sa.Column('modified_by', sa.String(length=120), nullable=True),
+    sa.Column('creation_date', sa.DateTime(), nullable=True),
+    sa.Column('update_date', sa.DateTime(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('test',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('text_array', sa.ARRAY(sa.String(length=20000)), nullable=True),
@@ -106,6 +126,7 @@ def downgrade():
     op.drop_table('report')
     op.drop_table('user')
     op.drop_table('test')
+    op.drop_table('statement_creation')
     op.drop_table('statement')
     op.drop_table('answers')
     op.drop_table('administrator')

@@ -131,6 +131,49 @@ class Statement(db.Model):
             "update_date": self.update_date
         }
 
+class StatementCreation(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), nullable=True)
+    statement = db.Column(db.ARRAY(db.String(20000)),nullable=True)
+    options = db.Column(db.ARRAY(db.String(2000)),nullable=True)
+    statement_types = db.Column(db.ARRAY(db.String(150)),nullable=True)
+    options_types=db.Column(db.ARRAY(db.String(150)),nullable=True)
+    answer= db.Column(db.ARRAY(db.String(150)),nullable=True)
+    source = db.Column(db.String(120), nullable=True)
+    area=db.Column(db.String(120), nullable=True)
+    institution=db.Column(db.String(120), nullable=True)
+    is_difficult=db.Column(db.Boolean(),nullable=True)
+    is_active=db.Column(db.Boolean(), nullable=True)
+    is_explained=db.Column(db.Boolean(),nullable=True)
+    created_by= db.Column(db.String(120), nullable=True)
+    modified_by= db.Column(db.String(120), nullable=True)
+    creation_date=db.Column(db.DateTime,nullable=True)
+    update_date = db.Column(db.DateTime, nullable=True)
+
+    def __repr__(self):
+        return '<StatementCreator %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "statement": self.statement,
+            "statement_types": self.statement_types,
+            "options":self.options,
+            "options_types":self.options_types,
+            "answer" : self.correct,
+            "is_explained": self.is_explained,
+            "source": self.source,
+            "is_difficult": self.is_difficult,
+            "is_active":self.is_active,
+            "area":self.area,
+            "institution":self.institution,
+            "created_by": self.created_by,
+            "modified_by": self.modified_by,
+            "creation_date": self.creation_date,
+            "update_date": self.update_date
+        }
+
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer,nullable=False)
