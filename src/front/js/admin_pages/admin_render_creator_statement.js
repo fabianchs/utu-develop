@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Button, Input, Badge, Table } from "reactstrap";
+import React, { useState, useContext, useEffect} from "react";
+import { Button, Input, Badge, Table, Alert } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import MathJax from "react-mathjax";
 import "../../styles/index.scss";
 export function RenderCreatorStatement(props) {
-	const { statementToRender, statementTypesToRender, optionsToRender, optionsTypesToRender } = props;
+	const { statementToRender, statementTypesToRender, optionsToRender, optionsTypesToRender, answers } = props;
 	const [convertedComponent, setConvertedComponent] = useState("");
 	console.log(statementToRender, statementTypesToRender);
 
@@ -183,18 +183,55 @@ export function RenderCreatorStatement(props) {
 			}
 			return auxCreator;
 		});
+
+		optionsTypesToRender.map(function(element, index) {
+			let aux = "";
+			let color = "danger";
+
+			if (answers[index] === true) {
+				color = "success";
+			}
+
+			if (element === "t") {
+				aux = (
+					<Alert color={color}>
+						<span className="m-0 p-0" key={index}>
+							{optionsToRender[index]}
+							&nbsp;
+						</span>
+					</Alert>
+				);
+				auxCreator.push(aux);
+			} else if (element === "f") {
+				aux = (
+					<Alert color={color}>
+						<span>
+							<MathJax.Provider key={index}>
+								<span>
+									<MathJax.Node inline formula={optionsToRender[index]} />
+								</span>
+								<span>&nbsp;</span>
+							</MathJax.Provider>
+						</span>
+					</Alert>
+				);
+				auxCreator.push(aux);
+			}
+		});
+
 		setConvertedComponent(auxCreator);
 	}
 	useEffect(() => {
 		refreshCreator();
 	}, []);
 
-	return <div>{convertedComponent}</div>;
+	return <div key={optionsToRender}>{convertedComponent}</div>;
 }
 
 RenderCreatorStatement.propTypes = {
 	statementToRender: PropTypes.array,
 	statementTypesToRender: PropTypes.array,
 	optionsToRender: PropTypes.array,
-	optionsTypesToRender: PropTypes.array
+	optionsTypesToRender: PropTypes.array,
+	answers: PropTypes.array
 };

@@ -192,6 +192,7 @@ export const AdminCreate = () => {
 				statementTypesToRender={statementTypes}
 				optionsToRender={options}
 				optionsTypesToRender={optionsTypes}
+				answers={answers}
 			/>
 		);
 	}
@@ -1196,7 +1197,7 @@ export const AdminCreate = () => {
 				</div>
 				<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 container-fluid">
 					<div className="bg-light border border-info rounded rounded-4 shadow shadow-sm p-1">
-						<div className="m-1" key={statement}>
+						<div className="m-1" key={[statement, answers]}>
 							{final_statement}
 						</div>
 					</div>
