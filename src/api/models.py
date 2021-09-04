@@ -161,7 +161,7 @@ class StatementCreation(db.Model):
             "statement_types": self.statement_types,
             "options":self.options,
             "options_types":self.options_types,
-            "answer" : self.correct,
+            "answer" : self.answer,
             "is_explained": self.is_explained,
             "source": self.source,
             "is_difficult": self.is_difficult,

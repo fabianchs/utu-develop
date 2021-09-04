@@ -51,6 +51,46 @@ def handle_statement_creation():
         db.session.add(new_statement)
         db.session.commit()
 
+        return jsonify(StatementCreation.serialize(new_statement)), 201
+    
+    except AssertionError as exception_message: 
+        return jsonify(msg='Error: {}. '.format(exception_message)), 400
+
+
+    return jsonify({"msg": "Enunciado creado correctamente"}), 200
+
+
+@routes_statements.route('/statement/update', methods=['POST'])
+def handle_statement_update():
+
+    data_request = request.get_json()
+
+    id=request.json.get("id",None)
+
+    statement_update = StatementCreation.query.filter_by(id=data_request["id"]).first()
+
+    if statement_update is None:
+        return jsonify(msg='Error: {}. '.format(exception_message)), 400
+
+
+    statement_update.title=data_request["title"]
+    statement_update.statement=data_request["statement"]
+    statement_update.options=data_request["options"] 
+    statement_update.statement_types=data_request["statement_types"]
+    statement_update.options_types=data_request["options_types"]
+    statement_update.answer=data_request["answer"]
+    statement_update.source=data_request["source"]
+    statement_update.area=data_request["area"]
+    statement_update.institution=data_request["institution"]
+    statement_update.is_difficult=data_request["is_difficult"]
+    statement_update.is_active=data_request["is_active"]
+    statement_update.is_explained=data_request["is_explained"]
+    statement_update.created_by=data_request["created_by"]
+    statement_update.modified_by=data_request["modified_by"]
+
+    try:
+        db.session.commit()
+
         return jsonify({"msg":"El enunciado se ha guardado correctamente"}), 201
     
     except AssertionError as exception_message: 
