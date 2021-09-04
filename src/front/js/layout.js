@@ -16,6 +16,7 @@ import injectContext from "./store/appContext";
 //[START] IMPORTS THAT HAVE RELATION WITH ADMIN
 import { AdminLogin } from "./admin_pages/admin_login";
 import { AdminCreate } from "./admin_pages/admin_create";
+import { AdminDashboard } from "./admin_pages/admin_dashboard";
 import { ModalExample } from "./admin_pages/modal";
 
 //[START] IMPORTS THAT HAVE RELATION WITH THE BOSS
@@ -67,6 +68,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/admin/create">
 							<AdminCreate />
+						</Route>
+						<Route exact path="/admin/dashboard">
+							<AdminDashboard />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

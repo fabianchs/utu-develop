@@ -84,8 +84,8 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
-								Revisar
+							<Link to="/dashboard" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Dashboard
 							</Link>
 						</NavItem>
 						<NavItem>
@@ -110,8 +110,8 @@ export const Nav_bar = () => {
 							</Link>
 						</NavItem>
 						<NavItem>
-							<Link to="/practice" className="nav-link text-light h3" onClick={closeIfOpen}>
-								Gestionar
+							<Link to="/dashboard" className="nav-link text-light h3" onClick={closeIfOpen}>
+								Dashboard
 							</Link>
 						</NavItem>
 						<NavItem>

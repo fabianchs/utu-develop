@@ -9,6 +9,7 @@
     { "src": "/profile", "dest": "/" },
     { "src": "/admin", "dest": "/" },
     { "src": "/admin/register", "dest": "/" },
-    { "src": "/admin/create", "dest": "/" }
+    { "src": "/admin/create", "dest": "/" },
+    { "src": "/admin/dashboard", "dest": "/" }
   ]
 }
