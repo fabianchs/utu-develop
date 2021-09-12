@@ -12,8 +12,7 @@ export const AdminDashboard = () => {
 
 	async function startNew() {
 		actions.startNewStatement();
-		History.push("/admin/create");
-		//.replace gives result
+		History.push("/admin/wait");
 	}
 
 	return (

@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			isAdmin: false,
 			isBoss: false,
 			//STATEMENT CREATION VARS
-			statement_content: {}
+			statement_content: undefined
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -99,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => {
 						if (res.status === 201) {
-							alert("Ha enviado la info correctamente");
+							setStore({ statement_content: res.json() });
 						} else {
 							alert("Ha ocurrido un error");
 						}
@@ -108,8 +108,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data);
 					})
 					.catch(err => console.log(err));
-
-				return true;
 			},
 
 			changeColor: (index, color) => {

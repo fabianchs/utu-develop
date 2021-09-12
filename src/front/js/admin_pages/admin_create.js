@@ -34,6 +34,7 @@ export const AdminCreate = () => {
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
 	const [final_options, setFinalOptions] = useState("");
 
+	const { store, actions } = useContext(Context);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
@@ -43,6 +44,13 @@ export const AdminCreate = () => {
 	const toggle_tab = tab => {
 		if (activeTab !== tab) setActiveTab(tab);
 	};
+
+	useEffect(
+		() => {
+			console.log(store.statement_content);
+		},
+		[store.statement_content]
+	);
 
 	//<--------------------------[END - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]----------------------------->
 

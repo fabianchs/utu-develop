@@ -17,6 +17,8 @@ import injectContext from "./store/appContext";
 import { AdminLogin } from "./admin_pages/admin_login";
 import { AdminCreate } from "./admin_pages/admin_create";
 import { AdminDashboard } from "./admin_pages/admin_dashboard";
+import { AdminWait } from "./admin_pages/admin_wait";
+
 import { ModalExample } from "./admin_pages/modal";
 
 //[START] IMPORTS THAT HAVE RELATION WITH THE BOSS
@@ -71,6 +73,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/admin/dashboard">
 							<AdminDashboard />
+						</Route>
+						<Route exact path="/admin/wait">
+							<AdminWait />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
