@@ -19,7 +19,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: null,
 			isUser: false, //While signing up permissions like User, Admin, or boss are defined
 			isAdmin: false,
-			isBoss: false
+			isBoss: false,
+			//STATEMENT CREATION VARS
+			statement_content: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -38,11 +40,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setToken: (token, type) => {
 				const store = getStore();
 				if (type === "user") {
-					setStore({ isUser: true, isAdmin: false, isBoss: false, token: token });
+					setStore({
+						isUser: true,
+						isAdmin: false,
+						isBoss: false,
+						token: token
+					});
 				} else if (type === "admin") {
-					setStore({ isUser: false, isAdmin: true, isBoss: false, token: token });
+					setStore({
+						isUser: false,
+						isAdmin: true,
+						isBoss: false,
+						token: token
+					});
 				} else if (type === "boss") {
-					setStore({ isUser: false, isAdmin: false, isBoss: true, token: token });
+					setStore({
+						isUser: false,
+						isAdmin: false,
+						isBoss: true,
+						token: token
+					});
 				}
 			},
 			signOff: () => {
@@ -52,6 +69,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 			defineTableColumns: number => {
 				setStore({ columns: number });
 			},
+			//ACTION TO START A NEW STATEMENT
+			startNewStatement: async () => {
+				const store = getStore();
+				let body = {
+					title: "",
+					statement: [""],
+					options: [""],
+					statement_types: [""],
+					options_types: [""],
+					answer: [""],
+					source: "",
+					area: "",
+					institution: "",
+					is_difficult: false,
+					is_active: false,
+					is_explained: false,
+					created_by: "fabito",
+					modified_by: "leyo"
+				};
+
+				let url = store.api_url + "/statement/create";
+				fetch(url, {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => {
+						if (res.status === 201) {
+							alert("Ha enviado la info correctamente");
+						} else {
+							alert("Ha ocurrido un error");
+						}
+					})
+					.then(data => {
+						console.log(data);
+					})
+					.catch(err => console.log(err));
+
+				return true;
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

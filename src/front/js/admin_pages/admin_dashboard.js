@@ -7,14 +7,22 @@ import "../../styles/index.scss";
 import { Button, Toast, ToastBody, ToastHeader } from "reactstrap";
 
 export const AdminDashboard = () => {
+	const { store, actions } = useContext(Context);
+	const History = useHistory();
+
+	async function startNew() {
+		actions.startNewStatement();
+		History.push("/admin/create");
+		//.replace gives result
+	}
+
 	return (
-		// <div className="mx-auto pt-5">
 		<div className="pt-5 mt-5 container-fluid">
 			<div className="row d-flex justify-content-center ">
 				<div className="col-11 bg-secondary p-1 rounded border">
 					<div className="row d-flex justify-content-between align-items-center m-1">
 						<span className="h1">Hola! Fabián Chacón</span>
-						<Button>Crear Enunciado</Button>
+						<Button onClick={() => startNew()}>Crear Enunciado</Button>
 					</div>
 
 					<hr />
