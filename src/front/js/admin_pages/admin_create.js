@@ -1181,7 +1181,13 @@ export const AdminCreate = () => {
 							<TabPane tabId="1">
 								<Row>
 									<Col sm="12">
-										<p>Por aquí las instrucciones de cómo utilizar el creador de enunciados.</p>
+										<p>¡Bienvenido al creador de enunciados!</p>
+										<p>
+											Esta herramienta consta de tres secciones, la primera permite llenar el
+											contenido del enunciado, la segunda permite llenar las opciones, la sección
+											de información permite clasificar los enunciados dentro de la plataforma, su
+											origen, entre otros.
+										</p>
 									</Col>
 								</Row>
 							</TabPane>
