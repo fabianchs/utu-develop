@@ -34,6 +34,7 @@ export const AdminCreate = () => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
 	const [final_options, setFinalOptions] = useState("");
+	const [api_message, setApiMessage] = useState("");
 
 	const { store, actions } = useContext(Context);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
@@ -41,7 +42,16 @@ export const AdminCreate = () => {
 	//<--------------------------[START - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
 
 	function sendToApi() {
-		ParseToApiStructure(statement, statementTypes, options, optionsTypes, answers);
+		console.log(statement, statementTypes);
+		setApiMessage(
+			<ParseToApiStructure
+				statement_api={statement}
+				statementTypes_api={statementTypes}
+				options_api={options}
+				optionsTypes_api={optionsTypes}
+				answers_api={answers}
+			/>
+		);
 	}
 
 	//<--------------------------[END - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
@@ -1132,6 +1142,7 @@ export const AdminCreate = () => {
 							</Button>
 							&nbsp;
 							<div>
+								<span>{api_message}</span>
 								<Button size="sm">
 									<i className="far fa-save" />
 									&nbsp; Guardar
