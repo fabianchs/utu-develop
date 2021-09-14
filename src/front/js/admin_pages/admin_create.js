@@ -1,6 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { ParseToApiStructure } from "../functions/parse_to_api_structure";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import classnames from "classnames";
@@ -1128,7 +1129,19 @@ export const AdminCreate = () => {
 									&nbsp; Guardar
 								</Button>
 								&nbsp;
-								<Button size="sm">
+								<Button
+									size="sm"
+									onClick={() => {
+										console.log(
+											ParseToApiStructure(
+												statement,
+												statementTypes,
+												options,
+												optionsTypes,
+												answers
+											)
+										);
+									}}>
 									<i className="far fa-paper-plane" /> &nbsp; Finalizar
 								</Button>
 							</div>
