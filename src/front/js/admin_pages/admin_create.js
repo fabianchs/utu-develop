@@ -42,6 +42,7 @@ export const AdminCreate = () => {
 	//<--------------------------[START - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
 
 	function sendToApi() {
+		setApiMessage(<div>Enviando</div>);
 		setApiMessage(
 			<ParseToApiStructure
 				statement_api={statement}
@@ -65,7 +66,7 @@ export const AdminCreate = () => {
 
 	useEffect(
 		() => {
-			console.log(store.statement_content);
+			//
 		},
 		[store.statement_content]
 	);
@@ -1050,8 +1051,6 @@ export const AdminCreate = () => {
 		let aux_statement = statement;
 
 		aux_statement[statement_index][row_index][input_index] = e.target.value;
-
-		console.log(statement_index, row_index, input_index, e.target.value);
 
 		setStatement(aux_statement);
 
