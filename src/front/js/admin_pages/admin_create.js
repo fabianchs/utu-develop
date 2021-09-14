@@ -42,7 +42,6 @@ export const AdminCreate = () => {
 	//<--------------------------[START - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
 
 	function sendToApi() {
-		console.log(statement, statementTypes);
 		setApiMessage(
 			<ParseToApiStructure
 				statement_api={statement}
@@ -1141,20 +1140,23 @@ export const AdminCreate = () => {
 								&nbsp; Actualizar
 							</Button>
 							&nbsp;
-							<div>
+							<div className="row d-flex align-items-center">
+								&nbsp;
 								<span>{api_message}</span>
-								<Button size="sm">
-									<i className="far fa-save" />
-									&nbsp; Guardar
-								</Button>
 								&nbsp;
 								<Button
 									size="sm"
 									onClick={() => {
 										sendToApi();
 									}}>
+									<i className="far fa-save" />
+									&nbsp; Guardar
+								</Button>
+								&nbsp;
+								<Button size="sm">
 									<i className="far fa-paper-plane" /> &nbsp; Finalizar
 								</Button>
+								&nbsp;
 							</div>
 						</div>
 					</div>

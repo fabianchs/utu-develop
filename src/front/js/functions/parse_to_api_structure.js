@@ -24,7 +24,7 @@ export function ParseToApiStructure(props) {
 
 			converted_statement.push(first_join.join("¶"));
 		} else if (statementTypes_api[index] === "l") {
-			if (converted_statement[index].length === 1) {
+			if (statement_api[index].length === 1) {
 				converted_statement.push(statement_api[index][0]);
 			} else {
 				converted_statement.push(statement_api[index].join("¶"));
@@ -34,7 +34,24 @@ export function ParseToApiStructure(props) {
 		}
 	}
 
-	message = "Finalizado";
+	let body = {
+		title: "",
+		statement: converted_statement,
+		options: options_api,
+		statement_types: statementTypes_api,
+		options_types: options_api,
+		answer: answers_api,
+		source: "",
+		area: "",
+		institution: "",
+		is_difficult: false,
+		is_active: false,
+		is_explained: false,
+		created_by: "fabito",
+		modified_by: "leyo"
+	};
+
+	message = "Guardado";
 	return <div>{message}</div>;
 }
 ParseToApiStructure.propTypes = {
