@@ -1,7 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { ParseToApiStructure } from "../functions/parse_to_api_structure";
+import { ParseToApiStructure } from "../functions/parse_to_api_structure.js";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import classnames from "classnames";
@@ -37,6 +37,14 @@ export const AdminCreate = () => {
 
 	const { store, actions } = useContext(Context);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
+
+	//<--------------------------[START - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
+
+	function sendToApi() {
+		ParseToApiStructure(statement, statementTypes, options, optionsTypes, answers);
+	}
+
+	//<--------------------------[END - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
@@ -1132,15 +1140,7 @@ export const AdminCreate = () => {
 								<Button
 									size="sm"
 									onClick={() => {
-										console.log(
-											ParseToApiStructure(
-												statement,
-												statementTypes,
-												options,
-												optionsTypes,
-												answers
-											)
-										);
+										sendToApi();
 									}}>
 									<i className="far fa-paper-plane" /> &nbsp; Finalizar
 								</Button>

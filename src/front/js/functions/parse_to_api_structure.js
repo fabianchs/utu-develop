@@ -24,14 +24,15 @@ export async function ParseToApiStructure(
 
 			converted_statement[index] = first_join.join("¶");
 		} else if (statementTypes_api[index] === "l") {
-			converted_statement[index] = converted_statement[index].join("¶");
+			if (converted_statement[index].length === 1) {
+				converted_statement[index] = converted_statement[index][0];
+			} else {
+				converted_statement[index] = converted_statement[index].join("¶");
+			}
 		}
 	}
-	console.log(converted_statement);
 
 	let hello = "funciona?¶";
-
-	return hello;
 }
 
 export default ParseToApiStructure;
