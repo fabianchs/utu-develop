@@ -58,7 +58,7 @@ export const AdminCreate = () => {
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
-	const [activeTab, setActiveTab] = useState("1");
+	const [activeTab, setActiveTab] = useState("4");
 
 	const toggle_tab = tab => {
 		if (activeTab !== tab) setActiveTab(tab);
@@ -141,7 +141,7 @@ export const AdminCreate = () => {
 		} else if (activeTab === "4") {
 			return (
 				<div className="d-flex justify-content-start bg-light">
-					<span>La información permite categorizar los enunciados.</span>
+					<span className="h6">La información permite categorizar los enunciados.</span>
 				</div>
 			);
 		}
@@ -1227,8 +1227,37 @@ export const AdminCreate = () => {
 								</Row>
 							</TabPane>
 							<TabPane tabId="4">
-								<Row>
-									<h1>Información general del enunciado</h1>
+								<Row className="d-flex justify-content-center">
+									<h2>Información general del enunciado</h2>
+									<div className="row w-75">
+										<small>Título:</small>
+										<Input
+											type="textarea"
+											placeholder={
+												"Debe ser algo representativo, con el fin de identificarlo más fácilmente para el desarrollador/profesor. Ejemplo: Lectura de inferencia, Serie numérica con objetos. El título no aparecerá para el usuario final."
+											}
+										/>
+										<small>Universidad de origen:</small>
+										<Input type="select" name="select" id="institution_form">
+											<option>OTRO</option>
+											<option>UCR</option>
+											<option>TEC</option>
+											<option>UNA</option>
+											<option>N/A</option>
+										</Input>
+										<small>Área:</small>
+										<Input type="select" name="select" id="area_form">
+											<option value="1">Razonamiento Matemático</option>
+											<option value="2">Razonamiento Verbal</option>
+										</Input>
+										<small>Fuente {"(Formato APA):"}</small>
+										<Input
+											type="textarea"
+											placeholder={
+												"TEC. 2021. Práctica Prueba Aptitud Académica 2020. Enunciado Número 23"
+											}
+										/>
+									</div>
 								</Row>
 							</TabPane>
 						</TabContent>
