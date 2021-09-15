@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 export function ParseToApiStructure(props) {
 	//alt+532
 	//.split() to separate
-	const { statement_api, statementTypes_api, options_api, optionsTypes_api, answers_api } = props;
+	const { statement_api, statementTypes_api, options_api, optionsTypes_api, answers_api, statement_info_api } = props;
 
 	let converted_statement = [];
 	let message = "Enviando";
@@ -35,21 +35,23 @@ export function ParseToApiStructure(props) {
 	}
 
 	let body = {
-		title: "",
+		title: statement_info_api[0],
 		statement: converted_statement,
 		options: options_api,
 		statement_types: statementTypes_api,
-		options_types: options_api,
+		options_types: optionsTypes_api,
 		answer: answers_api,
-		source: "",
-		area: "",
-		institution: "",
+		source: statement_info_api[3],
+		area: statement_info_api[2],
+		institution: statement_info_api[1],
 		is_difficult: false,
 		is_active: false,
 		is_explained: false,
 		created_by: "fabito",
 		modified_by: "leyo"
 	};
+
+	console.log(body);
 
 	message = "Guardado";
 	return <div>{message}</div>;
@@ -59,5 +61,6 @@ ParseToApiStructure.propTypes = {
 	statementTypes_api: PropTypes.array,
 	options_api: PropTypes.array,
 	optionsTypes_api: PropTypes.array,
-	answers_api: PropTypes.array
+	answers_api: PropTypes.array,
+	statement_info_api: PropTypes.array
 };

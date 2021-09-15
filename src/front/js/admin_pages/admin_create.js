@@ -35,6 +35,7 @@ export const AdminCreate = () => {
 	const [final_statement, setFinalStatement] = useState(<h1>Aquí aparecerá el enunciado resultante.</h1>);
 	const [final_options, setFinalOptions] = useState("");
 	const [api_message, setApiMessage] = useState("");
+	const [statement_info, setStatementInfo] = useState(["", "", "", ""]);
 
 	const { store, actions } = useContext(Context);
 	//const statement = ["Hola!", "(a^2+3)/56", "prueba", "\\dfrac{a^2+3}{56}", "x^2-56"];
@@ -50,11 +51,22 @@ export const AdminCreate = () => {
 				options_api={options}
 				optionsTypes_api={optionsTypes}
 				answers_api={answers}
+				statement_info_api={statement_info}
 			/>
 		);
 	}
 
 	//<--------------------------[END - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
+
+	//<--------------------------[START - FUNCTION TO MODIFY STATEMENT INFORMATION]--------------------------------------------->
+
+	function modifyStatementInfo(e, index) {
+		let aux_info = statement_info;
+		aux_info[index] = e.target.value;
+		setStatementInfo(aux_info);
+	}
+
+	//<--------------------------[END - FUNCTION TO MODIFY STATEMENT INFORMATION]----------------------------------------------->
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
@@ -1236,22 +1248,39 @@ export const AdminCreate = () => {
 											placeholder={
 												"Debe ser algo representativo, con el fin de identificarlo más fácilmente para el desarrollador/profesor. Ejemplo: Lectura de inferencia, Serie numérica con objetos. El título no aparecerá para el usuario final."
 											}
+											onBlur={() => modifyStatementInfo(event, 0)}
 										/>
 										<small>Universidad de origen:</small>
-										<Input type="select" name="select" id="institution_form">
-											<option>OTRO</option>
+										<Input
+											type="select"
+											name="select"
+											id="institution_form"
+											onChange={() => modifyStatementInfo(event, 1)}>
+											<option disabled selected value>
+												Seleccione una universidad
+											</option>
+
 											<option>UCR</option>
 											<option>TEC</option>
 											<option>UNA</option>
+											<option>OTRO</option>
 											<option>N/A</option>
 										</Input>
 										<small>Área:</small>
-										<Input type="select" name="select" id="area_form">
-											<option value="1">Razonamiento Matemático</option>
-											<option value="2">Razonamiento Verbal</option>
+										<Input
+											type="select"
+											name="select"
+											id="area_form"
+											onChange={() => modifyStatementInfo(event, 2)}>
+											<option disabled selected value>
+												Seleccione un área
+											</option>
+											<option value="m">Razonamiento Matemático</option>
+											<option value="v">Razonamiento Verbal</option>
 										</Input>
 										<small>Fuente {"(Formato APA):"}</small>
 										<Input
+											onBlur={() => modifyStatementInfo(event, 3)}
 											type="textarea"
 											placeholder={
 												"TEC. 2021. Práctica Prueba Aptitud Académica 2020. Enunciado Número 23"
