@@ -97,19 +97,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					}
 				})
-					.then(res => {
-						if (res.status === 201) {
-							setStore({ statement_content: res.json() });
-						} else {
-							alert("Ha ocurrido un error");
-						}
-					})
+					.then(res => res.json())
 					.then(data => {
-						console.log(data);
+						setStore({ statement_content: data });
 					})
 					.catch(err => console.log(err));
 			},
-
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

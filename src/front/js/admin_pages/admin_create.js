@@ -52,6 +52,7 @@ export const AdminCreate = () => {
 				optionsTypes_api={optionsTypes}
 				answers_api={answers}
 				statement_info_api={statement_info}
+				statement_id={store.statement_content.id}
 			/>
 		);
 	}

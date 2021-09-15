@@ -2,11 +2,20 @@ import React, { Component, useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 export function ParseToApiStructure(props) {
 	//alt+532
 	//.split() to separate
-	const { statement_api, statementTypes_api, options_api, optionsTypes_api, answers_api, statement_info_api } = props;
-
+	const {
+		statement_api,
+		statementTypes_api,
+		options_api,
+		optionsTypes_api,
+		answers_api,
+		statement_info_api,
+		statement_id
+	} = props;
+	const { store, actions } = useContext(Context);
 	let converted_statement = [];
 	let message = "Enviando";
 
@@ -35,6 +44,7 @@ export function ParseToApiStructure(props) {
 	}
 
 	let body = {
+		id: statement_id,
 		title: statement_info_api[0],
 		statement: converted_statement,
 		options: options_api,
@@ -50,8 +60,26 @@ export function ParseToApiStructure(props) {
 		created_by: "fabito",
 		modified_by: "leyo"
 	};
-
-	console.log(body);
+	console.log(store.statement_content.id);
+	let url = store.api_url + "/statement/update";
+	fetch(url, {
+		method: "POST",
+		body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json"
+		}
+	})
+		.then(res => {
+			if (res.status === 201) {
+				//
+			} else {
+				alert("Ha ocurrido un error");
+			}
+		})
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => console.log(err));
 
 	message = "Guardado";
 	return <div>{message}</div>;
@@ -62,5 +90,6 @@ ParseToApiStructure.propTypes = {
 	options_api: PropTypes.array,
 	optionsTypes_api: PropTypes.array,
 	answers_api: PropTypes.array,
-	statement_info_api: PropTypes.array
+	statement_info_api: PropTypes.array,
+	statement_id: PropTypes.number
 };
