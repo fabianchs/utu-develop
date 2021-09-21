@@ -77,12 +77,9 @@ export const AdminCreate = () => {
 		if (activeTab !== tab) setActiveTab(tab);
 	};
 
-	useEffect(
-		() => {
-			//
-		},
-		[store.statement_content]
-	);
+	useEffect(() => {
+		//
+	}, [store.statement_content]);
 
 	//<--------------------------[END - FUNCTION THAT CALLS THE STATEMENT CREATOR OR OPTION CREATOR]----------------------------->
 
@@ -985,11 +982,20 @@ export const AdminCreate = () => {
 		} else if (type === "l") {
 			aux_statement.push([""]);
 		} else if (type === "m2") {
-			aux_statement.push([["", ""], ["", ""]]);
+			aux_statement.push([
+				["", ""],
+				["", ""]
+			]);
 		} else if (type === "m3") {
-			aux_statement.push([["", "", ""], ["", "", ""]]);
+			aux_statement.push([
+				["", "", ""],
+				["", "", ""]
+			]);
 		} else if (type === "m4") {
-			aux_statement.push([["", "", "", ""], ["", "", "", ""]]);
+			aux_statement.push([
+				["", "", "", ""],
+				["", "", "", ""]
+			]);
 		}
 		aux_statement_types.push(type);
 
