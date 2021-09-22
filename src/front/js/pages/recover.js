@@ -14,8 +14,8 @@ export const Recover = () => {
 	let transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: "fabichasola@gmail.com",
-			pass: "HJ50sd25"
+			user: "notvalid@gmail.com",
+			pass: "notvalid"
 		}
 	});
 
