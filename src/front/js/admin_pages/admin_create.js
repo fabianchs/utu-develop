@@ -43,7 +43,6 @@ export const AdminCreate = () => {
 	//<--------------------------[START - FUNCTIONS TO SAVE STATEMENT INTO API|| FINISH STATEMENT || SEND INFO]------------------->
 
 	function sendToApi() {
-		setApiMessage(<div>Enviando</div>);
 		setApiMessage(
 			<ParseToApiStructure
 				statement_api={statement}
@@ -71,7 +70,7 @@ export const AdminCreate = () => {
 
 	//<--------------------------[START - FUNCTION THAT CALLS THE STATEMENT CREATOR || OPTION CREATOR || INFO]------------------->
 
-	const [activeTab, setActiveTab] = useState("4");
+	const [activeTab, setActiveTab] = useState("1");
 
 	const toggle_tab = tab => {
 		if (activeTab !== tab) setActiveTab(tab);

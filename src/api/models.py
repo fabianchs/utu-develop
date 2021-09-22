@@ -220,3 +220,4 @@ class Report(db.Model):
             "show_to_all_admins": self.show_to_all_admins,
             "creation_date": self.creation_date
         }
+

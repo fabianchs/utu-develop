@@ -20,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			isUser: false, //While signing up permissions like User, Admin, or boss are defined
 			isAdmin: false,
 			isBoss: false,
+			internal_email=["@","pass"],
 			//STATEMENT CREATION VARS
 			statement_content: undefined
 		},

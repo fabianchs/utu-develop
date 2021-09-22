@@ -4,10 +4,27 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/index.scss";
+import nodemailer from "nodemailer";
 import { Button } from "reactstrap";
+
 export const Recover = () => {
 	const [email, setEmail] = useState("");
 	const History = useHistory();
+
+	let transporter = nodemailer.createTransport({
+		service: "gmail",
+		auth: {
+			user: "fabichasola@gmail.com",
+			pass: "HJ50sd25"
+		}
+	});
+
+	let mailOptions = {
+		from: "fabichasola@gmail.com",
+		to: "fabichasola@hotmail.com",
+		subject: "Sending Email using Node.js",
+		text: "That was easy!"
+	};
 
 	return (
 		// <div className="mx-auto pt-5">
