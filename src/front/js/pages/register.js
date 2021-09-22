@@ -14,6 +14,7 @@ export const Register = () => {
 	const [last_name, setLast_name] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [country, setCountry] = useState("CR");
 	const [confPassword, setConfPassword] = useState("");
 	const [conditions, setConditions] = useState([false, false, false, false, false]);
 	const [auth, setAuth] = useState(false);
@@ -83,7 +84,8 @@ export const Register = () => {
 			name: name,
 			last_name: last_name,
 			email: email,
-			password: password
+			password: password,
+			country: country
 		};
 
 		let inputs = e.target.getElementsByTagName("input");
@@ -126,7 +128,13 @@ export const Register = () => {
 	};
 
 	const countries = (
-		<select name="country" className="form-control" id="country">
+		<select
+			name="country"
+			className="form-control"
+			id="country"
+			onChange={() => {
+				setCountry(event.target.value);
+			}}>
 			<option value="CR" defaultValue="CR" label="Ingresa el país " selected="CR">
 				Select a country ...{" "}
 			</option>

@@ -57,6 +57,8 @@ def handle_register():
         password= request.json.get("password", None)
         creation_date = datetime.datetime.now()
         update_date = datetime.datetime.now()
+        country=request.json.get("country", None)
+
 
         if name=="" or last_name=="" or email=="" or password=="":
             return jsonify({"message": "Lo sentimos, debe llenar correctamente todos los espacios."}), 401
@@ -70,6 +72,7 @@ def handle_register():
         new_user.is_problematic= False
         new_user.creation_date= creation_date
         new_user.update_date=update_date
+        new_user.country=country
 
         try:
             db.session.add(new_user)

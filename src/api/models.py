@@ -21,6 +21,7 @@ class User(db.Model):
     is_problematic = db.Column(db.Boolean(), unique=False, nullable=False)
     creation_date=db.Column(db.DateTime,nullable=False)
     update_date = db.Column(db.DateTime, nullable=False)
+    country=db.Column(db.String(10), unique=False, nullable=False)
 
     def __repr__(self):
         return '<User %r>' % self.name
@@ -42,7 +43,8 @@ class User(db.Model):
             "is_active":self.is_active,
             "is_problematic": self.is_problematic,
             "creation_date": self.creation_date,
-            "update_date": self.update_date
+            "update_date": self.update_date,
+            "country":self.country
         }
 
 class Administrator(db.Model):
