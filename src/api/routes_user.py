@@ -85,9 +85,17 @@ def handle_register():
 
 
         return jsonify({"msg": "User created successfully"}), 200
+
+
+@routes_user.route('/user/recover', methods=['POST'])
+def handle_recover():
+
+    response_body = {
+        "message": "hello"
+    }
+
+    return jsonify(response_body), 200
     
-
-
 
 @routes_user.route('/api/usertest', methods=['POST'])
 def handle_test():

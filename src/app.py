@@ -10,6 +10,8 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+import smtplib
+from smtplib import SMTPException
 
 
 ENV = os.getenv("FLASK_ENV")
@@ -40,6 +42,36 @@ app.register_blueprint(api, url_prefix='/api')
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
+
+def send_email_gmail(subject, to, text_body):
+    gmail_user = 'utu.recover@gmail.com'
+    gmail_password = 'QW80zx40'
+
+    sent_from = gmail_user
+    to = to
+    subject = subject
+    body = text_body
+
+    email_text = """\
+    From: %s
+    To: %s
+    Subject: %s
+    %s
+    """ % (sent_from, to, subject, body)
+
+    # Creamos la conexión segura con el servidor
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+
+    # Nos autenticamos
+    server.login(gmail_user, gmail_password)
+
+    # Enviamos el correo
+    server.sendmail(sent_from, to, email_text)
+
+    # Cerramos la conexión
+    server.close()
+# FIN - Función para envio directo de de correos con gmail.
 
 # generate sitemap with all your endpoints
 @app.route('/')
