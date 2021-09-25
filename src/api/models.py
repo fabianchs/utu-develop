@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy import UnicodeText
+
 db = SQLAlchemy()
 
 
@@ -78,7 +79,7 @@ class Administrator(db.Model):
 
 class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text_array = db.Column(db.ARRAY(db.String(20000)))
+    text_array = db.Column(UnicodeText())
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -93,11 +94,11 @@ class Test(db.Model):
 class Statement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=True)
-    statement = db.Column(db.ARRAY(db.String(20000)),nullable=False)
-    options = db.Column(db.ARRAY(db.String(2000)),nullable=False)
-    statement_types = db.Column(db.ARRAY(db.String(150)),nullable=False)
-    options_types=db.Column(db.ARRAY(db.String(150)),nullable=False)
-    answer= db.Column(db.ARRAY(db.String(150)),nullable=False)
+    statement = db.Column(db.UnicodeText(),nullable=False)
+    options = db.Column(db.UnicodeText(),nullable=False)
+    statement_types = db.Column(db.UnicodeText(),nullable=False)
+    options_types=db.Column(db.UnicodeText(),nullable=False)
+    answer= db.Column(db.UnicodeText(),nullable=False)
     source = db.Column(db.String(120), nullable=False)
     area=db.Column(db.String(120), nullable=True)
     institution=db.Column(db.String(120), nullable=True)
@@ -136,11 +137,11 @@ class Statement(db.Model):
 class StatementCreation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=True)
-    statement = db.Column(db.ARRAY(db.String(20000)),nullable=True)
-    options = db.Column(db.ARRAY(db.String(2000)),nullable=True)
-    statement_types = db.Column(db.ARRAY(db.String(150)),nullable=True)
-    options_types=db.Column(db.ARRAY(db.String(150)),nullable=True)
-    answer= db.Column(db.ARRAY(db.String(150)),nullable=True)
+    statement = db.Column(db.UnicodeText(),nullable=True)
+    options = db.Column(db.UnicodeText(),nullable=True)
+    statement_types = db.Column(db.UnicodeText(),nullable=True)
+    options_types=db.Column(db.UnicodeText(),nullable=True)
+    answer= db.Column(db.UnicodeText(),nullable=True)
     source = db.Column(db.String(120), nullable=True)
     area=db.Column(db.String(120), nullable=True)
     institution=db.Column(db.String(120), nullable=True)
