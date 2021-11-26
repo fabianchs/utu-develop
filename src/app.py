@@ -10,9 +10,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
-import smtplib
-from smtplib import SMTPException
-
+#from models import Person
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
@@ -20,8 +18,9 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 # database condiguration
-if os.getenv("DATABASE_URL") is not None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+db_url = os.getenv("DATABASE_URL")
+if db_url is not None:
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
@@ -42,36 +41,6 @@ app.register_blueprint(api, url_prefix='/api')
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
-
-def send_email_gmail(subject, to, text_body):
-    gmail_user = 'utu.recover@gmail.com'
-    gmail_password = 'QW80zx40'
-
-    sent_from = gmail_user
-    to = to
-    subject = subject
-    body = text_body
-
-    email_text = """\
-    From: %s
-    To: %s
-    Subject: %s
-    %s
-    """ % (sent_from, to, subject, body)
-
-    # Creamos la conexión segura con el servidor
-    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.ehlo()
-
-    # Nos autenticamos
-    server.login(gmail_user, gmail_password)
-
-    # Enviamos el correo
-    server.sendmail(sent_from, to, email_text)
-
-    # Cerramos la conexión
-    server.close()
-# FIN - Función para envio directo de de correos con gmail.
 
 # generate sitemap with all your endpoints
 @app.route('/')
