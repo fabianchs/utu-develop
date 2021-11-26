@@ -183,3 +183,6 @@ real_cuts_{
     Initiallize the migrations again: pipenv run init
     Create the migration files again: pipenv run migrate
     Apply the migration files into your database pipenv run upgrade
+
+https://start.4geeksacademy.com/backend/deploy-heroku-posgres
+heroku addons:create heroku-postgresql:hobby-devy
