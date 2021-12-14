@@ -3,7 +3,7 @@ import { Button, Input, Badge, Table, Alert } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import MathJax from "react-mathjax";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 export function RenderCreatorStatement(props) {
 	const { statementToRender, statementTypesToRender, optionsToRender, optionsTypesToRender, answers } = props;
 	const [convertedComponent, setConvertedComponent] = useState("");

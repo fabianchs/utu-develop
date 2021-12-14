@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ParseToApiStructure } from "../functions/parse_to_api_structure.js";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 import classnames from "classnames";
 import {
 	Button,

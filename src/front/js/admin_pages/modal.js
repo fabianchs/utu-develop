@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 export function ModalExample() {
 	const [modal, setModal] = useState(false);
 	const [counter, setCounter] = useState(2);

@@ -4,7 +4,7 @@ import { Badge, Button } from "reactstrap";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);

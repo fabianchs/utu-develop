@@ -1,6 +1,6 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 export function ParseToApiStructure(props) {

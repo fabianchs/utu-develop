@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/index.scss";
+import "../../styles/index.css";
 import { Button, Toast, ToastBody, ToastHeader } from "reactstrap";
 
 export const AdminDashboard = () => {
